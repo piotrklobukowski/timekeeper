@@ -33,4 +33,22 @@ class TimekeeperTests: XCTestCase {
         }
     }
     
+    func testToDoListisEmpty() {
+        let toDoList = ToDoList()
+        
+        XCTAssertEqual(toDoList.tasks.count, 0)
+    }
+    
+    func testClockworkDefaultValues() {
+        let clockwork = Clockwork()
+        
+        XCTAssertEqual(clockwork.workTime, 25)
+        XCTAssertEqual(clockwork.shortBreakTime, 5)
+        XCTAssertEqual(clockwork.longBreakTime, 20)
+        XCTAssertEqual(clockwork.shortBreaksAmount, 3)
+        XCTAssertEqual(clockwork.longBreaksAmount, 1)
+        
+    }
+    
+    
 }

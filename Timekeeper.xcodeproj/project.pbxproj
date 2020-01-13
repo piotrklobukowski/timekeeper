@@ -8,12 +8,14 @@
 
 /* Begin PBXBuildFile section */
 		2106ABC423C775AB00D91724 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2106ABC323C775AB00D91724 /* AppDelegate.swift */; };
-		2106ABC623C775AB00D91724 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2106ABC523C775AB00D91724 /* ViewController.swift */; };
+		2106ABC623C775AB00D91724 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2106ABC523C775AB00D91724 /* MainViewController.swift */; };
 		2106ABC923C775AB00D91724 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2106ABC723C775AB00D91724 /* Main.storyboard */; };
 		2106ABCB23C775AE00D91724 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2106ABCA23C775AE00D91724 /* Assets.xcassets */; };
 		2106ABCE23C775AE00D91724 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2106ABCC23C775AE00D91724 /* LaunchScreen.storyboard */; };
 		2106ABD923C775AE00D91724 /* TimekeeperTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2106ABD823C775AE00D91724 /* TimekeeperTests.swift */; };
 		2106ABE423C775AE00D91724 /* TimekeeperUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2106ABE323C775AE00D91724 /* TimekeeperUITests.swift */; };
+		2179628B23CA24F700D5D955 /* ToDoListTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2179628A23CA24F700D5D955 /* ToDoListTableViewController.swift */; };
+		2179628D23CA250F00D5D955 /* SettingsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2179628C23CA250F00D5D955 /* SettingsTableViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -36,7 +38,7 @@
 /* Begin PBXFileReference section */
 		2106ABC023C775AB00D91724 /* Timekeeper.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Timekeeper.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2106ABC323C775AB00D91724 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		2106ABC523C775AB00D91724 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		2106ABC523C775AB00D91724 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		2106ABC823C775AB00D91724 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		2106ABCA23C775AE00D91724 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		2106ABCD23C775AE00D91724 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -47,6 +49,8 @@
 		2106ABDF23C775AE00D91724 /* TimekeeperUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TimekeeperUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		2106ABE323C775AE00D91724 /* TimekeeperUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimekeeperUITests.swift; sourceTree = "<group>"; };
 		2106ABE523C775AE00D91724 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		2179628A23CA24F700D5D955 /* ToDoListTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToDoListTableViewController.swift; sourceTree = "<group>"; };
+		2179628C23CA250F00D5D955 /* SettingsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsTableViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -98,8 +102,10 @@
 			isa = PBXGroup;
 			children = (
 				2106ABC323C775AB00D91724 /* AppDelegate.swift */,
-				2106ABC523C775AB00D91724 /* ViewController.swift */,
 				2106ABC723C775AB00D91724 /* Main.storyboard */,
+				2106ABC523C775AB00D91724 /* MainViewController.swift */,
+				2179628A23CA24F700D5D955 /* ToDoListTableViewController.swift */,
+				2179628C23CA250F00D5D955 /* SettingsTableViewController.swift */,
 				2106ABCA23C775AE00D91724 /* Assets.xcassets */,
 				2106ABCC23C775AE00D91724 /* LaunchScreen.storyboard */,
 				2106ABCF23C775AE00D91724 /* Info.plist */,
@@ -256,8 +262,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2106ABC623C775AB00D91724 /* ViewController.swift in Sources */,
+				2179628D23CA250F00D5D955 /* SettingsTableViewController.swift in Sources */,
+				2106ABC623C775AB00D91724 /* MainViewController.swift in Sources */,
 				2106ABC423C775AB00D91724 /* AppDelegate.swift in Sources */,
+				2179628B23CA24F700D5D955 /* ToDoListTableViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
