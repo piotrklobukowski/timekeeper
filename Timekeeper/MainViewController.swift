@@ -40,6 +40,10 @@ class MainViewController: UIViewController {
     }
 
     @IBAction func openToDoList(_ sender: UIButton) {
+        
+        performSegue(withIdentifier: "showToDoList", sender: self)
+        
+        
     }
     
     @IBAction func stopAndStartClockwork(_ sender: UIButton) {
@@ -49,6 +53,7 @@ class MainViewController: UIViewController {
     }
     
     @IBAction func openSettings(_ sender: UIButton) {
+        performSegue(withIdentifier: "showSettings", sender: self)
     }
     
 }

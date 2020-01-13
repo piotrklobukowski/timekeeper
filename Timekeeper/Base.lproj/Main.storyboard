@@ -34,7 +34,6 @@
                                         </state>
                                         <connections>
                                             <action selector="openToDoList:" destination="BYZ-38-t0r" eventType="touchUpInside" id="kmS-ag-oNb"/>
-                                            <action selector="showToDoList:" destination="BYZ-38-t0r" eventType="touchUpInside" id="szq-lG-6Kf"/>
                                         </connections>
                                     </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ktm-Bp-CES">
@@ -120,6 +119,8 @@
                         <outlet property="pauseButton" destination="4Rp-xG-nWv" id="PCV-M8-y0B"/>
                         <outlet property="settingsButton" destination="mzc-Um-rKh" id="fW6-lz-zrI"/>
                         <outlet property="toDoListButton" destination="AAL-1o-wFo" id="vxs-6h-TAJ"/>
+                        <segue destination="gzU-x5-8KV" kind="show" identifier="showToDoList" id="LNx-Sc-Vdx"/>
+                        <segue destination="7m8-GF-Mx3" kind="presentation" identifier="showSettings" id="HR6-Ma-azi"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -208,8 +209,9 @@
         <!--Navigation Controller-->
         <scene sceneID="Zo5-yS-WBj">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="gzU-x5-8KV" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="NavigationControllerToDoList" automaticallyAdjustsScrollViewInsets="NO" id="gzU-x5-8KV" sceneMemberID="viewController">
                     <toolbarItems/>
+                    <navigationItem key="navigationItem" id="kHw-NK-ECp"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" barStyle="black" translucent="NO" largeTitles="YES" id="E05-aY-8Ox">
                         <rect key="frame" x="0.0" y="44" width="375" height="96"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -231,7 +233,7 @@
         <!--Navigation Controller-->
         <scene sceneID="erb-mi-WtD">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="7m8-GF-Mx3" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="NavigationControllerSettings" automaticallyAdjustsScrollViewInsets="NO" id="7m8-GF-Mx3" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" barStyle="black" translucent="NO" id="pQX-7A-eF4">
                         <rect key="frame" x="0.0" y="44" width="375" height="44"/>
