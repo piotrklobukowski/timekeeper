@@ -1,0 +1,5 @@
+*.xcbkptlist
+Timekeeper.xcodeproj/xcuserdata/
+Timekeeper.xcworkspace/xcshareddata/IDEWorkspaceChecks.plist
+Timekeeper.xcworkspace/contents.xcworkspacedata
+Pods/Pods.xcodeproj/xcuserdata
