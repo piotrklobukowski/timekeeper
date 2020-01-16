@@ -1,5 +1,5 @@
 //
-//  SettingsTableViewController.swift
+//  ToDoListTableViewController.swift
 //  Timekeeper
 //
 //  Created by Piotr Kłobukowski on 11/01/2020.
@@ -8,44 +8,83 @@
 
 import UIKit
 
-class SettingsTableViewController: UITableViewController {
+class ToDoListTableViewController: UITableViewController {
+    
+    var toDoList: ToDoList?
+    weak var mainViewContentUpdateDelegate: MainViewContentUpateDelegate?
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        let addTaskButton = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(showAlertForTaskAdding))
+        
+        navigationItem.rightBarButtonItem = addTaskButton
+        addTaskButton.tintColor = UIColor(red:0.73, green:0.88, blue:0.98, alpha:1.0)
+        
+        navigationItem.backBarButtonItem?.tintColor = UIColor(red:0.73, green:0.88, blue:0.98, alpha:1.0)
+     
 
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem
+        
+        
+        
     }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(true)
+        navigationController?.isNavigationBarHidden = false
     }
+    
+    @objc func showAlertForTaskAdding() {
+        let ac = UIAlertController(title: "Add task", message: nil, preferredStyle: .alert)
+        ac.addTextField()
+//        ac.addAction(UIAlertAction(title: "Add", style: .default, handler: <#T##((UIAlertAction) -> Void)?##((UIAlertAction) -> Void)?##(UIAlertAction) -> Void#>))
+        ac.addAction(UIAlertAction(title: "Cancel", style: .cancel))
+        present(ac, animated: true)
+    }
+    
+    
 
     // MARK: - Table view data source
 
-    override func numberOfSections(in tableView: UITableView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
-        return 0
-    }
+    
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return 0
+        if let numberOfRows = toDoList?.tasks.count {
+            return numberOfRows
+        } else {
+            return 0
+        }
     }
 
-    /*
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: "Task Cell", for: indexPath)
+        let task = toDoList?.tasks[indexPath.row]
 
+        cell.textLabel?.text = task?.name
+        
+        if task?.isDone == true {
+            cell.accessoryType = .checkmark
+        } else {
+            cell.accessoryType = .none
+        }
+        
         // Configure the cell...
 
         return cell
     }
-    */
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if let taskName = toDoList?.tasks[indexPath.row].name {
+            mainViewContentUpdateDelegate?.updateTaskLabel(with: taskName)
+            navigationController?.popViewController(animated: true)
+        }
+    }
 
     /*
     // Override to support conditional editing of the table view.

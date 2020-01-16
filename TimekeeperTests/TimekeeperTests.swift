@@ -33,10 +33,24 @@ class TimekeeperTests: XCTestCase {
         }
     }
     
-    func testToDoListisEmpty() {
-        let toDoList = ToDoList()
+    func testToDoListworking() {
+        var toDoList = ToDoList()
         
         XCTAssertEqual(toDoList.tasks.count, 0)
+        
+        toDoList.addTask(name: "Create toDoList code")
+        toDoList.addTask(name: "Play a game")
+        XCTAssertEqual(toDoList.tasks.count, 2)
+        XCTAssertEqual(toDoList.tasks[0].isDone, false)
+        XCTAssertEqual(toDoList.tasks[1].isDone, false)
+        
+        toDoList.deleteTask(position: 1)
+        XCTAssertEqual(toDoList.tasks.count, 1)
+        
+        toDoList.taskIsDone(name: "Create toDoList code")
+        XCTAssertEqual(toDoList.tasks.count, 1)
+        XCTAssertEqual(toDoList.tasks[0].isDone, true)
+        
     }
     
     func testClockworkDefaultValues() {
@@ -49,6 +63,7 @@ class TimekeeperTests: XCTestCase {
         XCTAssertEqual(clockwork.longBreaksAmount, 1)
         
     }
+
     
     
 }

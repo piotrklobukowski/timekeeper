@@ -1,5 +1,5 @@
 //
-//  ToDoListTableViewController.swift
+//  SettingsTableViewController.swift
 //  Timekeeper
 //
 //  Created by Piotr Kłobukowski on 11/01/2020.
@@ -8,8 +8,7 @@
 
 import UIKit
 
-class ToDoListTableViewController: UITableViewController {
-    
+class SettingsTableViewController: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -19,8 +18,11 @@ class ToDoListTableViewController: UITableViewController {
 
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem
-        
-        
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(true)
+        navigationController?.isNavigationBarHidden = false
     }
 
     override func didReceiveMemoryWarning() {

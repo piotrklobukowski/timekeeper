@@ -1,0 +1,968 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 50;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		10CD1194D5C07627F9793D63BED04AAE /* Pods-Timekeeper-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = F5CB52DDCFD68543E732081B5970EF21 /* Pods-Timekeeper-dummy.m */; };
+		1479860E9A217DF3CCA0A1056FF55FA8 /* Pods-TimekeeperTests-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = EC8DF03E3DEB295DD9CD0C2FD2CFA0CD /* Pods-TimekeeperTests-dummy.m */; };
+		19759B89A7DA4E3AE448F6DE29916453 /* CircleProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D1F6CA0D78A98ED66128A08D2B0DC07 /* CircleProgressView.swift */; };
+		2D8D70B5DA1355D9DFE569C5C5C3599E /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3212113385A8FBBDB272BD23C409FF61 /* Foundation.framework */; };
+		71F5CBA7EA1049C333FB56EFA190038F /* CircleProgressView-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 201DA3B130DBFD834A7C90F4D5F80505 /* CircleProgressView-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		75E75AA522635432617178F562E043F2 /* CircleProgressView-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = FBE8D77550CF0ACB009286390EF76828 /* CircleProgressView-dummy.m */; };
+		81F78BD3E72A93E80850C50825D84C31 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3212113385A8FBBDB272BD23C409FF61 /* Foundation.framework */; };
+		9381E0B79D3C56AEAEC5C74026A11CD0 /* Pods-Timekeeper-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 3C34E27AD08D174F759A6FB8FFA7A50D /* Pods-Timekeeper-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		9E2292D4B6C6BFA7F647180F4397BD07 /* Pods-Timekeeper-TimekeeperUITests-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 9F1F5EF8BC5D11DB37ACD05F13C32DAB /* Pods-Timekeeper-TimekeeperUITests-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		A27BB6504E27EE334150DF5363A88BF7 /* Pods-TimekeeperTests-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = D92E96938A73D0EF7E146A13ACC95DEE /* Pods-TimekeeperTests-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		BE8FFD3514B74619E85FDF5964FDADAB /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3212113385A8FBBDB272BD23C409FF61 /* Foundation.framework */; };
+		C03FDF2ABF24E2021843BA9C2CE381D8 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B536BE2B1AAA9DC33CF4E25D75F4980 /* ViewController.swift */; };
+		CF70AF88841C83F8F43A9FA1E56C01DF /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3212113385A8FBBDB272BD23C409FF61 /* Foundation.framework */; };
+		D97D7C63AD5CC98B980EF8292D3093B1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33EC6B7CC5C2386F9857AB920D9D708A /* AppDelegate.swift */; };
+		E14ADD590314F63F1079F2039E1267CC /* Pods-Timekeeper-TimekeeperUITests-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = A1E42CCBE59C79AE329DBDBA4AA973E8 /* Pods-Timekeeper-TimekeeperUITests-dummy.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		20768E31B0E5ED11791C4C562E343FB7 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 4949F2E81928B23F0DBD7CBD4C7FAD08;
+			remoteInfo = CircleProgressView;
+		};
+		6AB5AF465EFA6E87E03CE1DEE87BEDAA /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 5516C11AE1C2B223156EE707C0730328;
+			remoteInfo = "Pods-Timekeeper";
+		};
+		9B31F28BB8104CE781BAA5827A298168 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 4949F2E81928B23F0DBD7CBD4C7FAD08;
+			remoteInfo = CircleProgressView;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		0B536BE2B1AAA9DC33CF4E25D75F4980 /* ViewController.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ViewController.swift; path = CircleProgressView/ViewController.swift; sourceTree = "<group>"; };
+		0D1F6CA0D78A98ED66128A08D2B0DC07 /* CircleProgressView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = CircleProgressView.swift; path = CircleProgressView/CircleProgressView.swift; sourceTree = "<group>"; };
+		13006CC051C617A2A1334E5AE9931C70 /* Pods-Timekeeper-TimekeeperUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-Timekeeper-TimekeeperUITests.release.xcconfig"; sourceTree = "<group>"; };
+		1EE573EDDD841C0455696F48AD221FB5 /* Pods-Timekeeper.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-Timekeeper.release.xcconfig"; sourceTree = "<group>"; };
+		201DA3B130DBFD834A7C90F4D5F80505 /* CircleProgressView-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "CircleProgressView-umbrella.h"; sourceTree = "<group>"; };
+		30EAB6D8A8E2AB7D456E5FA0E303199D /* Pods-TimekeeperTests.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "Pods-TimekeeperTests.modulemap"; sourceTree = "<group>"; };
+		3212113385A8FBBDB272BD23C409FF61 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS12.2.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
+		33EC6B7CC5C2386F9857AB920D9D708A /* AppDelegate.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = AppDelegate.swift; path = CircleProgressView/AppDelegate.swift; sourceTree = "<group>"; };
+		36FCA6121AB37CFD4298C927DD157A2D /* Pods-TimekeeperTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-TimekeeperTests.debug.xcconfig"; sourceTree = "<group>"; };
+		3C34E27AD08D174F759A6FB8FFA7A50D /* Pods-Timekeeper-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-Timekeeper-umbrella.h"; sourceTree = "<group>"; };
+		3CD9B68DEC0F285716EECE2CFABC6D09 /* CircleProgressView-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "CircleProgressView-Info.plist"; sourceTree = "<group>"; };
+		4029CAB51D4C27B777803DE992D30F55 /* Pods-Timekeeper-TimekeeperUITests-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-Timekeeper-TimekeeperUITests-Info.plist"; sourceTree = "<group>"; };
+		45C67D87CAFA6006B0DAE545749489E6 /* CircleProgressView-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "CircleProgressView-prefix.pch"; sourceTree = "<group>"; };
+		45D60FBF7DDF801687E29D39CE2D655A /* Pods-TimekeeperTests-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-TimekeeperTests-Info.plist"; sourceTree = "<group>"; };
+		47F0B225ECDA9E121B372CB482F550F6 /* Pods-Timekeeper-TimekeeperUITests.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "Pods-Timekeeper-TimekeeperUITests.modulemap"; sourceTree = "<group>"; };
+		4D250324E85E59019E3CE77667BC1DE5 /* CircleProgressView.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = CircleProgressView.framework; path = CircleProgressView.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		552FD25181D157B1B95E8A62826AFEB8 /* CircleProgressView.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = CircleProgressView.modulemap; sourceTree = "<group>"; };
+		75132A4608B8433EF24E09231F2AA818 /* Pods-TimekeeperTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-TimekeeperTests.release.xcconfig"; sourceTree = "<group>"; };
+		768658E725FDFA013636B7825184418B /* Pods_TimekeeperTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_TimekeeperTests.framework; path = "Pods-TimekeeperTests.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
+		91B15348F63DD8489CAB36A8648984F7 /* Pods-Timekeeper-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-Timekeeper-frameworks.sh"; sourceTree = "<group>"; };
+		95C03088240767582B9D5DA2AE037B5F /* Pods-Timekeeper-TimekeeperUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-Timekeeper-TimekeeperUITests.debug.xcconfig"; sourceTree = "<group>"; };
+		97FE2ECA26549B1FCF0310DD3B671967 /* Pods-Timekeeper-TimekeeperUITests-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-Timekeeper-TimekeeperUITests-frameworks.sh"; sourceTree = "<group>"; };
+		9D940727FF8FB9C785EB98E56350EF41 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; lastKnownFileType = text; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		9F1F5EF8BC5D11DB37ACD05F13C32DAB /* Pods-Timekeeper-TimekeeperUITests-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-Timekeeper-TimekeeperUITests-umbrella.h"; sourceTree = "<group>"; };
+		A1E42CCBE59C79AE329DBDBA4AA973E8 /* Pods-Timekeeper-TimekeeperUITests-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-Timekeeper-TimekeeperUITests-dummy.m"; sourceTree = "<group>"; };
+		A5942D8548F35F8846492F761A294BC8 /* Pods-Timekeeper-TimekeeperUITests-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-Timekeeper-TimekeeperUITests-acknowledgements.markdown"; sourceTree = "<group>"; };
+		A76D1B627E4E64A265013359BA8CC534 /* Pods-Timekeeper-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-Timekeeper-acknowledgements.plist"; sourceTree = "<group>"; };
+		B10E3A31305DE30022DD2AF6234B7585 /* Pods-Timekeeper.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-Timekeeper.debug.xcconfig"; sourceTree = "<group>"; };
+		BFC0DF8CEA65F478BC996DE159C73AA7 /* CircleProgressView.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = CircleProgressView.xcconfig; sourceTree = "<group>"; };
+		C355A0BB148A878853B254154A1A3214 /* Pods-Timekeeper-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-Timekeeper-Info.plist"; sourceTree = "<group>"; };
+		CA2A3D34583A517BA9FB17D7A45D1E2C /* Pods_Timekeeper.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_Timekeeper.framework; path = "Pods-Timekeeper.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
+		CE304DC80E7969C830EE4AD5F667E158 /* Pods-Timekeeper.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "Pods-Timekeeper.modulemap"; sourceTree = "<group>"; };
+		D7650A530E823423402DD6CB2D3FF8F3 /* Pods-TimekeeperTests-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-TimekeeperTests-acknowledgements.plist"; sourceTree = "<group>"; };
+		D92E96938A73D0EF7E146A13ACC95DEE /* Pods-TimekeeperTests-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-TimekeeperTests-umbrella.h"; sourceTree = "<group>"; };
+		EC8DF03E3DEB295DD9CD0C2FD2CFA0CD /* Pods-TimekeeperTests-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-TimekeeperTests-dummy.m"; sourceTree = "<group>"; };
+		F5CB52DDCFD68543E732081B5970EF21 /* Pods-Timekeeper-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-Timekeeper-dummy.m"; sourceTree = "<group>"; };
+		F6A0CE9F825F35E508C0DA9E2182704A /* Pods-TimekeeperTests-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-TimekeeperTests-acknowledgements.markdown"; sourceTree = "<group>"; };
+		FA810BC93CC6D6E4CEC236465BA707D9 /* Pods-Timekeeper-TimekeeperUITests-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-Timekeeper-TimekeeperUITests-acknowledgements.plist"; sourceTree = "<group>"; };
+		FA9A0ECD5819C48DF897D0753901792B /* Pods_Timekeeper_TimekeeperUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_Timekeeper_TimekeeperUITests.framework; path = "Pods-Timekeeper-TimekeeperUITests.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
+		FB807C99A2E93DCABA120B36C719742D /* Pods-Timekeeper-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-Timekeeper-acknowledgements.markdown"; sourceTree = "<group>"; };
+		FBE8D77550CF0ACB009286390EF76828 /* CircleProgressView-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "CircleProgressView-dummy.m"; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		96258FF40ACD25BDE3AFC42173D3E8E7 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2D8D70B5DA1355D9DFE569C5C5C3599E /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A87519F9422873E2028AA065699DE6BD /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				BE8FFD3514B74619E85FDF5964FDADAB /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D16B3A509C2089C4E628250000107AD6 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				81F78BD3E72A93E80850C50825D84C31 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		DDEF1F11B78EDBC94FFC2387DD7FDD40 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CF70AF88841C83F8F43A9FA1E56C01DF /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		0700AC48FB60925BA8ED892E303A3858 /* Pods-Timekeeper */ = {
+			isa = PBXGroup;
+			children = (
+				CE304DC80E7969C830EE4AD5F667E158 /* Pods-Timekeeper.modulemap */,
+				FB807C99A2E93DCABA120B36C719742D /* Pods-Timekeeper-acknowledgements.markdown */,
+				A76D1B627E4E64A265013359BA8CC534 /* Pods-Timekeeper-acknowledgements.plist */,
+				F5CB52DDCFD68543E732081B5970EF21 /* Pods-Timekeeper-dummy.m */,
+				91B15348F63DD8489CAB36A8648984F7 /* Pods-Timekeeper-frameworks.sh */,
+				C355A0BB148A878853B254154A1A3214 /* Pods-Timekeeper-Info.plist */,
+				3C34E27AD08D174F759A6FB8FFA7A50D /* Pods-Timekeeper-umbrella.h */,
+				B10E3A31305DE30022DD2AF6234B7585 /* Pods-Timekeeper.debug.xcconfig */,
+				1EE573EDDD841C0455696F48AD221FB5 /* Pods-Timekeeper.release.xcconfig */,
+			);
+			name = "Pods-Timekeeper";
+			path = "Target Support Files/Pods-Timekeeper";
+			sourceTree = "<group>";
+		};
+		11665601C185E453293EF7278F525D1B /* Pods-Timekeeper-TimekeeperUITests */ = {
+			isa = PBXGroup;
+			children = (
+				47F0B225ECDA9E121B372CB482F550F6 /* Pods-Timekeeper-TimekeeperUITests.modulemap */,
+				A5942D8548F35F8846492F761A294BC8 /* Pods-Timekeeper-TimekeeperUITests-acknowledgements.markdown */,
+				FA810BC93CC6D6E4CEC236465BA707D9 /* Pods-Timekeeper-TimekeeperUITests-acknowledgements.plist */,
+				A1E42CCBE59C79AE329DBDBA4AA973E8 /* Pods-Timekeeper-TimekeeperUITests-dummy.m */,
+				97FE2ECA26549B1FCF0310DD3B671967 /* Pods-Timekeeper-TimekeeperUITests-frameworks.sh */,
+				4029CAB51D4C27B777803DE992D30F55 /* Pods-Timekeeper-TimekeeperUITests-Info.plist */,
+				9F1F5EF8BC5D11DB37ACD05F13C32DAB /* Pods-Timekeeper-TimekeeperUITests-umbrella.h */,
+				95C03088240767582B9D5DA2AE037B5F /* Pods-Timekeeper-TimekeeperUITests.debug.xcconfig */,
+				13006CC051C617A2A1334E5AE9931C70 /* Pods-Timekeeper-TimekeeperUITests.release.xcconfig */,
+			);
+			name = "Pods-Timekeeper-TimekeeperUITests";
+			path = "Target Support Files/Pods-Timekeeper-TimekeeperUITests";
+			sourceTree = "<group>";
+		};
+		4BBB785E436C80ED54B063DCBC6A797F /* Pods-TimekeeperTests */ = {
+			isa = PBXGroup;
+			children = (
+				30EAB6D8A8E2AB7D456E5FA0E303199D /* Pods-TimekeeperTests.modulemap */,
+				F6A0CE9F825F35E508C0DA9E2182704A /* Pods-TimekeeperTests-acknowledgements.markdown */,
+				D7650A530E823423402DD6CB2D3FF8F3 /* Pods-TimekeeperTests-acknowledgements.plist */,
+				EC8DF03E3DEB295DD9CD0C2FD2CFA0CD /* Pods-TimekeeperTests-dummy.m */,
+				45D60FBF7DDF801687E29D39CE2D655A /* Pods-TimekeeperTests-Info.plist */,
+				D92E96938A73D0EF7E146A13ACC95DEE /* Pods-TimekeeperTests-umbrella.h */,
+				36FCA6121AB37CFD4298C927DD157A2D /* Pods-TimekeeperTests.debug.xcconfig */,
+				75132A4608B8433EF24E09231F2AA818 /* Pods-TimekeeperTests.release.xcconfig */,
+			);
+			name = "Pods-TimekeeperTests";
+			path = "Target Support Files/Pods-TimekeeperTests";
+			sourceTree = "<group>";
+		};
+		70C22F04CB6E9F6F996BB0E3426BD5AB /* Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				552FD25181D157B1B95E8A62826AFEB8 /* CircleProgressView.modulemap */,
+				BFC0DF8CEA65F478BC996DE159C73AA7 /* CircleProgressView.xcconfig */,
+				FBE8D77550CF0ACB009286390EF76828 /* CircleProgressView-dummy.m */,
+				3CD9B68DEC0F285716EECE2CFABC6D09 /* CircleProgressView-Info.plist */,
+				45C67D87CAFA6006B0DAE545749489E6 /* CircleProgressView-prefix.pch */,
+				201DA3B130DBFD834A7C90F4D5F80505 /* CircleProgressView-umbrella.h */,
+			);
+			name = "Support Files";
+			path = "../Target Support Files/CircleProgressView";
+			sourceTree = "<group>";
+		};
+		72FA9621519C71E99DA37BAD4519EDD4 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				8C951DD6AA65D754F94C2F1872D9A040 /* CircleProgressView */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		8C951DD6AA65D754F94C2F1872D9A040 /* CircleProgressView */ = {
+			isa = PBXGroup;
+			children = (
+				33EC6B7CC5C2386F9857AB920D9D708A /* AppDelegate.swift */,
+				0D1F6CA0D78A98ED66128A08D2B0DC07 /* CircleProgressView.swift */,
+				0B536BE2B1AAA9DC33CF4E25D75F4980 /* ViewController.swift */,
+				70C22F04CB6E9F6F996BB0E3426BD5AB /* Support Files */,
+			);
+			name = CircleProgressView;
+			path = CircleProgressView;
+			sourceTree = "<group>";
+		};
+		C0834CEBB1379A84116EF29F93051C60 /* iOS */ = {
+			isa = PBXGroup;
+			children = (
+				3212113385A8FBBDB272BD23C409FF61 /* Foundation.framework */,
+			);
+			name = iOS;
+			sourceTree = "<group>";
+		};
+		CF1408CF629C7361332E53B88F7BD30C = {
+			isa = PBXGroup;
+			children = (
+				9D940727FF8FB9C785EB98E56350EF41 /* Podfile */,
+				D210D550F4EA176C3123ED886F8F87F5 /* Frameworks */,
+				72FA9621519C71E99DA37BAD4519EDD4 /* Pods */,
+				D40E4D4984E5D4C554D3579F51625BBE /* Products */,
+				CFE7A8D90149FA23E6175CAFC21BA1E3 /* Targets Support Files */,
+			);
+			sourceTree = "<group>";
+		};
+		CFE7A8D90149FA23E6175CAFC21BA1E3 /* Targets Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				0700AC48FB60925BA8ED892E303A3858 /* Pods-Timekeeper */,
+				11665601C185E453293EF7278F525D1B /* Pods-Timekeeper-TimekeeperUITests */,
+				4BBB785E436C80ED54B063DCBC6A797F /* Pods-TimekeeperTests */,
+			);
+			name = "Targets Support Files";
+			sourceTree = "<group>";
+		};
+		D210D550F4EA176C3123ED886F8F87F5 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				C0834CEBB1379A84116EF29F93051C60 /* iOS */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		D40E4D4984E5D4C554D3579F51625BBE /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				4D250324E85E59019E3CE77667BC1DE5 /* CircleProgressView.framework */,
+				CA2A3D34583A517BA9FB17D7A45D1E2C /* Pods_Timekeeper.framework */,
+				FA9A0ECD5819C48DF897D0753901792B /* Pods_Timekeeper_TimekeeperUITests.framework */,
+				768658E725FDFA013636B7825184418B /* Pods_TimekeeperTests.framework */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXHeadersBuildPhase section */
+		15A421E0FD913D494C3922195C2791D1 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				71F5CBA7EA1049C333FB56EFA190038F /* CircleProgressView-umbrella.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		9406DAD13B7E3D8736079FF6AEBFEF75 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				9E2292D4B6C6BFA7F647180F4397BD07 /* Pods-Timekeeper-TimekeeperUITests-umbrella.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		9B65D75CB15D089237B061A2EE3AF5CA /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A27BB6504E27EE334150DF5363A88BF7 /* Pods-TimekeeperTests-umbrella.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C97F93DF9CFBCA8457680135E9D619EA /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				9381E0B79D3C56AEAEC5C74026A11CD0 /* Pods-Timekeeper-umbrella.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
+
+/* Begin PBXNativeTarget section */
+		4949F2E81928B23F0DBD7CBD4C7FAD08 /* CircleProgressView */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = E056B5804FD4F35E9B574DC1E461A4BB /* Build configuration list for PBXNativeTarget "CircleProgressView" */;
+			buildPhases = (
+				15A421E0FD913D494C3922195C2791D1 /* Headers */,
+				62B1697BBE00A69E9111EE8EABAC7E33 /* Sources */,
+				A87519F9422873E2028AA065699DE6BD /* Frameworks */,
+				A49F5943BB44D421A56C94AEEEB592AB /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = CircleProgressView;
+			productName = CircleProgressView;
+			productReference = 4D250324E85E59019E3CE77667BC1DE5 /* CircleProgressView.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		5516C11AE1C2B223156EE707C0730328 /* Pods-Timekeeper */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = C1F58B779E15005D5402A45BA93CDB20 /* Build configuration list for PBXNativeTarget "Pods-Timekeeper" */;
+			buildPhases = (
+				C97F93DF9CFBCA8457680135E9D619EA /* Headers */,
+				B80273B120F66BFE04570FD8A1A2D6A1 /* Sources */,
+				D16B3A509C2089C4E628250000107AD6 /* Frameworks */,
+				B570AB2F0469BB56C3CB16CFE32218FC /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				328202B0157DD13BF37EA87C486662A6 /* PBXTargetDependency */,
+			);
+			name = "Pods-Timekeeper";
+			productName = "Pods-Timekeeper";
+			productReference = CA2A3D34583A517BA9FB17D7A45D1E2C /* Pods_Timekeeper.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		7A3F078F930BCAF05DD1584843A6D1D3 /* Pods-Timekeeper-TimekeeperUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = A6E9B7470E2D379C00EC165938B928B5 /* Build configuration list for PBXNativeTarget "Pods-Timekeeper-TimekeeperUITests" */;
+			buildPhases = (
+				9406DAD13B7E3D8736079FF6AEBFEF75 /* Headers */,
+				47EAE2CE17262B84766E4411F40DFC07 /* Sources */,
+				96258FF40ACD25BDE3AFC42173D3E8E7 /* Frameworks */,
+				13F7BEF8FBA5B0E4040F2F777AC2E098 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				D200F9E4B100BA0D4041045A5E390551 /* PBXTargetDependency */,
+			);
+			name = "Pods-Timekeeper-TimekeeperUITests";
+			productName = "Pods-Timekeeper-TimekeeperUITests";
+			productReference = FA9A0ECD5819C48DF897D0753901792B /* Pods_Timekeeper_TimekeeperUITests.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		FA0891F80CCDAFB65BD1AE8F747460BC /* Pods-TimekeeperTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 66338488B871BA810C5784CB21032F74 /* Build configuration list for PBXNativeTarget "Pods-TimekeeperTests" */;
+			buildPhases = (
+				9B65D75CB15D089237B061A2EE3AF5CA /* Headers */,
+				AA30492CCD1941EA6633AD242A8DE332 /* Sources */,
+				DDEF1F11B78EDBC94FFC2387DD7FDD40 /* Frameworks */,
+				5C2C5B6CDF0DA8B08AAF0449FBB9CC8F /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				FD21CEAD2E22DDB2376788A49C449A87 /* PBXTargetDependency */,
+			);
+			name = "Pods-TimekeeperTests";
+			productName = "Pods-TimekeeperTests";
+			productReference = 768658E725FDFA013636B7825184418B /* Pods_TimekeeperTests.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		BFDFE7DC352907FC980B868725387E98 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 1100;
+				LastUpgradeCheck = 1100;
+			};
+			buildConfigurationList = 4821239608C13582E20E6DA73FD5F1F9 /* Build configuration list for PBXProject "Pods" */;
+			compatibilityVersion = "Xcode 9.3";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = CF1408CF629C7361332E53B88F7BD30C;
+			productRefGroup = D40E4D4984E5D4C554D3579F51625BBE /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				4949F2E81928B23F0DBD7CBD4C7FAD08 /* CircleProgressView */,
+				5516C11AE1C2B223156EE707C0730328 /* Pods-Timekeeper */,
+				7A3F078F930BCAF05DD1584843A6D1D3 /* Pods-Timekeeper-TimekeeperUITests */,
+				FA0891F80CCDAFB65BD1AE8F747460BC /* Pods-TimekeeperTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		13F7BEF8FBA5B0E4040F2F777AC2E098 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		5C2C5B6CDF0DA8B08AAF0449FBB9CC8F /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A49F5943BB44D421A56C94AEEEB592AB /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B570AB2F0469BB56C3CB16CFE32218FC /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		47EAE2CE17262B84766E4411F40DFC07 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E14ADD590314F63F1079F2039E1267CC /* Pods-Timekeeper-TimekeeperUITests-dummy.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		62B1697BBE00A69E9111EE8EABAC7E33 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D97D7C63AD5CC98B980EF8292D3093B1 /* AppDelegate.swift in Sources */,
+				75E75AA522635432617178F562E043F2 /* CircleProgressView-dummy.m in Sources */,
+				19759B89A7DA4E3AE448F6DE29916453 /* CircleProgressView.swift in Sources */,
+				C03FDF2ABF24E2021843BA9C2CE381D8 /* ViewController.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		AA30492CCD1941EA6633AD242A8DE332 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1479860E9A217DF3CCA0A1056FF55FA8 /* Pods-TimekeeperTests-dummy.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B80273B120F66BFE04570FD8A1A2D6A1 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				10CD1194D5C07627F9793D63BED04AAE /* Pods-Timekeeper-dummy.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		328202B0157DD13BF37EA87C486662A6 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = CircleProgressView;
+			target = 4949F2E81928B23F0DBD7CBD4C7FAD08 /* CircleProgressView */;
+			targetProxy = 20768E31B0E5ED11791C4C562E343FB7 /* PBXContainerItemProxy */;
+		};
+		D200F9E4B100BA0D4041045A5E390551 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = CircleProgressView;
+			target = 4949F2E81928B23F0DBD7CBD4C7FAD08 /* CircleProgressView */;
+			targetProxy = 9B31F28BB8104CE781BAA5827A298168 /* PBXContainerItemProxy */;
+		};
+		FD21CEAD2E22DDB2376788A49C449A87 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = "Pods-Timekeeper";
+			target = 5516C11AE1C2B223156EE707C0730328 /* Pods-Timekeeper */;
+			targetProxy = 6AB5AF465EFA6E87E03CE1DEE87BEDAA /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		081B059D470AAA56B397B697877ED922 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 36FCA6121AB37CFD4298C927DD157A2D /* Pods-TimekeeperTests.debug.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = "Target Support Files/Pods-TimekeeperTests/Pods-TimekeeperTests-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-TimekeeperTests/Pods-TimekeeperTests.modulemap";
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		4606234493258200EFE4655D036C235F /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 95C03088240767582B9D5DA2AE037B5F /* Pods-Timekeeper-TimekeeperUITests.debug.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = "Target Support Files/Pods-Timekeeper-TimekeeperUITests/Pods-Timekeeper-TimekeeperUITests-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-Timekeeper-TimekeeperUITests/Pods-Timekeeper-TimekeeperUITests.modulemap";
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		5BF10D16B9021C1C1219D6A38ADD2B9B /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 13006CC051C617A2A1334E5AE9931C70 /* Pods-Timekeeper-TimekeeperUITests.release.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = "Target Support Files/Pods-Timekeeper-TimekeeperUITests/Pods-Timekeeper-TimekeeperUITests-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-Timekeeper-TimekeeperUITests/Pods-Timekeeper-TimekeeperUITests.modulemap";
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		86680AC41B6EF969F623A23567F299D9 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 1EE573EDDD841C0455696F48AD221FB5 /* Pods-Timekeeper.release.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = "Target Support Files/Pods-Timekeeper/Pods-Timekeeper-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-Timekeeper/Pods-Timekeeper.modulemap";
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		8F17DC3A99F99FBAD606CE6963886315 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"POD_CONFIGURATION_RELEASE=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				STRIP_INSTALLED_PRODUCT = NO;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				SWIFT_VERSION = 5.0;
+				SYMROOT = "${SRCROOT}/../build";
+			};
+			name = Release;
+		};
+		916E0404255105F480DC4950B7625F7A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"POD_CONFIGURATION_DEBUG=1",
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				STRIP_INSTALLED_PRODUCT = NO;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
+				SYMROOT = "${SRCROOT}/../build";
+			};
+			name = Debug;
+		};
+		9929B52E4CCFA0DE69314B4B8D1366CE /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = BFC0DF8CEA65F478BC996DE159C73AA7 /* CircleProgressView.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				GCC_PREFIX_HEADER = "Target Support Files/CircleProgressView/CircleProgressView-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/CircleProgressView/CircleProgressView-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MODULEMAP_FILE = "Target Support Files/CircleProgressView/CircleProgressView.modulemap";
+				PRODUCT_MODULE_NAME = CircleProgressView;
+				PRODUCT_NAME = CircleProgressView;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		9B4F8F8883DC792147379B4D280E89C6 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 75132A4608B8433EF24E09231F2AA818 /* Pods-TimekeeperTests.release.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = "Target Support Files/Pods-TimekeeperTests/Pods-TimekeeperTests-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-TimekeeperTests/Pods-TimekeeperTests.modulemap";
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		9BAEB9F3F7FFB89EF81E476756EAB9B9 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = BFC0DF8CEA65F478BC996DE159C73AA7 /* CircleProgressView.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				GCC_PREFIX_HEADER = "Target Support Files/CircleProgressView/CircleProgressView-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/CircleProgressView/CircleProgressView-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MODULEMAP_FILE = "Target Support Files/CircleProgressView/CircleProgressView.modulemap";
+				PRODUCT_MODULE_NAME = CircleProgressView;
+				PRODUCT_NAME = CircleProgressView;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		C274BAE966D211B2BCC24D925ECABB7C /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = B10E3A31305DE30022DD2AF6234B7585 /* Pods-Timekeeper.debug.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = "Target Support Files/Pods-Timekeeper/Pods-Timekeeper-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-Timekeeper/Pods-Timekeeper.modulemap";
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		4821239608C13582E20E6DA73FD5F1F9 /* Build configuration list for PBXProject "Pods" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				916E0404255105F480DC4950B7625F7A /* Debug */,
+				8F17DC3A99F99FBAD606CE6963886315 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		66338488B871BA810C5784CB21032F74 /* Build configuration list for PBXNativeTarget "Pods-TimekeeperTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				081B059D470AAA56B397B697877ED922 /* Debug */,
+				9B4F8F8883DC792147379B4D280E89C6 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		A6E9B7470E2D379C00EC165938B928B5 /* Build configuration list for PBXNativeTarget "Pods-Timekeeper-TimekeeperUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				4606234493258200EFE4655D036C235F /* Debug */,
+				5BF10D16B9021C1C1219D6A38ADD2B9B /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		C1F58B779E15005D5402A45BA93CDB20 /* Build configuration list for PBXNativeTarget "Pods-Timekeeper" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C274BAE966D211B2BCC24D925ECABB7C /* Debug */,
+				86680AC41B6EF969F623A23567F299D9 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		E056B5804FD4F35E9B574DC1E461A4BB /* Build configuration list for PBXNativeTarget "CircleProgressView" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				9929B52E4CCFA0DE69314B4B8D1366CE /* Debug */,
+				9BAEB9F3F7FFB89EF81E476756EAB9B9 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = BFDFE7DC352907FC980B868725387E98 /* Project object */;
+}
