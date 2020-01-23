@@ -17,6 +17,7 @@
 		210F38F723D07920008D5C91 /* ToDoList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 210F38F623D07920008D5C91 /* ToDoList.swift */; };
 		210F38F923D0792F008D5C91 /* Clockwork.swift in Sources */ = {isa = PBXBuildFile; fileRef = 210F38F823D0792F008D5C91 /* Clockwork.swift */; };
 		210F390023D0D1E5008D5C91 /* MainViewContentUpdateDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 210F38FF23D0D1E5008D5C91 /* MainViewContentUpdateDelegate.swift */; };
+		214E84E223D0F2E400A1AD88 /* Store.swift in Sources */ = {isa = PBXBuildFile; fileRef = 214E84E123D0F2E400A1AD88 /* Store.swift */; };
 		2179628B23CA24F700D5D955 /* ToDoListTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2179628A23CA24F700D5D955 /* ToDoListTableViewController.swift */; };
 		2179628D23CA250F00D5D955 /* SettingsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2179628C23CA250F00D5D955 /* SettingsTableViewController.swift */; };
 		261D671D45C672F8B10A5BAA /* Pods_Timekeeper_TimekeeperUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C245926D63455C27342B593B /* Pods_Timekeeper_TimekeeperUITests.framework */; };
@@ -58,6 +59,7 @@
 		210F38F623D07920008D5C91 /* ToDoList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToDoList.swift; sourceTree = "<group>"; };
 		210F38F823D0792F008D5C91 /* Clockwork.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Clockwork.swift; sourceTree = "<group>"; };
 		210F38FF23D0D1E5008D5C91 /* MainViewContentUpdateDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewContentUpdateDelegate.swift; sourceTree = "<group>"; };
+		214E84E123D0F2E400A1AD88 /* Store.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Store.swift; sourceTree = "<group>"; };
 		2179628A23CA24F700D5D955 /* ToDoListTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToDoListTableViewController.swift; sourceTree = "<group>"; };
 		2179628C23CA250F00D5D955 /* SettingsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsTableViewController.swift; sourceTree = "<group>"; };
 		2C670E1C7C3244BD1450E577 /* Pods-TimekeeperTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TimekeeperTests.release.xcconfig"; path = "Target Support Files/Pods-TimekeeperTests/Pods-TimekeeperTests.release.xcconfig"; sourceTree = "<group>"; };
@@ -159,6 +161,7 @@
 			children = (
 				210F38F623D07920008D5C91 /* ToDoList.swift */,
 				210F38F823D0792F008D5C91 /* Clockwork.swift */,
+				214E84E123D0F2E400A1AD88 /* Store.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -430,6 +433,7 @@
 				210F390023D0D1E5008D5C91 /* MainViewContentUpdateDelegate.swift in Sources */,
 				2179628D23CA250F00D5D955 /* SettingsTableViewController.swift in Sources */,
 				2106ABC623C775AB00D91724 /* MainViewController.swift in Sources */,
+				214E84E223D0F2E400A1AD88 /* Store.swift in Sources */,
 				210F38F723D07920008D5C91 /* ToDoList.swift in Sources */,
 				2106ABC423C775AB00D91724 /* AppDelegate.swift in Sources */,
 				2179628B23CA24F700D5D955 /* ToDoListTableViewController.swift in Sources */,

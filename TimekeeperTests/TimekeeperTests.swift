@@ -11,46 +11,42 @@ import XCTest
 
 class TimekeeperTests: XCTestCase {
     
+    var toDoList: ToDoList!
+    
+    private let names = ["Create toDoList code", "Play a game"]
+    
     override func setUp() {
         super.setUp()
+        toDoList = ToDoList()
         // Put setup code here. This method is called before the invocation of each test method in the class.
     }
     
     override func tearDown() {
         // Put teardown code here. This method is called after the invocation of each test method in the class.
+        toDoList = nil
         super.tearDown()
     }
     
-    func testExample() {
-        // This is an example of a functional test case.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
-    }
-    
-    func testPerformanceExample() {
-        // This is an example of a performance test case.
-        self.measure {
-            // Put the code you want to measure the time of here.
-        }
-    }
-    
-    func testToDoListworking() {
-        var toDoList = ToDoList()
-        
+    func testToDoListIsEmpty() {
         XCTAssertEqual(toDoList.tasks.count, 0)
-        
-        toDoList.addTask(name: "Create toDoList code")
-        toDoList.addTask(name: "Play a game")
-        XCTAssertEqual(toDoList.tasks.count, 2)
-        XCTAssertEqual(toDoList.tasks[0].isDone, false)
-        XCTAssertEqual(toDoList.tasks[1].isDone, false)
-        
+    }
+    
+    func testToDoListTaskCountAfterAddingNewTasks() {
+        addTasks()
+        XCTAssertEqual(toDoList.tasks.count, names.count)
+    }
+    
+    func testToDoListTaskRemoval() {
+        addTasks()
         toDoList.deleteTask(position: 1)
-        XCTAssertEqual(toDoList.tasks.count, 1)
-        
-        toDoList.taskIsDone(name: "Create toDoList code")
-        XCTAssertEqual(toDoList.tasks.count, 1)
+        XCTAssertEqual(toDoList.tasks.count, (names.count - 1))
+        XCTAssertLessThan(toDoList.tasks.count, names.count)
+    }
+    
+    func testMarkingTaskAsDone() {
+        addTasks()
+        toDoList.taskIsDone(name: names[0])
         XCTAssertEqual(toDoList.tasks[0].isDone, true)
-        
     }
     
     func testClockworkDefaultValues() {
@@ -64,6 +60,10 @@ class TimekeeperTests: XCTestCase {
         
     }
 
-    
+    private func addTasks() {
+        names.forEach {
+            toDoList.addTask(name: $0)
+        }
+    }
     
 }

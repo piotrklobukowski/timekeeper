@@ -9,6 +9,7 @@
 import Foundation
 
 struct Task {
+    let identifier: Int = UUID().hashValue
     let name: String
     var isDone: Bool = false
     

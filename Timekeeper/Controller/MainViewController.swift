@@ -33,9 +33,6 @@ class MainViewController: UIViewController {
             button?.layer.cornerRadius = 30
         }
         
-        print(circleProgressView.frame.width)
-        print(circleProgressView.frame.height)
-        
         circleProgressView.translatesAutoresizingMaskIntoConstraints = false
         circleProgressView.widthAnchor.constraint(equalTo: circleProgressView.heightAnchor).isActive = true
         // Do any additional setup after loading the view, typically from a nib.
@@ -44,11 +41,6 @@ class MainViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
         navigationController?.isNavigationBarHidden = true
-    }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
 
     @IBAction func openToDoList(_ sender: UIButton) {
@@ -76,11 +68,11 @@ class MainViewController: UIViewController {
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "showToDoList" {
-            let destinationVC = segue.destination as! ToDoListTableViewController
-            destinationVC.toDoList = toDoList
-            destinationVC.mainViewContentUpdateDelegate = self
+            let destinationVC = segue.destination as? ToDoListTableViewController
+            destinationVC?.toDoList = toDoList
+            destinationVC?.mainViewContentUpdateDelegate = self
         } else if segue.identifier == "showSettings" {
-            let destinationVC = segue.destination as! SettingsTableViewController
+            let destinationVC = segue.destination as? SettingsTableViewController
             
         }
         // Get the new view controller using segue.destinationViewController.
