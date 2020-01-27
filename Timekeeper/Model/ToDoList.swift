@@ -8,17 +8,9 @@
 
 import Foundation
 
-struct Task {
-    let identifier: Int = UUID().hashValue
-    let name: String
-    var isDone: Bool = false
-    
-    init(name: String) {
-        self.name = name
-    }
-}
-
 struct ToDoList {
+    
+    
     var tasks = [Task]()
     
     mutating func addTask(name: String) {
@@ -31,7 +23,7 @@ struct ToDoList {
     
     mutating func taskIsDone(name: String) {
         let number = tasks.index() { Task in
-            Task.name == name
+            Task.description == name
         }
         guard let unwrappedNumber = number else { return }
             tasks[unwrappedNumber].isDone = true

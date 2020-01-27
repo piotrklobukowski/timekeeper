@@ -11,6 +11,10 @@ import CircleProgressView
 
 class MainViewController: UIViewController {
     
+    override var preferredStatusBarStyle: UIStatusBarStyle {
+        return .lightContent
+    }
+    
     @IBOutlet var toDoListButton: UIButton!
     @IBOutlet var taskLabel: UILabel!
     @IBOutlet var circleProgressView: CircleProgressView!
@@ -21,8 +25,25 @@ class MainViewController: UIViewController {
     @IBOutlet var finishButton: UIButton!
     @IBOutlet var settingsButton: UIButton!
     
-    var clockwork = Clockwork()
-    var toDoList = ToDoList()
+    var clockworkSettings = ClockworkSettings()
+   
+    
+    var clockworkIsOn = false {
+        didSet {
+            if !clockworkIsOn {
+                pauseButton.setTitle("Continue", for: .normal)
+            } else {
+                pauseButton.setTitle("Pause", for: .normal)
+            }
+        }
+    }
+    
+    
+    var minutes = 8
+    var seconds = 12
+    
+    
+     var shortBreaksAmount = 0
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -35,6 +56,8 @@ class MainViewController: UIViewController {
         
         circleProgressView.translatesAutoresizingMaskIntoConstraints = false
         circleProgressView.widthAnchor.constraint(equalTo: circleProgressView.heightAnchor).isActive = true
+        pauseButton.setTitle("Start", for: .normal)
+
         // Do any additional setup after loading the view, typically from a nib.
     }
     
@@ -49,10 +72,69 @@ class MainViewController: UIViewController {
     
     @IBAction func stopAndStartClockwork(_ sender: UIButton) {
         
-        let timer = Timer.scheduledTimer(withTimeInterval: 1.0, repeats: true) { [weak self] Timer in
+        var minutes = self.minutes
+        var seconds = self.seconds
+        var shortBreaksAmount = self.shortBreaksAmount
+        
+        let workTimer = Timer.init(timeInterval: 1.0, repeats: true) {
+            [weak self] (Timer) in
+            
+            if !(self?.clockworkIsOn)! {
+                Timer.invalidate()
+                print("""
+                    minutes \(minutes)
+                    seconds \(seconds)
+                    """)
+                self?.minutes = minutes
+                self?.seconds = seconds
+            } else {
+                print("\(minutes):\(seconds)")
+            }
+            
+            if seconds > 0 {
+                seconds -= 1
+            } else if minutes > 0 {
+                seconds = 10
+                minutes -= 1
+            } else {
+                Timer.invalidate()
+                print("timer ends")
+            }
             
         }
         
+        if !clockworkIsOn {
+            clockworkIsOn = true
+        } else {
+            clockworkIsOn = false
+        }
+        print(clockworkIsOn)
+
+        
+        if clockworkIsOn {
+            RunLoop.current.add(workTimer, forMode: .commonModes)
+        }
+        
+        
+        
+//        let timer = Timer.scheduledTimer(withTimeInterval: 1.0, repeats: true) { [weak self] (timer) in
+//            print("\(minutes):\(seconds)")
+//
+//            if !self!.clockworkIsOn {
+//                timer.invalidate()
+//            }
+//
+//            if seconds > 0 {
+//                seconds -= 1
+//            } else if minutes > 0 {
+//                seconds = 10
+//                minutes -= 1
+//            } else {
+//                timer.invalidate()
+//                print("timer ends")
+//            }
+//        }
+    
     }
     
     @IBAction func finishTask(_ sender: UIButton) {
@@ -69,7 +151,6 @@ class MainViewController: UIViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "showToDoList" {
             let destinationVC = segue.destination as? ToDoListTableViewController
-            destinationVC?.toDoList = toDoList
             destinationVC?.mainViewContentUpdateDelegate = self
         } else if segue.identifier == "showSettings" {
             let destinationVC = segue.destination as? SettingsTableViewController
@@ -88,7 +169,6 @@ extension MainViewController: MainViewContentUpateDelegate {
     }
     
 }
-
 
 
 

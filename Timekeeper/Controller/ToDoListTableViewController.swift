@@ -7,10 +7,13 @@
 //
 
 import UIKit
+import CoreData
 
 class ToDoListTableViewController: UITableViewController {
     
-    var toDoList: ToDoList?
+    var toDoListArray = [Task]()
+    let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+    
     weak var mainViewContentUpdateDelegate: MainViewContentUpateDelegate?
 
     override func viewDidLoad() {
@@ -24,6 +27,8 @@ class ToDoListTableViewController: UITableViewController {
         
         let addTaskButton = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(showAlertForTaskAdding))
         navigationItem.rightBarButtonItem = addTaskButton
+        
+        loadToDoList()
      
 
         // Uncomment the following line to preserve selection between presentations
@@ -43,10 +48,20 @@ class ToDoListTableViewController: UITableViewController {
         ac.addTextField()
         ac.addAction(UIAlertAction(title: "Add", style: .default) {
             [weak self, weak ac] _ in
-            guard let taskName = ac?.textFields?[0].text else { return }
-            self?.toDoList?.addTask(name: taskName)
-            let indexPath = IndexPath(row: ((self?.toDoList?.tasks.count)! - 1), section: 0)
+            
+            guard let taskDescription = ac?.textFields?[0].text else { return }
+            
+            let task = Task(context: (self?.context)!)
+            task.identifier = Int64(UUID().hashValue)
+            task.descriptionOfTask = taskDescription
+            task.isDone = false
+            
+            self?.toDoListArray.append(task)
+            
+            let indexPath = IndexPath(row: ((self?.toDoListArray.count)! - 1), section: 0)
             self?.tableView.insertRows(at: [indexPath], with: .automatic)
+            
+            self?.saveToDoList()
         })
         ac.addAction(UIAlertAction(title: "Cancel", style: .cancel))
         present(ac, animated: true)
@@ -56,20 +71,16 @@ class ToDoListTableViewController: UITableViewController {
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        if let numberOfRows = toDoList?.tasks.count {
-            return numberOfRows
-        } else {
-            return 0
-        }
+        return toDoListArray.count
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "Task Cell", for: indexPath)
-        let task = toDoList?.tasks[indexPath.row]
+        let task = toDoListArray[indexPath.row]
 
-        cell.textLabel?.text = task?.name
-        cell.accessoryType = (task?.isDone)! ? .checkmark : .none
+        cell.textLabel?.text = task.descriptionOfTask
+        cell.accessoryType = task.isDone ? .checkmark : .none
         
 //        if task?.isDone == true {
 //            cell.accessoryType = .checkmark
@@ -81,8 +92,8 @@ class ToDoListTableViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        if let taskName = toDoList?.tasks[indexPath.row].name {
-            mainViewContentUpdateDelegate?.updateTaskLabel(with: taskName)
+        if let taskDescription = toDoListArray[indexPath.row].descriptionOfTask {
+            mainViewContentUpdateDelegate?.updateTaskLabel(with: taskDescription)
             navigationController?.popViewController(animated: true)
         }
     }
@@ -100,8 +111,12 @@ class ToDoListTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
             // Delete the row from the data source
-            toDoList?.deleteTask(position: indexPath.row)
+            context.delete(toDoListArray[indexPath.row])
+            toDoListArray.remove(at: indexPath.row)
             tableView.deleteRows(at: [indexPath], with: .fade)
+            
+           
+            saveToDoList()
         }
 //        } else if editingStyle == .insert {
 //            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
@@ -133,5 +148,25 @@ class ToDoListTableViewController: UITableViewController {
         // Pass the selected object to the new view controller.
     }
     */
+    
+    // MARK: - Model Manipulation Methods
+    
+    func saveToDoList() {
+        do {
+            try context.save()
+        } catch {
+            print("Error saving context \(error)")
+        }
+        
+    }
+    
+    func loadToDoList() {
+        let request : NSFetchRequest<Task> = Task.fetchRequest()
+        do {
+            toDoListArray = try context.fetch(request)
+        } catch {
+            print("Error fetching data \(error)")
+        }
+    }
 
 }
