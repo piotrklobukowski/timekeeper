@@ -11,9 +11,12 @@ import XCTest
 
 class TimekeeperTests: XCTestCase {
     
+    // WARNING
+    // CoreData must be empty, if you want to successfuly complete those tests!
+    
     var toDoList: ToDoList!
     
-    private let names = ["Create toDoList code", "Play a game"]
+    private let names = ["Play a game" ,"Create toDoList code", "Play a game", "compose symphony", "wash dishes"]
     
     override func setUp() {
         super.setUp()
@@ -23,6 +26,9 @@ class TimekeeperTests: XCTestCase {
     
     override func tearDown() {
         // Put teardown code here. This method is called after the invocation of each test method in the class.
+        toDoList.tasks.removeAll()
+        toDoList.saveToDoList()
+        
         toDoList = nil
         super.tearDown()
     }
@@ -38,31 +44,20 @@ class TimekeeperTests: XCTestCase {
     
     func testToDoListTaskRemoval() {
         addTasks()
-        toDoList.deleteTask(position: 1)
+        toDoList.deleteTask(withID: toDoList.tasks[0].identifier)
         XCTAssertEqual(toDoList.tasks.count, (names.count - 1))
-        XCTAssertLessThan(toDoList.tasks.count, names.count)
     }
     
     func testMarkingTaskAsDone() {
         addTasks()
-        toDoList.taskIsDone(name: names[0])
+        toDoList.taskIsDone(id: toDoList.tasks[0].identifier)
         XCTAssertEqual(toDoList.tasks[0].isDone, true)
     }
     
-    func testClockworkDefaultValues() {
-        let clockwork = Clockwork()
-        
-        XCTAssertEqual(clockwork.workTime, 25)
-        XCTAssertEqual(clockwork.shortBreakTime, 5)
-        XCTAssertEqual(clockwork.longBreakTime, 20)
-        XCTAssertEqual(clockwork.shortBreaksAmount, 3)
-        XCTAssertEqual(clockwork.longBreaksAmount, 1)
-        
-    }
 
     private func addTasks() {
         names.forEach {
-            toDoList.addTask(name: $0)
+            toDoList.addTask(description: $0)
         }
     }
     

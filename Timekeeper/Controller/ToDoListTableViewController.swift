@@ -11,8 +11,8 @@ import CoreData
 
 class ToDoListTableViewController: UITableViewController {
     
-    var toDoListArray = [Task]()
-    let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+    var toDoList = ToDoList()
+    
     
     weak var mainViewContentUpdateDelegate: MainViewContentUpateDelegate?
 
@@ -28,7 +28,7 @@ class ToDoListTableViewController: UITableViewController {
         let addTaskButton = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(showAlertForTaskAdding))
         navigationItem.rightBarButtonItem = addTaskButton
         
-        loadToDoList()
+        toDoList.loadToDoList()
      
 
         // Uncomment the following line to preserve selection between presentations
@@ -51,17 +51,10 @@ class ToDoListTableViewController: UITableViewController {
             
             guard let taskDescription = ac?.textFields?[0].text else { return }
             
-            let task = Task(context: (self?.context)!)
-            task.identifier = Int64(UUID().hashValue)
-            task.descriptionOfTask = taskDescription
-            task.isDone = false
+            self?.toDoList.addTask(description: taskDescription)
             
-            self?.toDoListArray.append(task)
-            
-            let indexPath = IndexPath(row: ((self?.toDoListArray.count)! - 1), section: 0)
+            let indexPath = IndexPath(row: ((self?.toDoList.tasks.count)! - 1), section: 0)
             self?.tableView.insertRows(at: [indexPath], with: .automatic)
-            
-            self?.saveToDoList()
         })
         ac.addAction(UIAlertAction(title: "Cancel", style: .cancel))
         present(ac, animated: true)
@@ -71,13 +64,13 @@ class ToDoListTableViewController: UITableViewController {
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return toDoListArray.count
+        return toDoList.tasks.count
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "Task Cell", for: indexPath)
-        let task = toDoListArray[indexPath.row]
+        let task = toDoList.tasks[indexPath.row]
 
         cell.textLabel?.text = task.descriptionOfTask
         cell.accessoryType = task.isDone ? .checkmark : .none
@@ -92,7 +85,7 @@ class ToDoListTableViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        if let taskDescription = toDoListArray[indexPath.row].descriptionOfTask {
+        if let taskDescription = toDoList.tasks[indexPath.row].descriptionOfTask {
             mainViewContentUpdateDelegate?.updateTaskLabel(with: taskDescription)
             navigationController?.popViewController(animated: true)
         }
@@ -111,12 +104,12 @@ class ToDoListTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
             // Delete the row from the data source
-            context.delete(toDoListArray[indexPath.row])
-            toDoListArray.remove(at: indexPath.row)
+            let position = indexPath.row
+            let id = toDoList.tasks[position].identifier
+            
+            toDoList.deleteTask(withID: id)
             tableView.deleteRows(at: [indexPath], with: .fade)
             
-           
-            saveToDoList()
         }
 //        } else if editingStyle == .insert {
 //            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
@@ -149,24 +142,6 @@ class ToDoListTableViewController: UITableViewController {
     }
     */
     
-    // MARK: - Model Manipulation Methods
     
-    func saveToDoList() {
-        do {
-            try context.save()
-        } catch {
-            print("Error saving context \(error)")
-        }
-        
-    }
-    
-    func loadToDoList() {
-        let request : NSFetchRequest<Task> = Task.fetchRequest()
-        do {
-            toDoListArray = try context.fetch(request)
-        } catch {
-            print("Error fetching data \(error)")
-        }
-    }
 
 }

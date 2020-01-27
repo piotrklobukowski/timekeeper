@@ -25,6 +25,7 @@ class MainViewController: UIViewController {
     @IBOutlet var finishButton: UIButton!
     @IBOutlet var settingsButton: UIButton!
     
+    var toDoList = ToDoList()
     var clockworkSettings = ClockworkSettings()
    
     

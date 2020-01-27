@@ -7,25 +7,62 @@
 //
 
 import Foundation
+import UIKit
+import CoreData
 
 struct ToDoList {
     
-    
+    let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
     var tasks = [Task]()
     
-    mutating func addTask(name: String) {
-        tasks.append(Task.init(name: name))
+    mutating func addTask(description: String) {
+        let task = Task(context: context)
+        task.identifier = Int64(UUID().hashValue)
+        task.descriptionOfTask = description
+        task.isDone = false
+        tasks.append(task)
+        saveToDoList()
     }
     
-    mutating func deleteTask(position: Int) {
-        tasks.remove(at: position)
+    mutating func deleteTask(withID id: Int64) {
+        let position = searchForTask(idNumber: id)
+
+        context.delete(tasks[position!])
+        tasks.remove(at: position!)
+        saveToDoList()
     }
     
-    mutating func taskIsDone(name: String) {
+    mutating func taskIsDone(id: Int64) {
+        let position = searchForTask(idNumber: id)
+        tasks[position!].isDone = true
+    }
+    
+    func searchForTask(idNumber: Int64) -> Array<Task>.Index? {
         let number = tasks.index() { Task in
-            Task.description == name
+            Task.identifier == idNumber
         }
-        guard let unwrappedNumber = number else { return }
-            tasks[unwrappedNumber].isDone = true
+        
+        guard let numberOfIndex = number else { return number }
+        return numberOfIndex
+    }
+    
+    // MARK: - Model Manipulation Methods
+    
+    func saveToDoList() {
+        do {
+            try context.save()
+        } catch {
+            print("Error saving context \(error)")
+        }
+        
+    }
+    
+    mutating func loadToDoList() {
+        let request : NSFetchRequest<Task> = Task.fetchRequest()
+        do {
+            tasks = try context.fetch(request)
+        } catch {
+            print("Error fetching data \(error)")
+        }
     }
 }
