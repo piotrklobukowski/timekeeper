@@ -55,6 +55,7 @@ class ToDoListTableViewController: UITableViewController {
             
             let indexPath = IndexPath(row: ((self?.toDoList.tasks.count)! - 1), section: 0)
             self?.tableView.insertRows(at: [indexPath], with: .automatic)
+            
         })
         ac.addAction(UIAlertAction(title: "Cancel", style: .cancel))
         present(ac, animated: true)
@@ -85,10 +86,9 @@ class ToDoListTableViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        if let taskDescription = toDoList.tasks[indexPath.row].descriptionOfTask {
-            mainViewContentUpdateDelegate?.updateTaskLabel(with: taskDescription)
+        let taskIdentifier = toDoList.tasks[indexPath.row].identifier
+            mainViewContentUpdateDelegate?.updateTaskLabel(with: taskIdentifier)
             navigationController?.popViewController(animated: true)
-        }
     }
 
     /*

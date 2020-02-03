@@ -9,20 +9,23 @@
 import UIKit
 
 class SettingsTableViewController: UITableViewController {
+    
+    var settings = Settings()
+    
+    
+    
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
         navigationController?.isNavigationBarHidden = false
+        settings.loadSettings()
+        settings.addDefaultSettings()
+        print(settings.clockworkConfiguration.count)
     }
 
     override func didReceiveMemoryWarning() {
@@ -33,24 +36,36 @@ class SettingsTableViewController: UITableViewController {
     // MARK: - Table view data source
 
     override func numberOfSections(in tableView: UITableView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
-        return 0
+        return settings.clockworkConfiguration.count
     }
 
+    
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return 0
+        return settings.clockworkConfiguration[section].count
+
     }
 
-    /*
+    
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)
-
-        // Configure the cell...
+        let cell = tableView.dequeueReusableCell(withIdentifier: "Setting Cell", for: indexPath)
+        
+        cell.textLabel?.text = settings.clockworkConfiguration[indexPath.section][indexPath.row].descriptionOfSetting
+        
+        switch indexPath.section {
+        case 0:
+            cell.detailTextLabel?.text = "\(settings.clockworkConfiguration[indexPath.section][indexPath.row].amount):00"
+        case 1:
+            cell.detailTextLabel?.text = "\(settings.clockworkConfiguration[indexPath.section][indexPath.row].amount)"
+        default:
+            cell.accessoryType = .disclosureIndicator
+        }
 
         return cell
     }
-    */
+    
+    
+    
 
     /*
     // Override to support conditional editing of the table view.
@@ -98,3 +113,16 @@ class SettingsTableViewController: UITableViewController {
     */
 
 }
+
+
+
+//        cell.textLabel?.text = settings.clockworkConfiguration[indexPath.row].descriptionOfSetting
+//
+//        if (settings.clockworkConfiguration[indexPath.row].descriptionOfSetting?.hasPrefix("Duration"))! {
+//        cell.detailTextLabel?.text = "\(settings.clockworkConfiguration[indexPath.row].amount):00"
+//        } else if (settings.clockworkConfiguration[indexPath.row].descriptionOfSetting?.hasPrefix("Number"))! {
+//            cell.detailTextLabel?.text = "\(settings.clockworkConfiguration[indexPath.row].amount)"
+//        } else {
+//            cell.accessoryType = .disclosureIndicator
+//        }
+

@@ -9,5 +9,5 @@
 import Foundation
 
 protocol MainViewContentUpateDelegate: AnyObject {
-    func updateTaskLabel(with title: String)
+    func updateTaskLabel(with taskID: Int64)
 }

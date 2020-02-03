@@ -18,16 +18,13 @@ class MainViewController: UIViewController {
     @IBOutlet var toDoListButton: UIButton!
     @IBOutlet var taskLabel: UILabel!
     @IBOutlet var circleProgressView: CircleProgressView!
-    
     @IBOutlet var clockworkLabel: UILabel!
     @IBOutlet var breaksLabel: UILabel!
     @IBOutlet var pauseButton: UIButton!
     @IBOutlet var finishButton: UIButton!
     @IBOutlet var settingsButton: UIButton!
     
-    var toDoList = ToDoList()
-    var clockworkSettings = ClockworkSettings()
-   
+    var toDoList = ToDoList()   
     
     var clockworkIsOn = false {
         didSet {
@@ -42,12 +39,26 @@ class MainViewController: UIViewController {
     
     var minutes = 8
     var seconds = 12
+    var shortBreaksAmount = 0
     
-    
-     var shortBreaksAmount = 0
+    var taskIdentifier: Int64 = 0 {
+        didSet {
+            if taskIdentifier == 0 {
+                finishButton.isEnabled = false
+                pauseButton.isEnabled = false
+            } else {
+                finishButton.isEnabled = true
+                pauseButton.isEnabled = true
+                finishButton.setTitleColor(UIColor(red:0.73, green:0.88, blue:0.98, alpha:1.0), for: .normal)
+                pauseButton.setTitleColor(UIColor(red:0.73, green:0.88, blue:0.98, alpha:1.0), for: .normal)
+            }
+        }
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        toDoList.loadToDoList()
         
         let buttons = [toDoListButton, pauseButton, finishButton, settingsButton]
         
@@ -58,6 +69,9 @@ class MainViewController: UIViewController {
         circleProgressView.translatesAutoresizingMaskIntoConstraints = false
         circleProgressView.widthAnchor.constraint(equalTo: circleProgressView.heightAnchor).isActive = true
         pauseButton.setTitle("Start", for: .normal)
+        
+        finishButton.isEnabled = false
+        pauseButton.isEnabled = false
 
         // Do any additional setup after loading the view, typically from a nib.
     }
@@ -139,7 +153,22 @@ class MainViewController: UIViewController {
     }
     
     @IBAction func finishTask(_ sender: UIButton) {
+        toDoList.taskIsDone(id: taskIdentifier)
         
+        let task = toDoList.tasks.first {
+            $0.isDone == false
+        }
+        
+        if let nextTask = task {
+            taskLabel.text = nextTask.descriptionOfTask
+            taskIdentifier = nextTask.identifier
+        } else {
+            taskLabel.text = "All your tasks are complete!"
+            taskIdentifier = 0
+            finishButton.isEnabled = false
+            pauseButton.isEnabled = false
+        }
+
     }
     
     @IBAction func openSettings(_ sender: UIButton) {
@@ -165,10 +194,30 @@ class MainViewController: UIViewController {
 
 extension MainViewController: MainViewContentUpateDelegate {
     
-    func updateTaskLabel(with title: String) {
-        taskLabel.text = title
+    func updateTaskLabel(with taskID: Int64) {
+        toDoList.loadToDoList()
+        let indexNumber = toDoList.searchForTask(idNumber: taskID)
+        taskLabel.text = toDoList.tasks[indexNumber!].descriptionOfTask
+        taskIdentifier = taskID
     }
     
+}
+
+extension UIButton {
+    override open var isHighlighted : Bool {
+        didSet {
+            backgroundColor = isHighlighted ? UIColor(red:0.20, green:0.51, blue:0.72, alpha:1.0)
+                : UIColor(red:0.06, green:0.30, blue:0.46, alpha:1.0)
+        }
+    }
+    
+    override open var isEnabled: Bool {
+        didSet {
+            backgroundColor = isEnabled ? UIColor(red:0.06, green:0.30, blue:0.46, alpha:1.0) : UIColor.darkGray
+            
+        }
+    }
+
 }
 
 

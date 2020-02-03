@@ -16,9 +16,10 @@
 		2106ABE423C775AE00D91724 /* TimekeeperUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2106ABE323C775AE00D91724 /* TimekeeperUITests.swift */; };
 		210F38F723D07920008D5C91 /* ToDoList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 210F38F623D07920008D5C91 /* ToDoList.swift */; };
 		210F390023D0D1E5008D5C91 /* MainViewContentUpdateDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 210F38FF23D0D1E5008D5C91 /* MainViewContentUpdateDelegate.swift */; };
+		211DAC5C23E19158006CA1D3 /* DataModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 211DAC5A23E19158006CA1D3 /* DataModel.xcdatamodeld */; };
+		217482A623E06FC100C6F9BD /* Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 217482A523E06FC100C6F9BD /* Settings.swift */; };
 		2179628B23CA24F700D5D955 /* ToDoListTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2179628A23CA24F700D5D955 /* ToDoListTableViewController.swift */; };
 		2179628D23CA250F00D5D955 /* SettingsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2179628C23CA250F00D5D955 /* SettingsTableViewController.swift */; };
-		21E8D48D23DEE4C000F31252 /* DataModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 21E8D48B23DEE4C000F31252 /* DataModel.xcdatamodeld */; };
 		261D671D45C672F8B10A5BAA /* Pods_Timekeeper_TimekeeperUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C245926D63455C27342B593B /* Pods_Timekeeper_TimekeeperUITests.framework */; };
 		553AAE5EE8905F9DB163DABD /* Pods_TimekeeperTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D82FCCEF6DAD27D2B1FC84F5 /* Pods_TimekeeperTests.framework */; };
 		AB8BF17CC237724B36F3C253 /* Pods_Timekeeper.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5E5367981DB4420CF1B3913F /* Pods_Timekeeper.framework */; };
@@ -57,9 +58,10 @@
 		2106ABE523C775AE00D91724 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		210F38F623D07920008D5C91 /* ToDoList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToDoList.swift; sourceTree = "<group>"; };
 		210F38FF23D0D1E5008D5C91 /* MainViewContentUpdateDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewContentUpdateDelegate.swift; sourceTree = "<group>"; };
+		211DAC5B23E19158006CA1D3 /* DataModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = DataModel.xcdatamodel; sourceTree = "<group>"; };
+		217482A523E06FC100C6F9BD /* Settings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Settings.swift; sourceTree = "<group>"; };
 		2179628A23CA24F700D5D955 /* ToDoListTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToDoListTableViewController.swift; sourceTree = "<group>"; };
 		2179628C23CA250F00D5D955 /* SettingsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsTableViewController.swift; sourceTree = "<group>"; };
-		21E8D48C23DEE4C000F31252 /* DataModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = DataModel.xcdatamodel; sourceTree = "<group>"; };
 		2C670E1C7C3244BD1450E577 /* Pods-TimekeeperTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TimekeeperTests.release.xcconfig"; path = "Target Support Files/Pods-TimekeeperTests/Pods-TimekeeperTests.release.xcconfig"; sourceTree = "<group>"; };
 		31F926EF46ADBC5938F3C318 /* Pods-Timekeeper-TimekeeperUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Timekeeper-TimekeeperUITests.debug.xcconfig"; path = "Target Support Files/Pods-Timekeeper-TimekeeperUITests/Pods-Timekeeper-TimekeeperUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		3CF3C71D39BD2D271DCBFF67 /* Pods-Timekeeper-TimekeeperUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Timekeeper-TimekeeperUITests.release.xcconfig"; path = "Target Support Files/Pods-Timekeeper-TimekeeperUITests/Pods-Timekeeper-TimekeeperUITests.release.xcconfig"; sourceTree = "<group>"; };
@@ -157,8 +159,9 @@
 		210F38FB23D07959008D5C91 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				211DAC5A23E19158006CA1D3 /* DataModel.xcdatamodeld */,
 				210F38F623D07920008D5C91 /* ToDoList.swift */,
-				21E8D48B23DEE4C000F31252 /* DataModel.xcdatamodeld */,
+				217482A523E06FC100C6F9BD /* Settings.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -428,11 +431,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				210F390023D0D1E5008D5C91 /* MainViewContentUpdateDelegate.swift in Sources */,
+				211DAC5C23E19158006CA1D3 /* DataModel.xcdatamodeld in Sources */,
 				2179628D23CA250F00D5D955 /* SettingsTableViewController.swift in Sources */,
+				217482A623E06FC100C6F9BD /* Settings.swift in Sources */,
 				2106ABC623C775AB00D91724 /* MainViewController.swift in Sources */,
 				210F38F723D07920008D5C91 /* ToDoList.swift in Sources */,
 				2106ABC423C775AB00D91724 /* AppDelegate.swift in Sources */,
-				21E8D48D23DEE4C000F31252 /* DataModel.xcdatamodeld in Sources */,
 				2179628B23CA24F700D5D955 /* ToDoListTableViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -758,12 +762,12 @@
 /* End XCConfigurationList section */
 
 /* Begin XCVersionGroup section */
-		21E8D48B23DEE4C000F31252 /* DataModel.xcdatamodeld */ = {
+		211DAC5A23E19158006CA1D3 /* DataModel.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
-				21E8D48C23DEE4C000F31252 /* DataModel.xcdatamodel */,
+				211DAC5B23E19158006CA1D3 /* DataModel.xcdatamodel */,
 			);
-			currentVersion = 21E8D48C23DEE4C000F31252 /* DataModel.xcdatamodel */;
+			currentVersion = 211DAC5B23E19158006CA1D3 /* DataModel.xcdatamodel */;
 			path = DataModel.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;

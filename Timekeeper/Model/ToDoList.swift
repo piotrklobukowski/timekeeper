@@ -34,14 +34,15 @@ struct ToDoList {
     
     mutating func taskIsDone(id: Int64) {
         let position = searchForTask(idNumber: id)
-        tasks[position!].isDone = true
+        guard let unwrappedPosition = position else { return }
+        tasks[unwrappedPosition].isDone = true
+        saveToDoList()
     }
     
     func searchForTask(idNumber: Int64) -> Array<Task>.Index? {
         let number = tasks.index() { Task in
             Task.identifier == idNumber
         }
-        
         guard let numberOfIndex = number else { return number }
         return numberOfIndex
     }

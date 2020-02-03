@@ -26,8 +26,9 @@ class TimekeeperTests: XCTestCase {
     
     override func tearDown() {
         // Put teardown code here. This method is called after the invocation of each test method in the class.
-        toDoList.tasks.removeAll()
-        toDoList.saveToDoList()
+        for task in toDoList.tasks {
+            toDoList.deleteTask(withID: task.identifier)
+        }
         
         toDoList = nil
         super.tearDown()

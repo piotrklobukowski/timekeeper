@@ -1,11 +1,9 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="14135" systemVersion="17G9016" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="14135" systemVersion="17G11023" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
     <entity name="ClockworkSettings" representedClassName="ClockworkSettings" syncable="YES" codeGenerationType="class">
-        <attribute name="longBreaksLimit" optional="YES" attributeType="Integer 64" defaultValueString="1" usesScalarValueType="YES" syncable="YES"/>
-        <attribute name="longBreakTime" attributeType="Double" defaultValueString="20" usesScalarValueType="YES" syncable="YES"/>
-        <attribute name="shortBreaksLimit" attributeType="Integer 64" defaultValueString="3" usesScalarValueType="YES" syncable="YES"/>
-        <attribute name="shortBreakTime" attributeType="Double" defaultValueString="5" usesScalarValueType="YES" syncable="YES"/>
-        <attribute name="workTime" attributeType="Double" defaultValueString="25" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="amount" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="descriptionOfSetting" attributeType="String" syncable="YES"/>
+        <attribute name="settingString" optional="YES" attributeType="String" syncable="YES"/>
     </entity>
     <entity name="Task" representedClassName="Task" syncable="YES" codeGenerationType="class">
         <attribute name="descriptionOfTask" attributeType="String" syncable="YES"/>
@@ -13,7 +11,7 @@
         <attribute name="isDone" attributeType="Boolean" usesScalarValueType="YES" syncable="YES"/>
     </entity>
     <elements>
-        <element name="ClockworkSettings" positionX="-63" positionY="-18" width="128" height="120"/>
+        <element name="ClockworkSettings" positionX="-54" positionY="54" width="128" height="90"/>
         <element name="Task" positionX="-54" positionY="27" width="128" height="90"/>
     </elements>
 </model>
