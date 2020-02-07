@@ -13,8 +13,6 @@ class SettingsTableViewController: UITableViewController {
     var settings = Settings()
     
     
-    
-
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -25,7 +23,11 @@ class SettingsTableViewController: UITableViewController {
         navigationController?.isNavigationBarHidden = false
         settings.loadSettings()
         settings.addDefaultSettings()
-        print(settings.clockworkConfiguration.count)
+//        print(settings.clockworkConfigurations[0]?.count)
+//        print(settings.clockworkConfigurations[1]?.count)
+//        print(settings.clockworkConfigurations[2]?.count)
+//        print(settings.clockworkConfigurations[3]?.count)
+
     }
 
     override func didReceiveMemoryWarning() {
@@ -34,15 +36,48 @@ class SettingsTableViewController: UITableViewController {
     }
 
     // MARK: - Table view data source
+    
+    override func tableView(_ tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {
+        view.tintColor = UIColor(red:0.11, green:0.15, blue:0.17, alpha:1.0)
 
-    override func numberOfSections(in tableView: UITableView) -> Int {
-        return settings.clockworkConfiguration.count
+        let header = view as! UITableViewHeaderFooterView
+        header.textLabel?.textColor = UIColor(red:0.73, green:0.88, blue:0.98, alpha:1.0)
+    }
+    
+    
+    enum settingsSections: Int {
+        case duration = 0
+        case numberOfBreaks = 1
+        case soundSettings = 2
+        case ohter = 3
     }
 
+    override func numberOfSections(in tableView: UITableView) -> Int {
+        return settings.clockworkConfigurations.count
+    }
+    
+
+    override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        
+        
+        switch section {
+        case settingsSections.duration.rawValue:
+            return "Duration"
+        case settingsSections.numberOfBreaks.rawValue:
+            return "Number of breaks"
+        case settingsSections.soundSettings.rawValue:
+            return "Sound settings"
+        case settingsSections.ohter.rawValue:
+            return "Ohter"
+        default:
+            return "nil"
+        }
+        
+    }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return settings.clockworkConfiguration[section].count
+        return settings.clockworkConfigurations[section]!.count
 
     }
 
@@ -50,18 +85,22 @@ class SettingsTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Setting Cell", for: indexPath)
         
-        cell.textLabel?.text = settings.clockworkConfiguration[indexPath.section][indexPath.row].descriptionOfSetting
+        cell.textLabel?.text = settings.clockworkConfigurations[indexPath.section]![indexPath.row].descriptionOfSetting
         
         switch indexPath.section {
-        case 0:
-            cell.detailTextLabel?.text = "\(settings.clockworkConfiguration[indexPath.section][indexPath.row].amount):00"
-        case 1:
-            cell.detailTextLabel?.text = "\(settings.clockworkConfiguration[indexPath.section][indexPath.row].amount)"
+        case settingsSections.duration.rawValue:
+            cell.detailTextLabel?.text = "\(settings.clockworkConfigurations[indexPath.section]![indexPath.row].amount):00"
+        case settingsSections.numberOfBreaks.rawValue:
+            cell.detailTextLabel?.text = "\(settings.clockworkConfigurations[indexPath.section]![indexPath.row].amount)"
         default:
             cell.accessoryType = .disclosureIndicator
         }
 
         return cell
+    }
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        performSegue(withIdentifier: "OpenDurationSettings", sender: self)
     }
     
     
@@ -116,13 +155,5 @@ class SettingsTableViewController: UITableViewController {
 
 
 
-//        cell.textLabel?.text = settings.clockworkConfiguration[indexPath.row].descriptionOfSetting
-//
-//        if (settings.clockworkConfiguration[indexPath.row].descriptionOfSetting?.hasPrefix("Duration"))! {
-//        cell.detailTextLabel?.text = "\(settings.clockworkConfiguration[indexPath.row].amount):00"
-//        } else if (settings.clockworkConfiguration[indexPath.row].descriptionOfSetting?.hasPrefix("Number"))! {
-//            cell.detailTextLabel?.text = "\(settings.clockworkConfiguration[indexPath.row].amount)"
-//        } else {
-//            cell.accessoryType = .disclosureIndicator
-//        }
+
 

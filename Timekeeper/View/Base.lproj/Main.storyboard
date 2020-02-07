@@ -222,10 +222,137 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="Settings" largeTitleDisplayMode="never" id="3GQ-a9-IN0"/>
+                    <connections>
+                        <segue destination="FK6-fa-FYI" kind="show" identifier="OpenDurationSettings" id="BAv-pJ-CtD"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="RPR-cQ-T3n" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2161" y="463"/>
+        </scene>
+        <!--Breaks Amount Settings-->
+        <scene sceneID="Qy9-Zb-Xq6">
+            <objects>
+                <viewController title="Breaks Amount Settings" id="lWQ-kX-9Dl" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="bUV-sb-T1e">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="44W-Xj-MeZ"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dsr-2T-xtI" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3374" y="463"/>
+        </scene>
+        <!--Credits-->
+        <scene sceneID="MJ5-Ki-E4f">
+            <objects>
+                <viewController title="Credits" id="YBq-BS-e2r" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="3kb-NS-Erv">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="zGq-Af-Mo5"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="76c-j0-3Mb" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2572" y="1119"/>
+        </scene>
+        <!--Sound Settings-->
+        <scene sceneID="Ty4-eq-hPJ">
+            <objects>
+                <viewController title="Sound Settings" id="0sD-mn-E4v" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="5Z5-Be-frH">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="41C-4g-IEp"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="2kF-AM-jXR" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3374" y="1122"/>
+        </scene>
+        <!--Duration Settings-->
+        <scene sceneID="FJK-NG-wTh">
+            <objects>
+                <viewController title="Duration Settings" id="FK6-fa-FYI" customClass="DurationSettingsViewController" customModule="Timekeeper" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Duz-S7-spV">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="724"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="100" translatesAutoresizingMaskIntoConstraints="NO" id="0L5-Bu-j5X">
+                                <rect key="frame" x="0.0" y="104" width="375" height="516"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Duration Settings" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BRN-Ug-Uvf">
+                                        <rect key="frame" x="97.666666666666671" y="0.0" width="179.66666666666663" height="58"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="58" id="WLM-2H-XR3"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="24"/>
+                                        <color key="textColor" red="0.73333333329999995" green="0.88235294119999996" blue="0.98039215690000003" alpha="1" colorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="a0O-ej-RdX">
+                                        <rect key="frame" x="0.0" y="158" width="375" height="200"/>
+                                        <subviews>
+                                            <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vKn-Ba-vJv">
+                                                <rect key="frame" x="0.0" y="-8" width="375" height="216"/>
+                                            </pickerView>
+                                        </subviews>
+                                        <color key="backgroundColor" red="0.10588235294117647" green="0.14901960784313725" blue="0.17254901960784313" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="trailing" secondItem="vKn-Ba-vJv" secondAttribute="trailing" id="66Q-76-eTQ"/>
+                                            <constraint firstItem="vKn-Ba-vJv" firstAttribute="centerX" secondItem="a0O-ej-RdX" secondAttribute="centerX" id="AN2-Yu-AHY"/>
+                                            <constraint firstItem="vKn-Ba-vJv" firstAttribute="leading" secondItem="a0O-ej-RdX" secondAttribute="leading" id="GKm-ia-mi3"/>
+                                            <constraint firstItem="vKn-Ba-vJv" firstAttribute="centerY" secondItem="a0O-ej-RdX" secondAttribute="centerY" id="UuA-aH-i8a"/>
+                                            <constraint firstAttribute="height" constant="200" id="xwG-JQ-zLY"/>
+                                        </constraints>
+                                    </view>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="80b-Vm-3dJ">
+                                        <rect key="frame" x="98" y="458" width="179" height="58"/>
+                                        <color key="backgroundColor" red="0.058823529411764705" green="0.29803921568627451" blue="0.45882352941176469" alpha="1" colorSpace="calibratedRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="58" id="swg-g7-Gxb"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="24"/>
+                                        <state key="normal" title="Save"/>
+                                        <connections>
+                                            <action selector="saveButtonPressed:" destination="FK6-fa-FYI" eventType="touchUpInside" id="avk-ir-Zcw"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="a0O-ej-RdX" secondAttribute="trailing" id="6GE-Gb-2Zj"/>
+                                    <constraint firstItem="a0O-ej-RdX" firstAttribute="leading" secondItem="0L5-Bu-j5X" secondAttribute="leading" id="IaW-3J-Sv3"/>
+                                    <constraint firstItem="80b-Vm-3dJ" firstAttribute="leading" secondItem="0L5-Bu-j5X" secondAttribute="leading" constant="98" id="L0F-fl-lDn"/>
+                                    <constraint firstItem="80b-Vm-3dJ" firstAttribute="trailing" secondItem="0L5-Bu-j5X" secondAttribute="trailing" constant="-98" id="eCj-wa-2ZS"/>
+                                    <constraint firstItem="a0O-ej-RdX" firstAttribute="centerY" secondItem="0L5-Bu-j5X" secondAttribute="centerY" id="sRf-l6-UZY"/>
+                                </constraints>
+                            </stackView>
+                        </subviews>
+                        <color key="backgroundColor" red="0.10588235294117647" green="0.14901960784313725" blue="0.17254901960784313" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="0L5-Bu-j5X" secondAttribute="trailing" id="R9W-h4-qNt"/>
+                            <constraint firstItem="7YP-pj-aFb" firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="0L5-Bu-j5X" secondAttribute="bottom" id="SU0-bl-0d6"/>
+                            <constraint firstItem="0L5-Bu-j5X" firstAttribute="leading" secondItem="Duz-S7-spV" secondAttribute="leading" id="W31-wQ-MR2"/>
+                            <constraint firstItem="0L5-Bu-j5X" firstAttribute="centerY" secondItem="Duz-S7-spV" secondAttribute="centerY" id="Y6J-eu-a2Y"/>
+                            <constraint firstItem="0L5-Bu-j5X" firstAttribute="top" relation="greaterThanOrEqual" secondItem="7YP-pj-aFb" secondAttribute="top" id="ZZT-8p-Tuw"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="7YP-pj-aFb"/>
+                    </view>
+                    <connections>
+                        <outlet property="descriptionLabel" destination="BRN-Ug-Uvf" id="qGz-oi-E3A"/>
+                        <outlet property="saveButton" destination="80b-Vm-3dJ" id="lxm-sp-TuE"/>
+                        <outlet property="settingPickerView" destination="vKn-Ba-vJv" id="x3S-5c-gc0"/>
+                        <outlet property="viewForSettingPickerView" destination="a0O-ej-RdX" id="pjl-ZI-NSt"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="CGa-SK-c2N" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3374" y="-327"/>
         </scene>
         <!--To-do list 11.01.2020-->
         <scene sceneID="TMY-Dt-yqI">

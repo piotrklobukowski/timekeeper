@@ -17,6 +17,8 @@
 		210F38F723D07920008D5C91 /* ToDoList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 210F38F623D07920008D5C91 /* ToDoList.swift */; };
 		210F390023D0D1E5008D5C91 /* MainViewContentUpdateDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 210F38FF23D0D1E5008D5C91 /* MainViewContentUpdateDelegate.swift */; };
 		211DAC5C23E19158006CA1D3 /* DataModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 211DAC5A23E19158006CA1D3 /* DataModel.xcdatamodeld */; };
+		215FE9AC23EADD5D00C638F3 /* DurationSettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 215FE9AB23EADD5D00C638F3 /* DurationSettingsViewController.swift */; };
+		216C78D923E8885C006E0A99 /* Clockwork.swift in Sources */ = {isa = PBXBuildFile; fileRef = 216C78D823E8885C006E0A99 /* Clockwork.swift */; };
 		217482A623E06FC100C6F9BD /* Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 217482A523E06FC100C6F9BD /* Settings.swift */; };
 		2179628B23CA24F700D5D955 /* ToDoListTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2179628A23CA24F700D5D955 /* ToDoListTableViewController.swift */; };
 		2179628D23CA250F00D5D955 /* SettingsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2179628C23CA250F00D5D955 /* SettingsTableViewController.swift */; };
@@ -59,6 +61,8 @@
 		210F38F623D07920008D5C91 /* ToDoList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToDoList.swift; sourceTree = "<group>"; };
 		210F38FF23D0D1E5008D5C91 /* MainViewContentUpdateDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewContentUpdateDelegate.swift; sourceTree = "<group>"; };
 		211DAC5B23E19158006CA1D3 /* DataModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = DataModel.xcdatamodel; sourceTree = "<group>"; };
+		215FE9AB23EADD5D00C638F3 /* DurationSettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DurationSettingsViewController.swift; sourceTree = "<group>"; };
+		216C78D823E8885C006E0A99 /* Clockwork.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Clockwork.swift; path = Timekeeper/Model/Clockwork.swift; sourceTree = SOURCE_ROOT; };
 		217482A523E06FC100C6F9BD /* Settings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Settings.swift; sourceTree = "<group>"; };
 		2179628A23CA24F700D5D955 /* ToDoListTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToDoListTableViewController.swift; sourceTree = "<group>"; };
 		2179628C23CA250F00D5D955 /* SettingsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsTableViewController.swift; sourceTree = "<group>"; };
@@ -162,6 +166,7 @@
 				211DAC5A23E19158006CA1D3 /* DataModel.xcdatamodeld */,
 				210F38F623D07920008D5C91 /* ToDoList.swift */,
 				217482A523E06FC100C6F9BD /* Settings.swift */,
+				216C78D823E8885C006E0A99 /* Clockwork.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -177,6 +182,7 @@
 		210F38FD23D0798B008D5C91 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				215FE9AB23EADD5D00C638F3 /* DurationSettingsViewController.swift */,
 				2106ABC523C775AB00D91724 /* MainViewController.swift */,
 				2179628A23CA24F700D5D955 /* ToDoListTableViewController.swift */,
 				2179628C23CA250F00D5D955 /* SettingsTableViewController.swift */,
@@ -431,6 +437,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				210F390023D0D1E5008D5C91 /* MainViewContentUpdateDelegate.swift in Sources */,
+				215FE9AC23EADD5D00C638F3 /* DurationSettingsViewController.swift in Sources */,
 				211DAC5C23E19158006CA1D3 /* DataModel.xcdatamodeld in Sources */,
 				2179628D23CA250F00D5D955 /* SettingsTableViewController.swift in Sources */,
 				217482A623E06FC100C6F9BD /* Settings.swift in Sources */,
@@ -438,6 +445,7 @@
 				210F38F723D07920008D5C91 /* ToDoList.swift in Sources */,
 				2106ABC423C775AB00D91724 /* AppDelegate.swift in Sources */,
 				2179628B23CA24F700D5D955 /* ToDoListTableViewController.swift in Sources */,
+				216C78D923E8885C006E0A99 /* Clockwork.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

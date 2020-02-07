@@ -26,7 +26,10 @@ class ToDoListTableViewController: UITableViewController {
         navigationItem.title = "Tasks for \(dateToPresent)"
         
         let addTaskButton = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(showAlertForTaskAdding))
+
         navigationItem.rightBarButtonItem = addTaskButton
+        
+
         
         toDoList.loadToDoList()
      
@@ -41,6 +44,10 @@ class ToDoListTableViewController: UITableViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
         navigationController?.isNavigationBarHidden = false
+        
+//        navigationItem.rightBarButtonItem?.customView?.backgroundColor = UIColor(red:0.20, green:0.51, blue:0.72, alpha:1.0)
+
+//        navigationItem.backBarButtonItem?.customView?.backgroundColor = UIColor(red:0.20, green:0.51, blue:0.72, alpha:1.0)
     }
     
     @objc func showAlertForTaskAdding() {

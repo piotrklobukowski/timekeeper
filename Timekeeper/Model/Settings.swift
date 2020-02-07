@@ -13,68 +13,75 @@ import UIKit
 struct Settings {
     
     let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
-    var clockworkConfiguration = [[ClockworkSettings]]()
     var durationSettings = [ClockworkSettings]()
     var breaksNumberSetting = [ClockworkSettings]()
     var soundSettings = [ClockworkSettings]()
     var anotherInformations = [ClockworkSettings]()
+    var clockworkConfigurations: [Int:Array<ClockworkSettings>] = [:]
         
     mutating func addDefaultSettings() {
-        if clockworkConfiguration.count == 0 {
-            let longBreaksLimit = ClockworkSettings(context: context)
-            longBreaksLimit.descriptionOfSetting = "Number of long breaks"
-            longBreaksLimit.amount = 1
-            let shortBreaksLimit = ClockworkSettings(context: context)
-            shortBreaksLimit.descriptionOfSetting = "Number of short breaks"
-            shortBreaksLimit.amount = 3
-            breaksNumberSetting.append(contentsOf: [longBreaksLimit, shortBreaksLimit])
-            
-            let longBreakDuration = ClockworkSettings(context: context)
-            longBreakDuration.descriptionOfSetting = "Duration of long break"
-            longBreakDuration.amount = 20
-            let shortBreakDuration = ClockworkSettings(context: context)
-            shortBreakDuration.descriptionOfSetting = "Duration of short break"
-            shortBreakDuration.amount = 5
-            let workTimeDuration = ClockworkSettings(context: context)
-            workTimeDuration.descriptionOfSetting = "Duration of focus time"
-            workTimeDuration.amount = 25
-            durationSettings.append(contentsOf: [longBreakDuration, shortBreakDuration, workTimeDuration])
-            
-            let soundForAlert = ClockworkSettings(context: context)
-            soundForAlert.descriptionOfSetting = "Sound for alert"
-            soundForAlert.settingString = "Bell Sound Ring"
-            soundSettings.append(soundForAlert)
-            
-            let creditsInformation = ClockworkSettings(context: context)
-            creditsInformation.descriptionOfSetting = "Credits"
-            creditsInformation.settingString = """
-            
-            Timekeeper
-            
-            Created by Piotr Kłobukowski on 28/01/2020.
-            Copyright © 2020 Piotr Kłobukowski. All rights reserved.
-            
-            In this project were used:
-            iOS CircleProgressView - Copyright Cardinal Solutions 2013. Licensed under the MIT license.
-            sounds:
-            Bell Sound Ring - Mike Koenig
-            Japanese Temple Small Bell - Mike Koenig
-            Ship Bell - Mike Koenig
-            Front Desk Bells - Daniel Simon
-            
-            """
-            anotherInformations.append(creditsInformation)
-            clockworkConfiguration.append(contentsOf: [durationSettings, breaksNumberSetting, soundSettings, anotherInformations])
-            saveSettings()
-        } else {
-            return
-        }
+        
+        guard durationSettings.isEmpty && breaksNumberSetting.isEmpty && soundSettings.isEmpty && anotherInformations.isEmpty else { return }
+        
+        let longBreaksLimit = ClockworkSettings(context: context)
+        longBreaksLimit.descriptionOfSetting = "Number of long breaks"
+        longBreaksLimit.amount = 1
+        let shortBreaksLimit = ClockworkSettings(context: context)
+        shortBreaksLimit.descriptionOfSetting = "Number of short breaks"
+        shortBreaksLimit.amount = 3
+        breaksNumberSetting.append(contentsOf: [longBreaksLimit, shortBreaksLimit])
+        
+        let longBreakDuration = ClockworkSettings(context: context)
+        longBreakDuration.descriptionOfSetting = "Duration of long break"
+        longBreakDuration.amount = 20
+        let shortBreakDuration = ClockworkSettings(context: context)
+        shortBreakDuration.descriptionOfSetting = "Duration of short break"
+        shortBreakDuration.amount = 5
+        let workTimeDuration = ClockworkSettings(context: context)
+        workTimeDuration.descriptionOfSetting = "Duration of focus time"
+        workTimeDuration.amount = 25
+        durationSettings.append(contentsOf: [longBreakDuration, shortBreakDuration, workTimeDuration])
+        
+        let soundForAlert = ClockworkSettings(context: context)
+        soundForAlert.descriptionOfSetting = "Sound for alert"
+        soundForAlert.settingString = "Bell Sound Ring"
+        soundSettings.append(soundForAlert)
+        
+        let creditsInformation = ClockworkSettings(context: context)
+        creditsInformation.descriptionOfSetting = "Credits"
+        creditsInformation.settingString = """
+        
+        Timekeeper
+        
+        Created by Piotr Kłobukowski on 28/01/2020.
+        Copyright © 2020 Piotr Kłobukowski. All rights reserved.
+        
+        In this project were used:
+        iOS CircleProgressView - Copyright Cardinal Solutions 2013. Licensed under the MIT license.
+        sounds:
+        Bell Sound Ring - Mike Koenig
+        Japanese Temple Small Bell - Mike Koenig
+        Ship Bell - Mike Koenig
+        Front Desk Bells - Daniel Simon
+        
+        """
+        anotherInformations.append(creditsInformation)
+        
+        clockworkConfigurations[0] = durationSettings
+        clockworkConfigurations[1] = breaksNumberSetting
+        clockworkConfigurations[2] = soundSettings
+        clockworkConfigurations[3] = anotherInformations
+        
+        saveSettings()
     }
     
     
     
     
+    
+    
     // MARK: - Model Manipulation Methods
+    
     func saveSettings() {
         do {
             try context.save()
@@ -105,7 +112,7 @@ struct Settings {
         requestSound.sortDescriptors = [sortDescriptorSound]
         
         let requestAnotherInformations : NSFetchRequest<ClockworkSettings> = ClockworkSettings.fetchRequest()
-        let predicateAnotherInformations = NSPredicate(format: "descriptionOfSetting CONTAINS[cd] @%", "Credits")
+        let predicateAnotherInformations = NSPredicate(format: "descriptionOfSetting CONTAINS[cd] %@", "Credits")
         let sortDescriptorAnotherInformations = NSSortDescriptor(key: "descriptionOfSetting", ascending: true)
         requestAnotherInformations.predicate = predicateAnotherInformations
         requestAnotherInformations.sortDescriptors = [sortDescriptorAnotherInformations]
@@ -118,7 +125,10 @@ struct Settings {
         } catch {
             print("Error fetching data \(error)")
         }
-        clockworkConfiguration.append(contentsOf: [durationSettings, breaksNumberSetting, soundSettings, anotherInformations])
+        clockworkConfigurations[0] = durationSettings
+        clockworkConfigurations[1] = breaksNumberSetting
+        clockworkConfigurations[2] = soundSettings
+        clockworkConfigurations[3] = anotherInformations
     }
     
 }
