@@ -21,8 +21,7 @@ class SettingsTableViewController: UITableViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
         navigationController?.isNavigationBarHidden = false
-        settings.loadSettings()
-        settings.addDefaultSettings()
+        settings.loadAllSettings()
 //        print(settings.clockworkConfigurations[0]?.count)
 //        print(settings.clockworkConfigurations[1]?.count)
 //        print(settings.clockworkConfigurations[2]?.count)

@@ -24,7 +24,9 @@ class MainViewController: UIViewController {
     @IBOutlet var finishButton: UIButton!
     @IBOutlet var settingsButton: UIButton!
     
-    var toDoList = ToDoList()   
+    var toDoList = ToDoList()
+    var clockwork = Clockwork(workTime: 10, shortBreakDuration: 5, longBreakDuration: 8, shortBreaksLimit: 3, longBreaksLimit: 1)
+    var settings = Settings()
     
     var clockworkIsOn = false {
         didSet {
@@ -35,6 +37,7 @@ class MainViewController: UIViewController {
             }
         }
     }
+    
     
     
     var minutes = 8
@@ -72,13 +75,15 @@ class MainViewController: UIViewController {
         
         finishButton.isEnabled = false
         pauseButton.isEnabled = false
-
+        
         // Do any additional setup after loading the view, typically from a nib.
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
         navigationController?.isNavigationBarHidden = true
+        settings.loadAllSettings()
+        settings.addDefaultSettings()
     }
 
     @IBAction func openToDoList(_ sender: UIButton) {
@@ -87,68 +92,15 @@ class MainViewController: UIViewController {
     
     @IBAction func stopAndStartClockwork(_ sender: UIButton) {
         
-        var minutes = self.minutes
-        var seconds = self.seconds
-        var shortBreaksAmount = self.shortBreaksAmount
-        
-        let workTimer = Timer.init(timeInterval: 1.0, repeats: true) {
-            [weak self] (Timer) in
-            
-            if !(self?.clockworkIsOn)! {
-                Timer.invalidate()
-                print("""
-                    minutes \(minutes)
-                    seconds \(seconds)
-                    """)
-                self?.minutes = minutes
-                self?.seconds = seconds
-            } else {
-                print("\(minutes):\(seconds)")
-            }
-            
-            if seconds > 0 {
-                seconds -= 1
-            } else if minutes > 0 {
-                seconds = 10
-                minutes -= 1
-            } else {
-                Timer.invalidate()
-                print("timer ends")
-            }
-            
-        }
-        
         if !clockworkIsOn {
             clockworkIsOn = true
         } else {
             clockworkIsOn = false
         }
-        print(clockworkIsOn)
-
         
-        if clockworkIsOn {
-            RunLoop.current.add(workTimer, forMode: .commonModes)
-        }
+        clockwork.didTapButton(sender)
         
         
-        
-//        let timer = Timer.scheduledTimer(withTimeInterval: 1.0, repeats: true) { [weak self] (timer) in
-//            print("\(minutes):\(seconds)")
-//
-//            if !self!.clockworkIsOn {
-//                timer.invalidate()
-//            }
-//
-//            if seconds > 0 {
-//                seconds -= 1
-//            } else if minutes > 0 {
-//                seconds = 10
-//                minutes -= 1
-//            } else {
-//                timer.invalidate()
-//                print("timer ends")
-//            }
-//        }
     
     }
     
@@ -220,5 +172,142 @@ extension UIButton {
 
 }
 
+class Clockwork {
 
+    var timer: DispatchSourceTimer?
+
+
+    let workTimeDuration: Double
+    let shortBreakDuration: Double
+    let longBreakDuration: Double
+    let shortBreaksLimit: Int
+    let longBreaksLimit: Int
+    var shortBreaksElapsed = 0
+    var longBreaksElapsed = 0
+
+    init(workTime: Double, shortBreakDuration: Double, longBreakDuration: Double, shortBreaksLimit: Int, longBreaksLimit: Int) {
+        workTimeDuration = workTime
+        self.shortBreakDuration = shortBreakDuration
+        self.longBreakDuration = longBreakDuration
+        self.shortBreaksLimit = shortBreaksLimit
+        self.longBreaksLimit = longBreaksLimit
+    }
+    
+    
+
+
+    func createTimer() {
+        
+        //var endTime: Double
+
+        timer = DispatchSource.makeTimerSource(queue: .main)
+        timer?.schedule(deadline: .now(), repeating: 0.1)
+        timer?.setEventHandler { [weak self] in
+            guard let start = self?.start else { return }
+            
+            let elapsed = (self?.totalElapsed ?? 0) + CACurrentMediaTime() - start
+            print(elapsed)
+            
+            
+//            if elapsed >= endTime {
+//                self?.pauseTimer()
+//                self?.start = nil
+//                self?.totalElapsed = nil
+//                self?.cancelTimer()
+//            }
+         
+        }
+
+    }
+
+    var start: CFTimeInterval?         // if nil, timer not running
+    var totalElapsed: CFTimeInterval?
+
+    @objc func didTapButton(_ button: UIButton) {
+        if start == nil {
+            startTimer()
+        } else {
+            pauseTimer()
+        }
+    }
+
+    private func startTimer() {
+        start = CACurrentMediaTime()
+        timer?.resume()
+    }
+
+    private func pauseTimer() {
+        timer?.suspend()
+        totalElapsed = (totalElapsed ?? 0) + (CACurrentMediaTime() - start!)
+        start = nil
+    }
+
+    private func cancelTimer() {
+        timer?.cancel()
+    }
+
+}
+
+//var minutes = self.minutes
+//var seconds = self.seconds
+//var shortBreaksAmount = self.shortBreaksAmount
+
+//let workTimer = Timer.init(timeInterval: 1.0, repeats: true) {
+//            [weak self] (Timer) in
+//
+//            if !(self?.clockworkIsOn)! {
+//                Timer.invalidate()
+//                print("""
+//                    minutes \(minutes)
+//                    seconds \(seconds)
+//                    """)
+//                self?.minutes = minutes
+//                self?.seconds = seconds
+//            } else {
+//                print("\(minutes):\(seconds)")
+//            }
+//
+//            if seconds > 0 {
+//                seconds -= 1
+//            } else if minutes > 0 {
+//                seconds = 10
+//                minutes -= 1
+//            } else {
+//                Timer.invalidate()
+//                print("timer ends")
+//            }
+//
+//        }
+//
+//        if !clockworkIsOn {
+//            clockworkIsOn = true
+//        } else {
+//            clockworkIsOn = false
+//        }
+//        print(clockworkIsOn)
+//
+//
+//        if clockworkIsOn {
+//            RunLoop.current.add(workTimer, forMode: .commonModes)
+//        }
+
+
+
+//        let timer = Timer.scheduledTimer(withTimeInterval: 1.0, repeats: true) { [weak self] (timer) in
+//            print("\(minutes):\(seconds)")
+//
+//            if !self!.clockworkIsOn {
+//                timer.invalidate()
+//            }
+//
+//            if seconds > 0 {
+//                seconds -= 1
+//            } else if minutes > 0 {
+//                seconds = 10
+//                minutes -= 1
+//            } else {
+//                timer.invalidate()
+//                print("timer ends")
+//            }
+//        }
 
