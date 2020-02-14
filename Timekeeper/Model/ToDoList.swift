@@ -12,7 +12,11 @@ import CoreData
 
 struct ToDoList {
     
-    let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+    init(context: NSManagedObjectContext = (UIApplication.shared.delegate as! AppDelegate).coreDataStack.persistentContainer.viewContext) {
+        self.context = context
+    }
+    
+    let context: NSManagedObjectContext
     var tasks = [Task]()
     
     mutating func addTask(description: String) {

@@ -76,6 +76,10 @@ class MainViewController: UIViewController {
         finishButton.isEnabled = false
         pauseButton.isEnabled = false
         
+        let fileManager = FileManager.default
+        let documentsDirectoryURL = fileManager.urls(for: .documentDirectory, in: .userDomainMask)[0]
+        print(documentsDirectoryURL)
+        
         // Do any additional setup after loading the view, typically from a nib.
     }
     

@@ -12,12 +12,17 @@ import UIKit
 
 struct Settings {
     
-    let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+    init(context: NSManagedObjectContext = (UIApplication.shared.delegate as! AppDelegate).coreDataStack.persistentContainer.viewContext) {
+        self.context = context
+    }
+    
+    let context: NSManagedObjectContext
     var durationSettings = [ClockworkSettings]()
     var breaksNumberSetting = [ClockworkSettings]()
     var soundSettings = [ClockworkSettings]()
     var anotherInformations = [ClockworkSettings]()
     var clockworkConfigurations: [Int:[ClockworkSettings]] = [:]
+    
     var specificConfiguration = [ClockworkSettings]() // value for change specific setting
         
     mutating func addDefaultSettings() {
