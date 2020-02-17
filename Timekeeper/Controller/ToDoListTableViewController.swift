@@ -11,7 +11,7 @@ import CoreData
 
 class ToDoListTableViewController: UITableViewController {
     
-    var toDoList = ToDoList()
+    var toDoList: ToDoList?
     
     weak var mainViewContentUpdateDelegate: MainViewContentUpateDelegate?
 
@@ -20,8 +20,13 @@ class ToDoListTableViewController: UITableViewController {
         
         self.navigationItem.title = "Your To-do List"
         self.navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(showAlertForTaskAdding))
-
-        toDoList.loadToDoList()
+        
+        setupToDoList()
+        toDoList?.loadToDoList()
+    }
+    
+    fileprivate func setupToDoList() {
+        toDoList = ToDoList()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -37,9 +42,10 @@ class ToDoListTableViewController: UITableViewController {
             
             guard let taskDescription = ac?.textFields?[0].text else { return }
             
-            self?.toDoList.addTask(description: taskDescription)
+            self?.toDoList?.addTask(description: taskDescription)
+            guard let row = self?.toDoList?.tasks.count else { return }
             
-            let indexPath = IndexPath(row: ((self?.toDoList.tasks.count)! - 1), section: 0)
+            let indexPath = IndexPath(row: row - 1, section: 0)
             self?.tableView.insertRows(at: [indexPath], with: .automatic)
             
         })
@@ -50,13 +56,14 @@ class ToDoListTableViewController: UITableViewController {
     // MARK: - Table view data source
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return toDoList.tasks.count
+        guard let numberOfRows = toDoList?.tasks.count else { return 0 }
+        return numberOfRows
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "Task Cell", for: indexPath)
-        let task = toDoList.tasks[indexPath.row]
+        guard let task = toDoList?.tasks[indexPath.row] else { return cell }
 
         cell.textLabel?.text = task.descriptionOfTask
         cell.accessoryType = task.isDone ? .checkmark : .none
@@ -65,7 +72,7 @@ class ToDoListTableViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let taskIdentifier = toDoList.tasks[indexPath.row].identifier
+        guard let taskIdentifier = toDoList?.tasks[indexPath.row].identifier else { return }
             mainViewContentUpdateDelegate?.updateTaskLabel(with: taskIdentifier)
             navigationController?.popViewController(animated: true)
     }
@@ -73,9 +80,9 @@ class ToDoListTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
             let position = indexPath.row
-            let id = toDoList.tasks[position].identifier
+            guard let id = toDoList?.tasks[position].identifier else { return }
             
-            toDoList.deleteTask(withID: id)
+            toDoList?.deleteTask(withID: id)
             tableView.deleteRows(at: [indexPath], with: .fade)
         }
     }

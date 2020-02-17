@@ -29,10 +29,10 @@ struct ToDoList {
     }
     
     mutating func deleteTask(withID id: Int64) {
-        let position = searchForTask(idNumber: id)
+        guard let position = searchForTask(idNumber: id) else { return }
 
-        context.delete(tasks[position!])
-        tasks.remove(at: position!)
+        context.delete(tasks[position])
+        tasks.remove(at: position)
         saveToDoList()
     }
     
