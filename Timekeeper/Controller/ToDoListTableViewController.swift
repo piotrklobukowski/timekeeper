@@ -26,7 +26,9 @@ class ToDoListTableViewController: UITableViewController {
     }
     
     fileprivate func setupToDoList() {
-        toDoList = ToDoList()
+        if toDoList == nil {
+            toDoList = ToDoList()
+        }
     }
     
     override func viewWillAppear(_ animated: Bool) {

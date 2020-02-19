@@ -37,7 +37,7 @@ class SettingsTests: XCTestCase {
     }
     
     func testAddDefaultSettings() {
-        settings.addDefaultSettings()
+        settings.loadAllSettings()
         
         XCTAssertEqual(settings.breaksNumberSetting.count, 2)
         XCTAssertEqual(settings.durationSettings.count, 3)
@@ -45,7 +45,7 @@ class SettingsTests: XCTestCase {
         XCTAssertEqual(settings.anotherInformations.count, 1)
         XCTAssertEqual(settings.clockworkConfigurations.count, 4)
         
-        settings.addDefaultSettings()
+        settings.loadAllSettings()
         
         XCTAssertNotEqual(settings.breaksNumberSetting.count, 4)
         XCTAssertNotEqual(settings.durationSettings.count, 6)

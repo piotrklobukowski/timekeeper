@@ -22,7 +22,6 @@ class ToDoListTests: XCTestCase {
         coreData = TestCoreData(coreDataModelName: "DataModel")
         toDoList = ToDoList(context: coreData.managedObjectContext)
         
-        // Put setup code here. This method is called before the invocation of each test method in the class.
     }
     
     override func tearDown() {

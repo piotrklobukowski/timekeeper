@@ -32,7 +32,6 @@ class ToDoListTableViewControllerTests: XCTestCase {
     }
     
     override func tearDown() {
-        super.tearDown()
         guard let tasksIsEmpty = tableViewController.toDoList?.tasks.isEmpty else { return }
         if !tasksIsEmpty {
             guard let tasks = tableViewController.toDoList?.tasks else { return }
@@ -40,7 +39,7 @@ class ToDoListTableViewControllerTests: XCTestCase {
                 tableViewController.toDoList?.deleteTask(withID: task.identifier)
             }
         }
-        
+        super.tearDown()
     }
     
     func testTableHasNoCells() {

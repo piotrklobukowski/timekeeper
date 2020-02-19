@@ -16,7 +16,7 @@ struct ToDoList {
         self.context = context
     }
     
-    let context: NSManagedObjectContext
+    private let context: NSManagedObjectContext
     var tasks = [Task]()
     
     mutating func addTask(description: String) {
@@ -53,7 +53,7 @@ struct ToDoList {
     
     // MARK: - Model Manipulation Methods
     
-    func saveToDoList() {
+    private func saveToDoList() {
         do {
             try context.save()
         } catch {

@@ -16,7 +16,7 @@ struct Settings {
         self.context = context
     }
     
-    let context: NSManagedObjectContext
+    private let context: NSManagedObjectContext
     var durationSettings = [ClockworkSettings]()
     var breaksNumberSetting = [ClockworkSettings]()
     var soundSettings = [ClockworkSettings]()
@@ -25,7 +25,7 @@ struct Settings {
     
     var specificConfiguration = [ClockworkSettings]() // value for change specific setting
         
-    mutating func addDefaultSettings() {
+    private mutating func addDefaultSettings() {
         
         guard durationSettings.isEmpty && breaksNumberSetting.isEmpty && soundSettings.isEmpty && anotherInformations.isEmpty else { return }
         
@@ -82,7 +82,7 @@ struct Settings {
     
     // MARK: - Model Manipulation Methods
     
-    func saveSettings() {
+    private func saveSettings() {
         do {
             try context.save()
         } catch {
@@ -90,7 +90,7 @@ struct Settings {
         }
     }
     
-    mutating func loadSpecificSetting(of description: String) {
+    private mutating func loadSpecificSetting(of description: String) {
         let request: NSFetchRequest<ClockworkSettings> = ClockworkSettings.fetchRequest()
         let predicate = NSPredicate(format: "descriptionOfSetting MATCHES[cd] %@", description)
         request.predicate = predicate
@@ -118,6 +118,8 @@ struct Settings {
             print("Error fetching data \(error)")
         }
         clockworkConfigurations = [0: durationSettings, 1: breaksNumberSetting, 2: soundSettings, 3: anotherInformations]
+        
+        addDefaultSettings()
     }
     
     private func makeFetchRequest(with argument: String) -> NSFetchRequest<ClockworkSettings> {

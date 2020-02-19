@@ -10,23 +10,30 @@ import UIKit
 
 class SettingsTableViewController: UITableViewController {
     
-    var settings = Settings()
+    var settings: Settings?
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        setupSettings()
+        settings?.loadAllSettings()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
         navigationController?.isNavigationBarHidden = false
         
-        settings.loadAllSettings()
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
+    }
+    
+    private func setupSettings() {
+        if settings == nil {
+            settings = Settings()
+        }
     }
 
     // MARK: - Table view data source
@@ -47,12 +54,12 @@ class SettingsTableViewController: UITableViewController {
     }
 
     override func numberOfSections(in tableView: UITableView) -> Int {
-        return settings.clockworkConfigurations.count
+        guard let amountOfSections = settings?.clockworkConfigurations.count else { return 0 }
+        return amountOfSections
     }
     
 
     override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        
         
         switch section {
         case settingsSections.duration.rawValue:
@@ -70,20 +77,21 @@ class SettingsTableViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return settings.clockworkConfigurations[section]!.count
+        guard let numOfRowsInSect = settings?.clockworkConfigurations[section]?.count else { return 0 }
+        return numOfRowsInSect
     }
 
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Setting Cell", for: indexPath)
         
-        cell.textLabel?.text = settings.clockworkConfigurations[indexPath.section]![indexPath.row].descriptionOfSetting
+        cell.textLabel?.text = settings?.clockworkConfigurations[indexPath.section]?[indexPath.row].descriptionOfSetting
         
         switch indexPath.section {
         case settingsSections.duration.rawValue:
-            cell.detailTextLabel?.text = "\(settings.clockworkConfigurations[indexPath.section]![indexPath.row].amount):00"
+            cell.detailTextLabel?.text = "\(settings?.clockworkConfigurations[indexPath.section]![indexPath.row].amount):00"
         case settingsSections.numberOfBreaks.rawValue:
-            cell.detailTextLabel?.text = "\(settings.clockworkConfigurations[indexPath.section]![indexPath.row].amount)"
+            cell.detailTextLabel?.text = "\(settings?.clockworkConfigurations[indexPath.section]![indexPath.row].amount)"
         default:
             cell.accessoryType = .disclosureIndicator
         }
