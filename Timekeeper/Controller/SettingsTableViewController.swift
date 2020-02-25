@@ -12,7 +12,6 @@ class SettingsTableViewController: UITableViewController {
     
     var settings: Settings?
     
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -23,17 +22,18 @@ class SettingsTableViewController: UITableViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
         navigationController?.isNavigationBarHidden = false
-        
-    }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
     }
     
     private func setupSettings() {
         if settings == nil {
             settings = Settings()
         }
+    }
+    
+    private func clockworkConfiguration(at index: IndexPath) -> Double {
+        let clockworkSettings = settings?.clockworkConfigurations[index.section]
+        let settingsForIndex = clockworkSettings?[index.row]
+        return settingsForIndex?.amount ?? 0
     }
 
     // MARK: - Table view data source
@@ -45,7 +45,7 @@ class SettingsTableViewController: UITableViewController {
         header.textLabel?.textColor = UIColor(red:0.73, green:0.88, blue:0.98, alpha:1.0)
     }
     
-    enum SettingsSections: Int {
+    private enum SettingsSections: Int {
         case duration = 0
         case numberOfBreaks = 1
         case soundSettings = 2
@@ -85,9 +85,11 @@ class SettingsTableViewController: UITableViewController {
         if let settingsSection = SettingsSections(rawValue: indexPath.section) {
             switch settingsSection {
             case .duration:
-                cell.detailTextLabel?.text = "\(settings?.clockworkConfigurations[indexPath.section]![indexPath.row].amount):00"
+                let duration = clockworkConfiguration(at: indexPath)
+                cell.detailTextLabel?.text = String(format: "%02d", duration)
             case .numberOfBreaks:
-                cell.detailTextLabel?.text = "\(settings?.clockworkConfigurations[indexPath.section]![indexPath.row].amount)"
+                let numberOfBreaks = Int(clockworkConfiguration(at: indexPath))
+                cell.detailTextLabel?.text = String(format: "%i", numberOfBreaks)
             default:
                 cell.accessoryType = .disclosureIndicator
             }
@@ -100,8 +102,3 @@ class SettingsTableViewController: UITableViewController {
         performSegue(withIdentifier: "OpenDurationSettings", sender: self)
     }
 }
-
-
-
-
-

@@ -16,6 +16,7 @@
 		210F38F723D07920008D5C91 /* ToDoList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 210F38F623D07920008D5C91 /* ToDoList.swift */; };
 		210F390023D0D1E5008D5C91 /* MainViewContentUpdateDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 210F38FF23D0D1E5008D5C91 /* MainViewContentUpdateDelegate.swift */; };
 		2113A10524046514008ECBB6 /* String+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2113A10424046514008ECBB6 /* String+Extension.swift */; };
+		211759312405B04D0012FF00 /* ClockSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 211759302405B04D0012FF00 /* ClockSettings.swift */; };
 		211DAC5C23E19158006CA1D3 /* DataModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 211DAC5A23E19158006CA1D3 /* DataModel.xcdatamodeld */; };
 		213AF02223F57EBC00EFC750 /* ToDoListTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 213AF02123F57EBC00EFC750 /* ToDoListTests.swift */; };
 		213AF02523F59D3A00EFC750 /* CoreDataStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 213AF02423F59D3A00EFC750 /* CoreDataStack.swift */; };
@@ -66,6 +67,7 @@
 		210F38F623D07920008D5C91 /* ToDoList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToDoList.swift; sourceTree = "<group>"; };
 		210F38FF23D0D1E5008D5C91 /* MainViewContentUpdateDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewContentUpdateDelegate.swift; sourceTree = "<group>"; };
 		2113A10424046514008ECBB6 /* String+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Extension.swift"; sourceTree = "<group>"; };
+		211759302405B04D0012FF00 /* ClockSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClockSettings.swift; sourceTree = "<group>"; };
 		211DAC5B23E19158006CA1D3 /* DataModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = DataModel.xcdatamodel; sourceTree = "<group>"; };
 		213AF02123F57EBC00EFC750 /* ToDoListTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToDoListTests.swift; sourceTree = "<group>"; };
 		213AF02423F59D3A00EFC750 /* CoreDataStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataStack.swift; sourceTree = "<group>"; };
@@ -185,6 +187,7 @@
 				210F38F623D07920008D5C91 /* ToDoList.swift */,
 				217482A523E06FC100C6F9BD /* Settings.swift */,
 				216C78D823E8885C006E0A99 /* Clockwork.swift */,
+				211759302405B04D0012FF00 /* ClockSettings.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -470,6 +473,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				211759312405B04D0012FF00 /* ClockSettings.swift in Sources */,
 				210F390023D0D1E5008D5C91 /* MainViewContentUpdateDelegate.swift in Sources */,
 				215FE9AC23EADD5D00C638F3 /* DurationSettingsViewController.swift in Sources */,
 				211DAC5C23E19158006CA1D3 /* DataModel.xcdatamodeld in Sources */,
