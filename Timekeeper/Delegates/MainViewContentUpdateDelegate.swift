@@ -8,6 +8,6 @@
 
 import Foundation
 
-protocol MainViewContentUpateDelegate: AnyObject {
+protocol MainViewContentUpdateDelegate: AnyObject {
     func updateTaskLabel(with taskID: Int64)
 }

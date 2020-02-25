@@ -15,6 +15,7 @@
 		2106ABE423C775AE00D91724 /* TimekeeperUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2106ABE323C775AE00D91724 /* TimekeeperUITests.swift */; };
 		210F38F723D07920008D5C91 /* ToDoList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 210F38F623D07920008D5C91 /* ToDoList.swift */; };
 		210F390023D0D1E5008D5C91 /* MainViewContentUpdateDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 210F38FF23D0D1E5008D5C91 /* MainViewContentUpdateDelegate.swift */; };
+		2113A10524046514008ECBB6 /* String+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2113A10424046514008ECBB6 /* String+Extension.swift */; };
 		211DAC5C23E19158006CA1D3 /* DataModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 211DAC5A23E19158006CA1D3 /* DataModel.xcdatamodeld */; };
 		213AF02223F57EBC00EFC750 /* ToDoListTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 213AF02123F57EBC00EFC750 /* ToDoListTests.swift */; };
 		213AF02523F59D3A00EFC750 /* CoreDataStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 213AF02423F59D3A00EFC750 /* CoreDataStack.swift */; };
@@ -64,6 +65,7 @@
 		2106ABE523C775AE00D91724 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		210F38F623D07920008D5C91 /* ToDoList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToDoList.swift; sourceTree = "<group>"; };
 		210F38FF23D0D1E5008D5C91 /* MainViewContentUpdateDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewContentUpdateDelegate.swift; sourceTree = "<group>"; };
+		2113A10424046514008ECBB6 /* String+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Extension.swift"; sourceTree = "<group>"; };
 		211DAC5B23E19158006CA1D3 /* DataModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = DataModel.xcdatamodel; sourceTree = "<group>"; };
 		213AF02123F57EBC00EFC750 /* ToDoListTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToDoListTests.swift; sourceTree = "<group>"; };
 		213AF02423F59D3A00EFC750 /* CoreDataStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataStack.swift; sourceTree = "<group>"; };
@@ -140,15 +142,16 @@
 		2106ABC223C775AB00D91724 /* Timekeeper */ = {
 			isa = PBXGroup;
 			children = (
+				2106ABCF23C775AE00D91724 /* Info.plist */,
 				2106ABC323C775AB00D91724 /* AppDelegate.swift */,
+				2106ABCA23C775AE00D91724 /* Assets.xcassets */,
+				210F38FD23D0798B008D5C91 /* Controller */,
 				210F38FE23D0D1D2008D5C91 /* Delegates */,
+				2113A103240464FA008ECBB6 /* Extensions */,
+				2106ABCC23C775AE00D91724 /* LaunchScreen.storyboard */,
+				213AF02323F59D1D00EFC750 /* Managers */,
 				210F38FB23D07959008D5C91 /* Model */,
 				210F38FC23D0796D008D5C91 /* View */,
-				210F38FD23D0798B008D5C91 /* Controller */,
-				213AF02323F59D1D00EFC750 /* Managers */,
-				2106ABCA23C775AE00D91724 /* Assets.xcassets */,
-				2106ABCC23C775AE00D91724 /* LaunchScreen.storyboard */,
-				2106ABCF23C775AE00D91724 /* Info.plist */,
 			);
 			path = Timekeeper;
 			sourceTree = "<group>";
@@ -211,6 +214,14 @@
 				210F38FF23D0D1E5008D5C91 /* MainViewContentUpdateDelegate.swift */,
 			);
 			path = Delegates;
+			sourceTree = "<group>";
+		};
+		2113A103240464FA008ECBB6 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				2113A10424046514008ECBB6 /* String+Extension.swift */,
+			);
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 		213AF02323F59D1D00EFC750 /* Managers */ = {
@@ -463,6 +474,7 @@
 				215FE9AC23EADD5D00C638F3 /* DurationSettingsViewController.swift in Sources */,
 				211DAC5C23E19158006CA1D3 /* DataModel.xcdatamodeld in Sources */,
 				2179628D23CA250F00D5D955 /* SettingsTableViewController.swift in Sources */,
+				2113A10524046514008ECBB6 /* String+Extension.swift in Sources */,
 				217482A623E06FC100C6F9BD /* Settings.swift in Sources */,
 				2106ABC623C775AB00D91724 /* MainViewController.swift in Sources */,
 				210F38F723D07920008D5C91 /* ToDoList.swift in Sources */,

@@ -45,12 +45,11 @@ class SettingsTableViewController: UITableViewController {
         header.textLabel?.textColor = UIColor(red:0.73, green:0.88, blue:0.98, alpha:1.0)
     }
     
-    
-    enum settingsSections: Int {
+    enum SettingsSections: Int {
         case duration = 0
         case numberOfBreaks = 1
         case soundSettings = 2
-        case ohter = 3
+        case other = 3
     }
 
     override func numberOfSections(in tableView: UITableView) -> Int {
@@ -60,40 +59,38 @@ class SettingsTableViewController: UITableViewController {
     
 
     override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        
-        switch section {
-        case settingsSections.duration.rawValue:
+        guard let settingsSection = SettingsSections(rawValue: section) else { return nil }
+        switch settingsSection {
+        case .duration:
             return "Duration"
-        case settingsSections.numberOfBreaks.rawValue:
+        case .numberOfBreaks:
             return "Number of breaks"
-        case settingsSections.soundSettings.rawValue:
+        case .soundSettings:
             return "Sound settings"
-        case settingsSections.ohter.rawValue:
-            return "Ohter"
-        default:
-            return "nil"
+        case .other:
+            return "Other"
         }
-        
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         guard let numOfRowsInSect = settings?.clockworkConfigurations[section]?.count else { return 0 }
         return numOfRowsInSect
     }
-
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Setting Cell", for: indexPath)
         
         cell.textLabel?.text = settings?.clockworkConfigurations[indexPath.section]?[indexPath.row].descriptionOfSetting
         
-        switch indexPath.section {
-        case settingsSections.duration.rawValue:
-            cell.detailTextLabel?.text = "\(settings?.clockworkConfigurations[indexPath.section]![indexPath.row].amount):00"
-        case settingsSections.numberOfBreaks.rawValue:
-            cell.detailTextLabel?.text = "\(settings?.clockworkConfigurations[indexPath.section]![indexPath.row].amount)"
-        default:
-            cell.accessoryType = .disclosureIndicator
+        if let settingsSection = SettingsSections(rawValue: indexPath.section) {
+            switch settingsSection {
+            case .duration:
+                cell.detailTextLabel?.text = "\(settings?.clockworkConfigurations[indexPath.section]![indexPath.row].amount):00"
+            case .numberOfBreaks:
+                cell.detailTextLabel?.text = "\(settings?.clockworkConfigurations[indexPath.section]![indexPath.row].amount)"
+            default:
+                cell.accessoryType = .disclosureIndicator
+            }
         }
 
         return cell

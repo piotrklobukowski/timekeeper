@@ -10,13 +10,13 @@ import Foundation
 import UIKit
 import CoreData
 
-struct ToDoList {
+struct ToDoListModel: ToDoListModelProtocol {
     
     init(context: NSManagedObjectContext = (UIApplication.shared.delegate as! AppDelegate).coreDataStack.persistentContainer.viewContext) {
         self.context = context
     }
     
-    private let context: NSManagedObjectContext
+    let context: NSManagedObjectContext
     var tasks = [Task]()
     
     mutating func addTask(description: String) {
@@ -29,10 +29,10 @@ struct ToDoList {
     }
     
     mutating func deleteTask(withID id: Int64) {
-        guard let position = searchForTask(idNumber: id) else { return }
+        let position = searchForTask(idNumber: id)
 
-        context.delete(tasks[position])
-        tasks.remove(at: position)
+        context.delete(tasks[position!])
+        tasks.remove(at: position!)
         saveToDoList()
     }
     
@@ -44,8 +44,8 @@ struct ToDoList {
     }
     
     func searchForTask(idNumber: Int64) -> Array<Task>.Index? {
-        let number = tasks.index() { task in
-            task.identifier == idNumber
+        let number = tasks.index() { Task in
+            Task.identifier == idNumber
         }
         guard let numberOfIndex = number else { return number }
         return numberOfIndex
@@ -53,7 +53,7 @@ struct ToDoList {
     
     // MARK: - Model Manipulation Methods
     
-    private func saveToDoList() {
+    func saveToDoList() {
         do {
             try context.save()
         } catch {

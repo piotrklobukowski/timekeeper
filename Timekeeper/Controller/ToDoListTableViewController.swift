@@ -13,7 +13,7 @@ class ToDoListTableViewController: UITableViewController {
     
     var toDoList: ToDoList?
     
-    weak var mainViewContentUpdateDelegate: MainViewContentUpateDelegate?
+    weak var mainViewContentUpdateDelegate: MainViewContentUpdateDelegate?
 
     override func viewDidLoad() {
         super.viewDidLoad()
