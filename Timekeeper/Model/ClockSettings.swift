@@ -13,7 +13,6 @@ struct ClockSettings {
     let workTimeDuration: Double
     let shortBreakDuration: Double
     let longBreakDuration: Double
-    let shortBreaksLimit: Int
-    let longBreaksLimit: Int
+    let shortBreaksCount: Int
     
 }

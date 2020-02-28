@@ -17,11 +17,7 @@ class MainViewController: UIViewController {
     
     @IBOutlet var toDoListButton: UIButton!
     @IBOutlet var taskLabel: UILabel!
-    @IBOutlet var circleProgressView: CircleProgressView! {
-        didSet {
-            circleProgressView.progress = clockwork.progress!
-        }
-    }
+    @IBOutlet var circleProgressView: CircleProgressView!
     @IBOutlet var clockworkLabel: UILabel!
     @IBOutlet var breaksLabel: UILabel!
     @IBOutlet var pauseButton: UIButton!
@@ -31,15 +27,21 @@ class MainViewController: UIViewController {
     var toDoList = ToDoList()
     var settings = Settings()
     
-    let clockwork = Clockwork(workTime: 5, shortBreakDuration: 2, longBreakDuration: 3, shortBreaksLimit: 3, longBreaksLimit: 2)
+    let clockwork = PomodoroClockwork(
+        settings: ClockSettings(
+            workTimeDuration: 5,
+            shortBreakDuration: 2,
+            longBreakDuration: 3,
+            shortBreaksCount: 4)
+    )
 
     
     var clockworkIsOn = false {
         didSet {
-            if !clockworkIsOn {
-                pauseButton.setTitle("Continue", for: .normal)
-            } else {
+            if clockworkIsOn {
                 pauseButton.setTitle("Pause", for: .normal)
+            } else {
+                pauseButton.setTitle("Continue", for: .normal)
             }
         }
     }
@@ -65,10 +67,8 @@ class MainViewController: UIViewController {
         
         toDoList.loadToDoList()
         
-        let buttons = [toDoListButton, pauseButton, finishButton, settingsButton]
-        
-        buttons.forEach { button in
-            button?.layer.cornerRadius = 30
+        [toDoListButton, pauseButton, finishButton, settingsButton].forEach {
+            $0.layer.cornerRadius = 30
         }
         
         circleProgressView.translatesAutoresizingMaskIntoConstraints = false
@@ -78,7 +78,7 @@ class MainViewController: UIViewController {
         finishButton.isEnabled = false
         pauseButton.isEnabled = false
         
-        clockwork.createTimer()
+        //clockwork.createTimer()
         
         
         // Do any additional setup after loading the view, typically from a nib.
@@ -96,13 +96,9 @@ class MainViewController: UIViewController {
     
     @IBAction func stopAndStartClockwork(_ sender: UIButton) {
         
-        if !clockworkIsOn {
-            clockworkIsOn = true
-        } else {
-            clockworkIsOn = false
-        }
+        clockworkIsOn = !clockworkIsOn
         
-        clockwork.didTapButton(sender)
+        //clockwork.runTimer()
         
     
     }
@@ -147,7 +143,7 @@ class MainViewController: UIViewController {
     
 }
 
-extension MainViewController: MainViewContentUpateDelegate {
+extension MainViewController: MainViewContentUpdateDelegate {
     
     func updateTaskLabel(with taskID: Int64) {
         toDoList.loadToDoList()

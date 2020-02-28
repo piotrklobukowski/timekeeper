@@ -16,13 +16,16 @@
 		210F38F723D07920008D5C91 /* ToDoList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 210F38F623D07920008D5C91 /* ToDoList.swift */; };
 		210F390023D0D1E5008D5C91 /* MainViewContentUpdateDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 210F38FF23D0D1E5008D5C91 /* MainViewContentUpdateDelegate.swift */; };
 		2113A10524046514008ECBB6 /* String+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2113A10424046514008ECBB6 /* String+Extension.swift */; };
+		2114961B2407239800E4BD3C /* PomodoroClockworkTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2114961A2407239800E4BD3C /* PomodoroClockworkTest.swift */; };
 		211759312405B04D0012FF00 /* ClockSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 211759302405B04D0012FF00 /* ClockSettings.swift */; };
+		211759332405BA440012FF00 /* ClockTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 211759322405BA440012FF00 /* ClockTest.swift */; };
 		211DAC5C23E19158006CA1D3 /* DataModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 211DAC5A23E19158006CA1D3 /* DataModel.xcdatamodeld */; };
 		213AF02223F57EBC00EFC750 /* ToDoListTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 213AF02123F57EBC00EFC750 /* ToDoListTests.swift */; };
 		213AF02523F59D3A00EFC750 /* CoreDataStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 213AF02423F59D3A00EFC750 /* CoreDataStack.swift */; };
 		2147B64023FC20A200A85B28 /* SettingsTableViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2147B63F23FC20A200A85B28 /* SettingsTableViewControllerTests.swift */; };
+		215815E624067D2E00A10B18 /* Clock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 215815E524067D2E00A10B18 /* Clock.swift */; };
 		215FE9AC23EADD5D00C638F3 /* DurationSettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 215FE9AB23EADD5D00C638F3 /* DurationSettingsViewController.swift */; };
-		216C78D923E8885C006E0A99 /* Clockwork.swift in Sources */ = {isa = PBXBuildFile; fileRef = 216C78D823E8885C006E0A99 /* Clockwork.swift */; };
+		216C78D923E8885C006E0A99 /* PomodoroClockwork.swift in Sources */ = {isa = PBXBuildFile; fileRef = 216C78D823E8885C006E0A99 /* PomodoroClockwork.swift */; };
 		217482A623E06FC100C6F9BD /* Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 217482A523E06FC100C6F9BD /* Settings.swift */; };
 		2179628B23CA24F700D5D955 /* ToDoListTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2179628A23CA24F700D5D955 /* ToDoListTableViewController.swift */; };
 		2179628D23CA250F00D5D955 /* SettingsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2179628C23CA250F00D5D955 /* SettingsTableViewController.swift */; };
@@ -67,13 +70,16 @@
 		210F38F623D07920008D5C91 /* ToDoList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToDoList.swift; sourceTree = "<group>"; };
 		210F38FF23D0D1E5008D5C91 /* MainViewContentUpdateDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewContentUpdateDelegate.swift; sourceTree = "<group>"; };
 		2113A10424046514008ECBB6 /* String+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Extension.swift"; sourceTree = "<group>"; };
+		2114961A2407239800E4BD3C /* PomodoroClockworkTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PomodoroClockworkTest.swift; sourceTree = "<group>"; };
 		211759302405B04D0012FF00 /* ClockSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClockSettings.swift; sourceTree = "<group>"; };
+		211759322405BA440012FF00 /* ClockTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClockTest.swift; sourceTree = "<group>"; };
 		211DAC5B23E19158006CA1D3 /* DataModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = DataModel.xcdatamodel; sourceTree = "<group>"; };
 		213AF02123F57EBC00EFC750 /* ToDoListTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToDoListTests.swift; sourceTree = "<group>"; };
 		213AF02423F59D3A00EFC750 /* CoreDataStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataStack.swift; sourceTree = "<group>"; };
 		2147B63F23FC20A200A85B28 /* SettingsTableViewControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsTableViewControllerTests.swift; sourceTree = "<group>"; };
+		215815E524067D2E00A10B18 /* Clock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Clock.swift; sourceTree = "<group>"; };
 		215FE9AB23EADD5D00C638F3 /* DurationSettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DurationSettingsViewController.swift; sourceTree = "<group>"; };
-		216C78D823E8885C006E0A99 /* Clockwork.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Clockwork.swift; path = Timekeeper/Model/Clockwork.swift; sourceTree = SOURCE_ROOT; };
+		216C78D823E8885C006E0A99 /* PomodoroClockwork.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = PomodoroClockwork.swift; path = Timekeeper/Model/PomodoroClockwork.swift; sourceTree = SOURCE_ROOT; };
 		217482A523E06FC100C6F9BD /* Settings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Settings.swift; sourceTree = "<group>"; };
 		2179628A23CA24F700D5D955 /* ToDoListTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToDoListTableViewController.swift; sourceTree = "<group>"; };
 		2179628C23CA250F00D5D955 /* SettingsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsTableViewController.swift; sourceTree = "<group>"; };
@@ -167,6 +173,8 @@
 				21DB859323FAA58D00C71512 /* ToDoListTableViewControllerTests.swift */,
 				2147B63F23FC20A200A85B28 /* SettingsTableViewControllerTests.swift */,
 				21BE2B2723F6FFB900ABFD25 /* TestCoreData.swift */,
+				211759322405BA440012FF00 /* ClockTest.swift */,
+				2114961A2407239800E4BD3C /* PomodoroClockworkTest.swift */,
 			);
 			path = TimekeeperTests;
 			sourceTree = "<group>";
@@ -186,8 +194,9 @@
 				211DAC5A23E19158006CA1D3 /* DataModel.xcdatamodeld */,
 				210F38F623D07920008D5C91 /* ToDoList.swift */,
 				217482A523E06FC100C6F9BD /* Settings.swift */,
-				216C78D823E8885C006E0A99 /* Clockwork.swift */,
+				216C78D823E8885C006E0A99 /* PomodoroClockwork.swift */,
 				211759302405B04D0012FF00 /* ClockSettings.swift */,
+				215815E524067D2E00A10B18 /* Clock.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -483,8 +492,9 @@
 				2106ABC623C775AB00D91724 /* MainViewController.swift in Sources */,
 				210F38F723D07920008D5C91 /* ToDoList.swift in Sources */,
 				2106ABC423C775AB00D91724 /* AppDelegate.swift in Sources */,
+				215815E624067D2E00A10B18 /* Clock.swift in Sources */,
 				2179628B23CA24F700D5D955 /* ToDoListTableViewController.swift in Sources */,
-				216C78D923E8885C006E0A99 /* Clockwork.swift in Sources */,
+				216C78D923E8885C006E0A99 /* PomodoroClockwork.swift in Sources */,
 				213AF02523F59D3A00EFC750 /* CoreDataStack.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -495,8 +505,10 @@
 			files = (
 				2147B64023FC20A200A85B28 /* SettingsTableViewControllerTests.swift in Sources */,
 				21BE2B2823F6FFB900ABFD25 /* TestCoreData.swift in Sources */,
+				2114961B2407239800E4BD3C /* PomodoroClockworkTest.swift in Sources */,
 				21BE2B2A23F720D500ABFD25 /* SettingsTests.swift in Sources */,
 				21DB859423FAA58D00C71512 /* ToDoListTableViewControllerTests.swift in Sources */,
+				211759332405BA440012FF00 /* ClockTest.swift in Sources */,
 				213AF02223F57EBC00EFC750 /* ToDoListTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
