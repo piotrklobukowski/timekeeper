@@ -36,7 +36,7 @@ struct Settings {
         let longBreakDuration = provideDefaults(of: "Duration of long break", with: 20, with: nil)
         let shortBreakDuration = provideDefaults(of: "Duration of short break", with: 5, with: nil)
         let workTimeDuration = provideDefaults(of: "Duration of focus time", with: 25, with: nil)
-        durationSettings.append(contentsOf: [longBreakDuration, shortBreakDuration, workTimeDuration])
+        durationSettings.append(contentsOf: [workTimeDuration, longBreakDuration, shortBreakDuration])
         
         let soundForAlert = provideDefaults(of: "Sound for alert", with: nil, with: "Bell Sound Ring")
         soundSettings.append(soundForAlert)

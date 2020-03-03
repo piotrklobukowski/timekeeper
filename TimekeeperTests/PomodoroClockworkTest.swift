@@ -44,7 +44,7 @@ class PomodoroClockworkTest: XCTestCase {
         let exp = expectation(description: "It's 1 second later")
         sut.start()
         sut.pause()
-        sut.resume()
+        sut.start()
         DispatchQueue.main.asyncAfter(deadline: .now() + 1, execute: {
             exp.fulfill()
         })

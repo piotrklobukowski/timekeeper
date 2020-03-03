@@ -75,7 +75,7 @@
 		211759322405BA440012FF00 /* ClockTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClockTest.swift; sourceTree = "<group>"; };
 		211DAC5B23E19158006CA1D3 /* DataModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = DataModel.xcdatamodel; sourceTree = "<group>"; };
 		213AF02123F57EBC00EFC750 /* ToDoListTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToDoListTests.swift; sourceTree = "<group>"; };
-		213AF02423F59D3A00EFC750 /* CoreDataStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataStack.swift; sourceTree = "<group>"; };
+		213AF02423F59D3A00EFC750 /* CoreDataStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = CoreDataStack.swift; path = ../Managers/CoreDataStack.swift; sourceTree = "<group>"; };
 		2147B63F23FC20A200A85B28 /* SettingsTableViewControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsTableViewControllerTests.swift; sourceTree = "<group>"; };
 		215815E524067D2E00A10B18 /* Clock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Clock.swift; sourceTree = "<group>"; };
 		215FE9AB23EADD5D00C638F3 /* DurationSettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DurationSettingsViewController.swift; sourceTree = "<group>"; };
@@ -157,7 +157,6 @@
 				210F38FE23D0D1D2008D5C91 /* Delegates */,
 				2113A103240464FA008ECBB6 /* Extensions */,
 				2106ABCC23C775AE00D91724 /* LaunchScreen.storyboard */,
-				213AF02323F59D1D00EFC750 /* Managers */,
 				210F38FB23D07959008D5C91 /* Model */,
 				210F38FC23D0796D008D5C91 /* View */,
 			);
@@ -192,6 +191,7 @@
 			isa = PBXGroup;
 			children = (
 				211DAC5A23E19158006CA1D3 /* DataModel.xcdatamodeld */,
+				213AF02423F59D3A00EFC750 /* CoreDataStack.swift */,
 				210F38F623D07920008D5C91 /* ToDoList.swift */,
 				217482A523E06FC100C6F9BD /* Settings.swift */,
 				216C78D823E8885C006E0A99 /* PomodoroClockwork.swift */,
@@ -234,14 +234,6 @@
 				2113A10424046514008ECBB6 /* String+Extension.swift */,
 			);
 			path = Extensions;
-			sourceTree = "<group>";
-		};
-		213AF02323F59D1D00EFC750 /* Managers */ = {
-			isa = PBXGroup;
-			children = (
-				213AF02423F59D3A00EFC750 /* CoreDataStack.swift */,
-			);
-			path = Managers;
 			sourceTree = "<group>";
 		};
 		8E4F221E1BA652B67AF0BD61 /* Frameworks */ = {

@@ -27,13 +27,7 @@ class MainViewController: UIViewController {
     var toDoList = ToDoList()
     var settings = Settings()
     
-    let clockwork = PomodoroClockwork(
-        settings: ClockSettings(
-            workTimeDuration: 5,
-            shortBreakDuration: 2,
-            longBreakDuration: 3,
-            shortBreaksCount: 4)
-    )
+    var pomodoroClockwork: PomodoroClockwork?
 
     
     var clockworkIsOn = false {
@@ -61,11 +55,29 @@ class MainViewController: UIViewController {
             }
         }
     }
+    
+    private lazy var formatter: DateComponentsFormatter = {
+        let formatter = DateComponentsFormatter()
+        formatter.unitsStyle = .positional
+        formatter.allowedUnits = [.minute, .second]
+        formatter.zeroFormattingBehavior = .pad
+        return formatter
+    }()
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
         toDoList.loadToDoList()
+        settings.loadAllSettings()
+        
+        pomodoroClockwork = PomodoroClockwork(settings:
+            ClockSettings(
+                workTimeDuration: settings.durationSettings[0].amount,
+                shortBreakDuration: settings.durationSettings[2].amount,
+                longBreakDuration: settings.durationSettings[1].amount,
+                shortBreaksCount: Int(settings.breaksNumberSetting[1].amount)))
+
+        pomodoroClockwork?.delegate = self
         
         [toDoListButton, pauseButton, finishButton, settingsButton].forEach {
             $0.layer.cornerRadius = 30
@@ -74,20 +86,17 @@ class MainViewController: UIViewController {
         circleProgressView.translatesAutoresizingMaskIntoConstraints = false
         circleProgressView.widthAnchor.constraint(equalTo: circleProgressView.heightAnchor).isActive = true
         pauseButton.setTitle("Start", for: .normal)
+        clockworkLabel.text = formatter.string(from: settings.durationSettings[0].amount)
         
         finishButton.isEnabled = false
         pauseButton.isEnabled = false
         
-        //clockwork.createTimer()
         
-        
-        // Do any additional setup after loading the view, typically from a nib.
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
         navigationController?.isNavigationBarHidden = true
-        settings.loadAllSettings()
     }
 
     @IBAction func openToDoList(_ sender: UIButton) {
@@ -97,10 +106,8 @@ class MainViewController: UIViewController {
     @IBAction func stopAndStartClockwork(_ sender: UIButton) {
         
         clockworkIsOn = !clockworkIsOn
+        clockworkIsOn ? pomodoroClockwork?.start() : pomodoroClockwork?.pause()
         
-        //clockwork.runTimer()
-        
-    
     }
     
     @IBAction func finishTask(_ sender: UIButton) {
@@ -123,9 +130,6 @@ class MainViewController: UIViewController {
     }
     
     @IBAction func openSettings(_ sender: UIButton) {
-        
-        
-        
         performSegue(withIdentifier: "showSettings", sender: self)
     }
     
@@ -151,6 +155,53 @@ extension MainViewController: MainViewContentUpdateDelegate {
         taskLabel.text = toDoList.tasks[indexNumber!].descriptionOfTask
         taskIdentifier = taskID
     }
+    
+}
+
+extension MainViewController: PomodoroClockworkDelegate {
+    
+    func updateTimeInClockworkLabel(currentTime: CFTimeInterval, phase: PomodoroPhases) {
+        let endTime: Double = {
+            var newValue: Double
+            switch phase {
+            case .work:
+                newValue = settings.durationSettings[0].amount
+            case .shortBreak:
+                newValue = settings.durationSettings[2].amount
+            case .longBreak:
+                newValue = settings.durationSettings[1].amount
+            }
+            return newValue
+        }()
+        
+        let countdown = endTime - currentTime
+        
+        var newProgress: Double {
+            var newProgress = (currentTime + 0.5)/endTime
+            if newProgress > 1.0 {
+                newProgress = 1.0
+            }
+            return newProgress
+        }
+        
+        clockworkLabel.text = formatter.string(from: countdown)
+        circleProgressView.setProgress(newProgress, animated: true)
+    }
+    
+    func changeBreakInformationLabel(phase: PomodoroPhases, numberOfShortBreaks: Int?) {
+        switch phase {
+        case .work:
+            clockworkLabel.text = formatter.string(from: settings.durationSettings[0].amount)
+            breaksLabel.text = "Short Breaks: \(numberOfShortBreaks ?? 0)/\(Int(settings.breaksNumberSetting[1].amount))"
+        case .shortBreak:
+            clockworkLabel.text = formatter.string(from: settings.durationSettings[1].amount)
+            breaksLabel.text = "Short Break"
+        case .longBreak:
+            clockworkLabel.text = formatter.string(from: settings.durationSettings[2].amount)
+            breaksLabel.text = "Long Break"
+        }
+    }
+
     
 }
 
