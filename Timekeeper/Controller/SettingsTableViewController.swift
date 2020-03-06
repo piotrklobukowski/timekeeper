@@ -35,14 +35,22 @@ class SettingsTableViewController: UITableViewController {
         let settingsForIndex = clockworkSettings?[index.row]
         return settingsForIndex?.amount ?? 0
     }
+    
+    private lazy var formatter: DateComponentsFormatter = {
+        let formatter = DateComponentsFormatter()
+        formatter.unitsStyle = .positional
+        formatter.allowedUnits = [.minute, .second]
+        formatter.zeroFormattingBehavior = .pad
+        return formatter
+    }()
 
     // MARK: - Table view data source
     
     override func tableView(_ tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {
-        view.tintColor = UIColor(red:0.11, green:0.15, blue:0.17, alpha:1.0)
+        view.tintColor = UIColor.backgroundColor
 
         let header = view as! UITableViewHeaderFooterView
-        header.textLabel?.textColor = UIColor(red:0.73, green:0.88, blue:0.98, alpha:1.0)
+        header.textLabel?.textColor = UIColor.fontColor
     }
     
     private enum SettingsSections: Int {
@@ -78,7 +86,7 @@ class SettingsTableViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "Setting Cell", for: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: String.storyboardIdentifiers.settingCell.identifier , for: indexPath)
         
         cell.textLabel?.text = settings?.clockworkConfigurations[indexPath.section]?[indexPath.row].descriptionOfSetting
         
@@ -86,7 +94,7 @@ class SettingsTableViewController: UITableViewController {
             switch settingsSection {
             case .duration:
                 let duration = clockworkConfiguration(at: indexPath)
-                cell.detailTextLabel?.text = String(format: "%02d", duration)
+                cell.detailTextLabel?.text = formatter.string(from: duration)
             case .numberOfBreaks:
                 let numberOfBreaks = Int(clockworkConfiguration(at: indexPath))
                 cell.detailTextLabel?.text = String(format: "%i", numberOfBreaks)
@@ -99,6 +107,19 @@ class SettingsTableViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        performSegue(withIdentifier: "OpenDurationSettings", sender: self)
+        guard let settingsSection = SettingsSections(rawValue: indexPath.section) else { return }
+        switch settingsSection {
+        case .duration:
+            performSegue(withIdentifier: String.storyboardIdentifiers.segueOpenDurationSettings.identifier, sender: self)
+        case .numberOfBreaks:
+            performSegue(withIdentifier: String.storyboardIdentifiers.segueOpenBreaksAmountSettings.identifier, sender: self)
+        case .soundSettings:
+            performSegue(withIdentifier: String.storyboardIdentifiers.segueOpenSoundSettings.identifier, sender: self)
+        case .other:
+            performSegue(withIdentifier: String.storyboardIdentifiers.segueOpenCredits.identifier, sender: self)
+        }
+        
+        
+        
     }
 }

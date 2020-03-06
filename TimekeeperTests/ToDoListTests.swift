@@ -19,7 +19,7 @@ class ToDoListTests: XCTestCase {
     override func setUp() {
         super.setUp()
         
-        coreData = TestCoreData(coreDataModelName: "DataModel")
+        coreData = TestCoreData(coreDataModelName: String.dataModel)
         toDoList = ToDoList(context: coreData.managedObjectContext)
         
     }

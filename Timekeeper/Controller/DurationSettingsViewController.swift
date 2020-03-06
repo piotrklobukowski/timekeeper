@@ -8,7 +8,7 @@
 
 import UIKit
 
-class DurationSettingsViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource {
+class DurationSettingsViewController: UIViewController {
     
     @IBOutlet var descriptionLabel: UILabel!
     @IBOutlet var viewForSettingPickerView: UIView!
@@ -20,9 +20,7 @@ class DurationSettingsViewController: UIViewController, UIPickerViewDelegate, UI
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        saveButton.layer.cornerRadius = 30
-        
+                
         settingPickerView.delegate = self
         settingPickerView.dataSource = self
         
@@ -36,7 +34,7 @@ class DurationSettingsViewController: UIViewController, UIPickerViewDelegate, UI
         label1.font = font
         label1.textAlignment = .center
         label1.text = ":"
-        label1.textColor = UIColor(red:0.20, green:0.51, blue:0.72, alpha:1.0)
+        label1.textColor = UIColor.trackColor
         
         settingPickerView.addSubview(label1)
         
@@ -45,7 +43,13 @@ class DurationSettingsViewController: UIViewController, UIPickerViewDelegate, UI
         label1.centerXAnchor.constraint(equalTo: viewForSettingPickerView.centerXAnchor).isActive = true
     }
     
+    @IBAction func saveButtonPressed(_ sender: UIButton) {
+        
+    }
+}
 
+extension DurationSettingsViewController: UIPickerViewDelegate, UIPickerViewDataSource {
+    
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
         return 3
     }
@@ -71,17 +75,17 @@ class DurationSettingsViewController: UIViewController, UIPickerViewDelegate, UI
     }
     
     func pickerView(_ pickerView: UIPickerView, viewForRow row: Int, forComponent component: Int, reusing view: UIView?) -> UIView {
-
+        
         var label: UILabel
-
+        
         if let vw = view as? UILabel {
             label = vw
         } else {
             label = UILabel()
         }
-
-        label.textColor = UIColor(red:0.20, green:0.51, blue:0.72, alpha:1.0)
-
+        
+        label.textColor = UIColor.trackColor
+        
         label.font = UIFont.systemFont(ofSize: (viewForSettingPickerView.frame.size.height * 0.45))
         
         switch component {
@@ -112,9 +116,4 @@ class DurationSettingsViewController: UIViewController, UIPickerViewDelegate, UI
     func pickerView(_ pickerView: UIPickerView, rowHeightForComponent component: Int) -> CGFloat {
         return viewForSettingPickerView.frame.size.height
     }
-    
-    @IBAction func saveButtonPressed(_ sender: UIButton) {
-        
-    }
-
 }

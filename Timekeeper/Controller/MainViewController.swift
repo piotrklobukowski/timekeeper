@@ -17,11 +17,7 @@ class MainViewController: UIViewController {
     
     @IBOutlet var toDoListButton: UIButton!
     @IBOutlet var taskLabel: UILabel!
-    @IBOutlet var circleProgressView: CircleProgressView! {
-        didSet {
-            circleProgressView.progress = clockwork.progress!
-        }
-    }
+    @IBOutlet var circleProgressView: CircleProgressView!
     @IBOutlet var clockworkLabel: UILabel!
     @IBOutlet var breaksLabel: UILabel!
     @IBOutlet var pauseButton: UIButton!
@@ -31,15 +27,15 @@ class MainViewController: UIViewController {
     var toDoList = ToDoList()
     var settings = Settings()
     
-    let clockwork = Clockwork(workTime: 5, shortBreakDuration: 2, longBreakDuration: 3, shortBreaksLimit: 3, longBreaksLimit: 2)
+    let clockwork = Clockwork(settings: ClockSettings(workTimeDuration: 5, shortBreakDuration: 2, longBreakDuration: 3, shortBreaksLimit: 3, longBreaksLimit: 2))
 
     
     var clockworkIsOn = false {
         didSet {
             if !clockworkIsOn {
-                pauseButton.setTitle("Continue", for: .normal)
+                pauseButton.setTitle(String.resume, for: .normal)
             } else {
-                pauseButton.setTitle("Pause", for: .normal)
+                pauseButton.setTitle(String.pause, for: .normal)
             }
         }
     }
@@ -54,8 +50,8 @@ class MainViewController: UIViewController {
             } else {
                 finishButton.isEnabled = true
                 pauseButton.isEnabled = true
-                finishButton.setTitleColor(UIColor(red:0.73, green:0.88, blue:0.98, alpha:1.0), for: .normal)
-                pauseButton.setTitleColor(UIColor(red:0.73, green:0.88, blue:0.98, alpha:1.0), for: .normal)
+                finishButton.setTitleColor(UIColor.fontColor, for: .normal)
+                pauseButton.setTitleColor(UIColor.fontColor, for: .normal)
             }
         }
     }
@@ -64,22 +60,15 @@ class MainViewController: UIViewController {
         super.viewDidLoad()
         
         toDoList.loadToDoList()
-        
-        let buttons = [toDoListButton, pauseButton, finishButton, settingsButton]
-        
-        buttons.forEach { button in
-            button?.layer.cornerRadius = 30
-        }
-        
+       
         circleProgressView.translatesAutoresizingMaskIntoConstraints = false
         circleProgressView.widthAnchor.constraint(equalTo: circleProgressView.heightAnchor).isActive = true
-        pauseButton.setTitle("Start", for: .normal)
+        pauseButton.setTitle(String.start, for: .normal)
         
         finishButton.isEnabled = false
         pauseButton.isEnabled = false
         
         clockwork.createTimer()
-        
         
         // Do any additional setup after loading the view, typically from a nib.
     }
@@ -91,7 +80,7 @@ class MainViewController: UIViewController {
     }
 
     @IBAction func openToDoList(_ sender: UIButton) {
-        performSegue(withIdentifier: "showToDoList", sender: self)
+        performSegue(withIdentifier: String.storyboardIdentifiers.segueShowToDoList.identifier, sender: self)
     }
     
     @IBAction func stopAndStartClockwork(_ sender: UIButton) {
@@ -102,7 +91,7 @@ class MainViewController: UIViewController {
             clockworkIsOn = false
         }
         
-        clockwork.didTapButton(sender)
+        clockwork.runTimer()
         
     
     }
@@ -118,7 +107,7 @@ class MainViewController: UIViewController {
             taskLabel.text = nextTask.descriptionOfTask
             taskIdentifier = nextTask.identifier
         } else {
-            taskLabel.text = "All your tasks are complete!"
+            taskLabel.text = String.finishText
             taskIdentifier = 0
             finishButton.isEnabled = false
             pauseButton.isEnabled = false
@@ -130,16 +119,15 @@ class MainViewController: UIViewController {
         
         
         
-        performSegue(withIdentifier: "showSettings", sender: self)
+        performSegue(withIdentifier: String.storyboardIdentifiers.segueShowSettings.identifier, sender: self)
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "showToDoList" {
+        if segue.identifier == String.storyboardIdentifiers.segueShowToDoList.identifier {
             let destinationVC = segue.destination as? ToDoListTableViewController
             destinationVC?.mainViewContentUpdateDelegate = self
-        } else if segue.identifier == "showSettings" {
+        } else if segue.identifier == String.storyboardIdentifiers.segueShowSettings.identifier {
             let destinationVC = segue.destination as? SettingsTableViewController
-            
         }
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
@@ -147,31 +135,13 @@ class MainViewController: UIViewController {
     
 }
 
-extension MainViewController: MainViewContentUpateDelegate {
+extension MainViewController: MainViewContentUpdateDelegate {
     
     func updateTaskLabel(with taskID: Int64) {
         toDoList.loadToDoList()
-        let indexNumber = toDoList.searchForTask(idNumber: taskID)
-        taskLabel.text = toDoList.tasks[indexNumber!].descriptionOfTask
+        guard let indexNumber = toDoList.searchForTask(idNumber: taskID) else { return }
+        taskLabel.text = toDoList.tasks[indexNumber].descriptionOfTask
         taskIdentifier = taskID
     }
     
 }
-
-extension UIButton {
-    override open var isHighlighted : Bool {
-        didSet {
-            backgroundColor = isHighlighted ? UIColor(red:0.20, green:0.51, blue:0.72, alpha:1.0)
-                : UIColor(red:0.06, green:0.30, blue:0.46, alpha:1.0)
-        }
-    }
-    
-    override open var isEnabled: Bool {
-        didSet {
-            backgroundColor = isEnabled ? UIColor(red:0.06, green:0.30, blue:0.46, alpha:1.0) : UIColor.darkGray
-            
-        }
-    }
-
-}
-

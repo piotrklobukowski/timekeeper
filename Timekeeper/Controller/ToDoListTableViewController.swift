@@ -18,7 +18,7 @@ class ToDoListTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.navigationItem.title = "Your To-do List"
+        self.navigationItem.title = String.toDoListTitle
         self.navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(showAlertForTaskAdding))
         
         setupToDoList()
@@ -37,9 +37,9 @@ class ToDoListTableViewController: UITableViewController {
     }
     
     @objc func showAlertForTaskAdding() {
-        let ac = UIAlertController(title: "Add task", message: nil, preferredStyle: .alert)
+        let ac = UIAlertController(title: String.addTask, message: nil, preferredStyle: .alert)
         ac.addTextField()
-        ac.addAction(UIAlertAction(title: "Add", style: .default) {
+        ac.addAction(UIAlertAction(title: String.add, style: .default) {
             [weak self, weak ac] _ in
             
             guard let taskDescription = ac?.textFields?[0].text else { return }
@@ -51,7 +51,7 @@ class ToDoListTableViewController: UITableViewController {
             self?.tableView.insertRows(at: [indexPath], with: .automatic)
             
         })
-        ac.addAction(UIAlertAction(title: "Cancel", style: .cancel))
+        ac.addAction(UIAlertAction(title: String.cancel, style: .cancel))
         present(ac, animated: true)
     }
     
@@ -64,7 +64,7 @@ class ToDoListTableViewController: UITableViewController {
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        let cell = tableView.dequeueReusableCell(withIdentifier: "Task Cell", for: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: String.storyboardIdentifiers.toDoListCell.identifier, for: indexPath)
         guard let task = toDoList?.tasks[indexPath.row] else { return cell }
 
         cell.textLabel?.text = task.descriptionOfTask

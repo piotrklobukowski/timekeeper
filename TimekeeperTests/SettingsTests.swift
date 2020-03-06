@@ -17,7 +17,7 @@ class SettingsTests: XCTestCase {
     
     override func setUp() {
         super.setUp()
-        coreData = TestCoreData(coreDataModelName: "DataModel")
+        coreData = TestCoreData(coreDataModelName: String.dataModel)
         settings = Settings(context: coreData.managedObjectContext)
         
         // Put setup code here. This method is called before the invocation of each test method in the class.
