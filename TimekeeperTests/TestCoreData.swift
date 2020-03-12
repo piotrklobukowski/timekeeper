@@ -12,7 +12,7 @@ import CoreData
 
 class TestCoreData: CoreDataStack {
     override init(coreDataModelName: String) {
-        super.init(coreDataModelName: String.dataModel)
+        super.init(coreDataModelName: String.CoreData.dataModel.rawValue)
         self.persistentStoreCoordinator = {
             let psCoordinator = NSPersistentStoreCoordinator(managedObjectModel: self.managedObjectModel)
             

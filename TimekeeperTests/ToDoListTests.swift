@@ -18,14 +18,13 @@ class ToDoListTests: XCTestCase {
     
     override func setUp() {
         super.setUp()
-        
-        coreData = TestCoreData(coreDataModelName: String.dataModel)
+        coreData = TestCoreData(coreDataModelName: String.CoreData.dataModel.rawValue)
         toDoList = ToDoList(context: coreData.managedObjectContext)
-        
     }
     
     override func tearDown() {
-        // Put teardown code here. This method is called after the invocation of each test method in the class.
+        toDoList = nil
+        coreData = nil
         super.tearDown()
     }
     
@@ -50,6 +49,18 @@ class ToDoListTests: XCTestCase {
         addTasks()
         toDoList.taskIsDone(id: toDoList.tasks[0].identifier)
         XCTAssertEqual(toDoList.tasks[0].isDone, true)
+    }
+    
+    func testSaveAndLoadTasks() {
+        addTasks()
+        toDoList = nil
+        toDoList = ToDoList(context: coreData.managedObjectContext)
+        toDoList.loadToDoList()
+        
+        XCTAssertEqual(toDoList.tasks.count, names.count)
+        XCTAssertEqual(toDoList.tasks[0].descriptionOfTask, names[0])
+        XCTAssertEqual(toDoList.tasks[2].descriptionOfTask, names[2])
+        XCTAssertEqual(toDoList.tasks[4].descriptionOfTask, names[4])
     }
     
     private func addTasks() {

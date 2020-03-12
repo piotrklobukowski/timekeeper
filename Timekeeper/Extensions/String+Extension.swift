@@ -6,7 +6,7 @@
 //  Copyright © 2020 Piotr Kłobukowski. All rights reserved.
 //
 
-import Foundation
+import UIKit
 
 extension String {
     
@@ -15,42 +15,42 @@ extension String {
     }
     
     static var breaksAmount: [String] {
-        return (0..<10).map { String($0) }
+        return (1..<10).map { String($0) }
     }
     
-    enum storyboardIdentifiers: String {
-        case segueOpenDurationSettings
-        case segueOpenBreaksAmountSettings
-        case segueOpenSoundSettings
-        case segueOpenCredits
-        case segueShowToDoList
-        case segueShowSettings
-        case toDoListCell
-        case settingCell
+    static var sounds: [String] {
+        return ["Bell Sound Ring", "Front Desk Bells", "Japanese Temple Bell Small", "Ship Bell"]
+    }
+    
+    enum StoryboardIdentifiers: String {
+        case main = "Main"
+        case segueOpenDurationSettings = "OpenDurationSettings"
+        case segueOpenBreaksAmountSettings = "OpenBreakAmountSettings"
+        case segueOpenSoundSettings = "OpenSoundSettings"
+        case segueOpenCredits = "OpenCredits"
+        case segueShowToDoList = "showToDoList"
+        case segueShowSettings = "showSettings"
+        case toDoListCell = "Task Cell"
+        case settingCell = "Setting Cell"
+        case toDoListTableViewControllerID = "ToDoListTableViewControllerID"
+        case settingsTableViewControllerID =
+        "SettingsTableViewControllerID"
+        case durationSettingsViewControllerID =
+        "DurationSettingsViewControllerID"
+        case breaksAmountSettingsViewControllerID =
+        "BreaksAmountSettingsViewControllerID"
+        case soundSettingsViewControllerID =
+        "SoundSettingsViewControllerID"
         
-        var identifier: String {
-            switch self {
-            case .segueOpenDurationSettings:
-                return "OpenDurationSettings"
-            case .segueOpenBreaksAmountSettings:
-                return "OpenBreakAmountSettings"
-            case .segueOpenSoundSettings:
-                return "OpenSoundSettings"
-            case .segueOpenCredits:
-                return "OpenCredits"
-            case .segueShowToDoList:
-                return "showToDoList"
-            case .segueShowSettings:
-                return "showSettings"
-            case .toDoListCell:
-                return "Task Cell"
-            case .settingCell:
-                return "Setting Cell"
-            }
-        }
     }
     
-    static let dataModel = "DataModel"
+    enum CoreData: String {
+        case dataModel = "DataModel"
+        case amountKey = "amount"
+        case descriptionOfSettingKey = "descriptionOfSetting"
+        case idKey = "id"
+        case settingStringKey = "settingString"
+    }
     
     static let resume = "Continue"
     static let start = "Start"

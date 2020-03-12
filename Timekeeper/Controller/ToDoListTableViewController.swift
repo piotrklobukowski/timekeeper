@@ -64,7 +64,7 @@ class ToDoListTableViewController: UITableViewController {
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        let cell = tableView.dequeueReusableCell(withIdentifier: String.storyboardIdentifiers.toDoListCell.identifier, for: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: String.StoryboardIdentifiers.toDoListCell.rawValue, for: indexPath)
         guard let task = toDoList?.tasks[indexPath.row] else { return cell }
 
         cell.textLabel?.text = task.descriptionOfTask

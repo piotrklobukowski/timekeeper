@@ -10,7 +10,7 @@ import Foundation
 import CoreData
 import UIKit
 
-struct Settings {
+class Settings {
     
     init(context: NSManagedObjectContext = (UIApplication.shared.delegate as! AppDelegate).coreDataStack.persistentContainer.viewContext) {
         self.context = context
@@ -18,30 +18,62 @@ struct Settings {
     
     private let context: NSManagedObjectContext
     var durationSettings = [ClockworkSettings]()
-    var breaksNumberSetting = [ClockworkSettings]()
+    var breaksNumberSettings = [ClockworkSettings]()
     var soundSettings = [ClockworkSettings]()
     var anotherInformations = [ClockworkSettings]()
     var clockworkConfigurations: [Int:[ClockworkSettings]] = [:]
     
-    var specificConfiguration = [ClockworkSettings]() // value for change specific setting
+    private func addDefaultSettings() {
         
-    private mutating func addDefaultSettings() {
+        guard durationSettings.isEmpty && breaksNumberSettings.isEmpty && soundSettings.isEmpty && anotherInformations.isEmpty else { return }
         
-        guard durationSettings.isEmpty && breaksNumberSetting.isEmpty && soundSettings.isEmpty && anotherInformations.isEmpty else { return }
+        let longBreaksLimit = provideDefaults(
+            withID: SettingsDetailsType.longBreaksNumber.rawValue,
+            of: "Number of long breaks",
+            withAmount: 1,
+            withString: nil)
         
-        let longBreaksLimit = provideDefaults(of: "Number of long breaks", with: 1, with: nil)
-        let shortBreaksLimit = provideDefaults(of: "Number of short breaks", with: 3, with: nil)
-         breaksNumberSetting.append(contentsOf: [longBreaksLimit, shortBreaksLimit])
+        let shortBreaksLimit = provideDefaults(
+            withID: SettingsDetailsType.shortBreaksNumber.rawValue,
+            of: "Number of short breaks",
+            withAmount: 3,
+            withString: nil)
         
-        let longBreakDuration = provideDefaults(of: "Duration of long break", with: 20, with: nil)
-        let shortBreakDuration = provideDefaults(of: "Duration of short break", with: 5, with: nil)
-        let workTimeDuration = provideDefaults(of: "Duration of focus time", with: 25, with: nil)
-        durationSettings.append(contentsOf: [longBreakDuration, shortBreakDuration, workTimeDuration])
+         breaksNumberSettings.append(contentsOf: [shortBreaksLimit, longBreaksLimit])
         
-        let soundForAlert = provideDefaults(of: "Sound for alert", with: nil, with: "Bell Sound Ring")
+        let longBreakDuration = provideDefaults(
+            withID: SettingsDetailsType.longBreak.rawValue,
+            of: "Duration of long break",
+            withAmount: 20,
+            withString: nil)
+        
+        let shortBreakDuration = provideDefaults(
+            withID: SettingsDetailsType.shortBreak.rawValue,
+            of: "Duration of short break",
+            withAmount: 5,
+            withString: nil)
+        
+        let workTimeDuration = provideDefaults(
+            withID: SettingsDetailsType.focusTime.rawValue,
+            of: "Duration of focus time",
+            withAmount: 25,
+            withString: nil)
+        
+        durationSettings.append(contentsOf: [workTimeDuration, shortBreakDuration, longBreakDuration])
+        
+        let soundForAlert = provideDefaults(
+            withID: SettingsDetailsType.alertSound.rawValue,
+            of: "Sound for alert",
+            withAmount: nil,
+            withString: "Bell Sound Ring")
+        
         soundSettings.append(soundForAlert)
         
-        let creditsInformation = provideDefaults(of: "Credits", with: nil, with: """
+        let creditsInformation = provideDefaults(
+            withID: SettingsDetailsType.credits.rawValue,
+            of: "Credits",
+            withAmount: nil,
+            withString: """
         
         Timekeeper
         
@@ -57,16 +89,18 @@ struct Settings {
         Front Desk Bells - Daniel Simon
         
         """)
+        
         anotherInformations.append(creditsInformation)
         
-        clockworkConfigurations = [0: durationSettings, 1: breaksNumberSetting, 2: soundSettings, 3: anotherInformations]
+        buildClockworkConfiguration()
 
         saveSettings()
     }
     
-    private func provideDefaults(of description: String, with amount: Double?, with string: String?) -> ClockworkSettings {
+    private func provideDefaults(withID id: Int, of description: String, withAmount amount: Double?, withString string: String?) -> ClockworkSettings {
         let clockworkSettings = ClockworkSettings(context: context)
         clockworkSettings.descriptionOfSetting = description
+        clockworkSettings.id = Int32(id)
         
         if let providedAmount = amount {
             clockworkSettings.amount = providedAmount
@@ -90,43 +124,65 @@ struct Settings {
         }
     }
     
-    private mutating func loadSpecificSetting(of description: String) {
-        let request: NSFetchRequest<ClockworkSettings> = ClockworkSettings.fetchRequest()
-        let predicate = NSPredicate(format: "descriptionOfSetting MATCHES[cd] %@", description)
-        request.predicate = predicate
-        
-        do {
-            try specificConfiguration = context.fetch(request)
-        } catch {
-            print("Error fetching data: \(error)")
+    func save(_ newValue: Any, for setting: ClockworkSettings, of type: SettingsDetailsType) {
+        switch type {
+        case .focusTime, .longBreak, .shortBreak, .longBreaksNumber, .shortBreaksNumber:
+            guard let valueToSave = newValue as? Double else { return }
+            setting.setValue(valueToSave, forKey: String.CoreData.amountKey.rawValue)
+        case .alertSound:
+            guard let valueToSave = newValue as? String else { return }
+            setting.setValue(valueToSave, forKey: String.CoreData.settingStringKey.rawValue)
+        case .credits:
+            return
         }
+        saveSettings()
     }
     
-    mutating func loadAllSettings() {
-        
-        let requestDuration = makeFetchRequest(with: "Duration")
-        let requestNumberOfBreaks = makeFetchRequest(with: "Number")
-        let requestSound = makeFetchRequest(with: "Sound")
-        let requestAnotherInformations = makeFetchRequest(with: "Credits")
+    func loadSpecificSetting(for type: SettingsDetailsType) throws -> [ClockworkSettings] {
+        let request: NSFetchRequest<ClockworkSettings> = ClockworkSettings.fetchRequest()
+        let predicate = NSPredicate(format: "id == %d", type.rawValue)
+        request.predicate = predicate
+        return try context.fetch(request)
+    }
+    
+    func loadAllSettings() {
+        let settingsTypes: [SettingsDetailsType] = [.focusTime, .shortBreak, .longBreak]
+        let requestDuration = makeFetchRequest(with: settingsTypes.map { $0.rawValue })
+        let requestNumberOfBreaks = makeFetchRequest(with: [SettingsDetailsType.shortBreaksNumber.rawValue, SettingsDetailsType.longBreaksNumber.rawValue])
+        let requestSound = makeFetchRequest(with: [SettingsDetailsType.alertSound.rawValue])
+        let requestAnotherInformations = makeFetchRequest(with: [SettingsDetailsType.credits.rawValue])
         
         do {
             durationSettings = try context.fetch(requestDuration)
-            breaksNumberSetting = try context.fetch(requestNumberOfBreaks)
+            breaksNumberSettings = try context.fetch(requestNumberOfBreaks)
             soundSettings = try context.fetch(requestSound)
             anotherInformations = try context.fetch(requestAnotherInformations)
         } catch {
             print("Error fetching data \(error)")
         }
-        clockworkConfigurations = [0: durationSettings, 1: breaksNumberSetting, 2: soundSettings, 3: anotherInformations]
+        
+        buildClockworkConfiguration()
         
         addDefaultSettings()
     }
     
-    private func makeFetchRequest(with argument: String) -> NSFetchRequest<ClockworkSettings> {
+    private func buildClockworkConfiguration() {
+        clockworkConfigurations = [
+            0: durationSettings,
+            1: breaksNumberSettings,
+            2: soundSettings,
+            3: anotherInformations
+        ]
+    }
+    
+    private func makeFetchRequest(with identifiers: [Int]) -> NSFetchRequest<ClockworkSettings> {
         let request : NSFetchRequest<ClockworkSettings> = ClockworkSettings.fetchRequest()
-        let predicate = NSPredicate(format: "descriptionOfSetting CONTAINS[cd] %@", argument)
-        let sortDescriptor = NSSortDescriptor(key: "descriptionOfSetting", ascending: true)
-        request.predicate = predicate
+
+        let predicates: [NSPredicate] = identifiers.map { NSPredicate(format: "id == %d", $0) }
+        let compoundPredicate = NSCompoundPredicate(type: .or, subpredicates: predicates)
+        
+        let sortDescriptor = NSSortDescriptor(key: String.CoreData.idKey.rawValue, ascending: true)
+        request.predicate = compoundPredicate
         request.sortDescriptors = [sortDescriptor]
         
         return request

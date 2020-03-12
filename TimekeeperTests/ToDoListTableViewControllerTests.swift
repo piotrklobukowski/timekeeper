@@ -22,10 +22,10 @@ class ToDoListTableViewControllerTests: XCTestCase {
     override func setUp() {
         super.setUp()
         
-        let storyboard = UIStoryboard(name: "Main", bundle: Bundle.main)
-        tableViewController = storyboard.instantiateViewController(withIdentifier: "ToDoListTableViewControllerID") as! ToDoListTableViewController
+        let storyboard = UIStoryboard(name: String.StoryboardIdentifiers.main.rawValue, bundle: Bundle.main)
+        tableViewController = storyboard.instantiateViewController(withIdentifier: String.StoryboardIdentifiers.toDoListTableViewControllerID.rawValue) as! ToDoListTableViewController
         
-        coreData = TestCoreData(coreDataModelName: String.dataModel)
+        coreData = TestCoreData(coreDataModelName: String.CoreData.dataModel.rawValue)
         tableViewController.toDoList = ToDoList(context: coreData.managedObjectContext)
         let _ = tableViewController.view
         
