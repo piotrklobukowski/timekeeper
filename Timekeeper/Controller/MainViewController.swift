@@ -50,8 +50,6 @@ class MainViewController: UIViewController {
             } else {
                 finishButton.isEnabled = true
                 pauseButton.isEnabled = true
-                finishButton.setTitleColor(UIColor.fontColor, for: .normal)
-                pauseButton.setTitleColor(UIColor.fontColor, for: .normal)
             }
         }
     }
@@ -66,6 +64,7 @@ class MainViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         
         toDoList.loadToDoList()
         settings.loadAllSettings()
@@ -100,7 +99,7 @@ class MainViewController: UIViewController {
     }
 
     @IBAction func openToDoList(_ sender: UIButton) {
-        performSegue(withIdentifier: String.storyboardIdentifiers.segueShowToDoList.identifier, sender: self)
+        performSegue(withIdentifier: String.StoryboardIdentifiers.segueShowToDoList.rawValue, sender: self)
     }
     
     @IBAction func stopAndStartClockwork(_ sender: UIButton) {
@@ -130,23 +129,16 @@ class MainViewController: UIViewController {
     }
     
     @IBAction func openSettings(_ sender: UIButton) {
-        
-        
-        
-        performSegue(withIdentifier: String.storyboardIdentifiers.segueShowSettings.identifier, sender: self)
+        performSegue(withIdentifier: String.StoryboardIdentifiers.segueShowSettings.rawValue, sender: self)
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == String.storyboardIdentifiers.segueShowToDoList.identifier {
+        if segue.identifier == String.StoryboardIdentifiers.segueShowToDoList.rawValue {
             let destinationVC = segue.destination as? ToDoListTableViewController
             destinationVC?.mainViewContentUpdateDelegate = self
-        } else if segue.identifier == String.storyboardIdentifiers.segueShowSettings.identifier {
-            let destinationVC = segue.destination as? SettingsTableViewController
         }
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
     }
-    
+
 }
 
 extension MainViewController: MainViewContentUpdateDelegate {

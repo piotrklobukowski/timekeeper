@@ -8,69 +8,130 @@
 
 import UIKit
 
-class DurationSettingsViewController: UIViewController {
+class DurationSettingsViewController: UIViewController, SettingsDetailsInterface {
+    
+    private enum Components {
+        static var minutes = 0
+        static var seconds = 2
+        static var colon = 1
+        static var comoponentsCount = 3
+    }
+    
+    var settings: Settings?
+    var detailsType: SettingsDetailsType? {
+        didSet {
+            guard detailsType != nil else { return }
+            loadSettingsAndView()
+        }
+    }
+    weak var delegate: SettingsUpdateDelegate?
     
     @IBOutlet var descriptionLabel: UILabel!
     @IBOutlet var viewForSettingPickerView: UIView!
     @IBOutlet var settingPickerView: UIPickerView!
     @IBOutlet var saveButton: UIButton!
+    @IBOutlet var colon: UILabel!
     
     let minutes = String.timeSixty
     let seconds = String.timeSixty
     
+    private var durationSettings: ClockworkSettings?
+    
+    private lazy var formatter: DateComponentsFormatter = {
+        let formatter = DateComponentsFormatter()
+        formatter.unitsStyle = .positional
+        formatter.allowedUnits = [.minute, .second]
+        formatter.zeroFormattingBehavior = .pad
+        return formatter
+    }()
+    
+    private lazy var numberFormatter: NumberFormatter = {
+        return NumberFormatter()
+    }()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-                
+        
         settingPickerView.delegate = self
         settingPickerView.dataSource = self
         
-        let font = UIFont.systemFont(ofSize: (viewForSettingPickerView.frame.size.height * 0.45))
-        let fontSize: CGFloat = font.pointSize
-        let componentWidth: CGFloat = viewForSettingPickerView.frame.width / CGFloat(settingPickerView.numberOfComponents)
-        let x = viewForSettingPickerView.frame.size.width / 2
-        let y = viewForSettingPickerView.frame.size.height * 0.4
-        
-        let label1 = UILabel(frame: CGRect(x: x, y: y, width: componentWidth * 0.4, height: fontSize))
-        label1.font = font
-        label1.textAlignment = .center
-        label1.text = ":"
-        label1.textColor = UIColor.trackColor
-        
-        settingPickerView.addSubview(label1)
-        
-        label1.translatesAutoresizingMaskIntoConstraints = false
-        label1.centerYAnchor.constraint(equalTo: viewForSettingPickerView.centerYAnchor).isActive = true
-        label1.centerXAnchor.constraint(equalTo: viewForSettingPickerView.centerXAnchor).isActive = true
+        loadSettingsAndView()
     }
     
     @IBAction func saveButtonPressed(_ sender: UIButton) {
+        guard let selectedTime = transformValueFromPicker(),
+            let type = detailsType,
+        let newSetting = durationSettings else { return }
+        settings?.save(selectedTime, for: newSetting, of: type)
+        delegate?.settingsDidUpdate()
+        navigationController?.popViewController(animated: true)
+        print("Perform save for new value: \(selectedTime)")
+    }
+    
+    private func loadSettingsAndView() {
+        do {
+            durationSettings = try loadDurationSettings()
+        } catch {
+            return
+        }
+        fillWithLoadedSettings()
+    }
+    
+    private func transformValueFromPicker() -> Double? {
+        guard let selectedMinutesRow = settingPickerView?.selectedRow(inComponent: Components.minutes),
+            let selectedSecondsRow = settingPickerView?.selectedRow(inComponent: Components.seconds) else { return nil }
         
+        let selectedMinutes = minutes[selectedMinutesRow]
+        let selectedSeconds = seconds[selectedSecondsRow]
+        
+        guard let minutes = numberFormatter.number(from: selectedMinutes)?.doubleValue,
+            let seconds = numberFormatter.number(from: selectedSeconds)?.doubleValue
+            else { return nil }
+        
+        return minutes * 60 + seconds
+    }
+    
+    private func provideValueForPickerView(value: Double) {
+        guard let timeString = formatter.clockFormat(from: value) else { return }
+        
+        let substrings = timeString.split(separator: ":")
+        
+        let minutes = String(substrings[0])
+        let seconds = String(substrings[1])
+        
+        guard let minutesIndex = self.minutes.index(of: minutes) else { return }
+        guard let secondsIndex = self.seconds.index(of: seconds) else { return }
+       
+        settingPickerView.selectRow(minutesIndex, inComponent: Components.minutes, animated: false)
+        settingPickerView.selectRow(secondsIndex, inComponent: Components.seconds, animated: false)
+    }
+    
+    private func loadDurationSettings() throws -> ClockworkSettings? {
+        guard let detailsType = detailsType else { return nil }
+        return try settings?.loadSpecificSetting(for: detailsType).first
+    }
+    
+    private func fillWithLoadedSettings() {
+        guard let value = durationSettings?.amount else { return }
+        provideValueForPickerView(value: value)
+        descriptionLabel.text = durationSettings?.descriptionOfSetting
     }
 }
 
 extension DurationSettingsViewController: UIPickerViewDelegate, UIPickerViewDataSource {
     
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
-        return 3
+        return Components.comoponentsCount
     }
     
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
         switch component {
-        case 1:
+        case Components.minutes:
+            return minutes.count
+        case Components.seconds:
+            return seconds.count
+        default:
             return 0
-        default:
-            return 60
-        }
-    }
-    
-    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-        switch component {
-        case 0:
-            return minutes[row]
-        case 2:
-            return seconds[row]
-        default:
-            return nil
         }
     }
     
@@ -85,28 +146,31 @@ extension DurationSettingsViewController: UIPickerViewDelegate, UIPickerViewData
         }
         
         label.textColor = UIColor.trackColor
+        label.font = .systemFont(ofSize: (viewForSettingPickerView.frame.size.height * 0.45))
         
-        label.font = UIFont.systemFont(ofSize: (viewForSettingPickerView.frame.size.height * 0.45))
+        colon.textColor = UIColor.trackColor
+        colon.font = .systemFont(ofSize: (viewForSettingPickerView.frame.size.height * 0.45))
+        colon.textAlignment = .center
         
         switch component {
-        case 0:
+        case Components.minutes:
             label.textAlignment = .right
             label.text = minutes[row]
-        case 2:
+        case Components.seconds:
             label.textAlignment = .left
             label.text = seconds[row]
         default:
             label.textAlignment = .center
-            label.text = "nil"
+            label.text = nil
         }
         return label
     }
     
     func pickerView(_ pickerView: UIPickerView, widthForComponent component: Int) -> CGFloat {
         switch component {
-        case 0,2:
+        case Components.minutes, Components.seconds:
             return (settingPickerView.frame.size.width * 0.4)
-        case 1:
+        case Components.colon:
             return (settingPickerView.frame.size.width * 0.2)
         default:
             return 1

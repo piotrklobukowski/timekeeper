@@ -8,30 +8,66 @@
 
 import UIKit
 
-class BreaksAmountSettingViewController: UIViewController {
+class BreaksAmountSettingViewController: UIViewController, SettingsDetailsInterface {
+
+    var detailsType: SettingsDetailsType?
+    var settings : Settings?
+    var delegate: SettingsUpdateDelegate?
     
     @IBOutlet var descriptionLabel: UILabel!
     @IBOutlet var viewForSettingPickerView: UIView!
     @IBOutlet var settingPickerView: UIPickerView!
     @IBOutlet var saveButton: UIButton!
     
-    let breaksAmount = String.breaksAmount
+    private let breaksAmount = String.breaksAmount
+    private var amountSettings : ClockworkSettings?
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         settingPickerView.delegate = self
         settingPickerView.dataSource = self
+        
+        loadSettingsAndView()
     }
     
     @IBAction func saveButtonPressed(_ sender: UIButton) {
+        guard let newValue = transformValueFromPicker(),
+        let type = detailsType,
+        let breaksAmountSettings = amountSettings else { return }
+        settings?.save(newValue, for: breaksAmountSettings, of: type)
+        delegate?.settingsDidUpdate()
+        navigationController?.popViewController(animated: true)
     }
     
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+    func loadSettingsAndView() {
+        do {
+        amountSettings = try loadBreaksAmountSettings()
+        } catch {
+            return
+        }
+        fillWithLoadedSettings()
     }
+    
+    private func transformValueFromPicker() -> Double? {
+        let index = settingPickerView.selectedRow(inComponent: 0)
+        guard let value = Double(breaksAmount[index]) else { return nil}
+        return value
+    }
+    
+    private func loadBreaksAmountSettings() throws -> ClockworkSettings? {
+        guard let detailsType = detailsType else { return nil }
+        return try settings?.loadSpecificSetting(for: detailsType).first
+    }
+    
+    private func fillWithLoadedSettings() {
+        guard let value = amountSettings?.amount else { return }
+        let stringValue = String(format: "%i", Int(value))
+        guard let valueIndex = breaksAmount.index(of: stringValue) else { return }
+        settingPickerView.selectRow(valueIndex, inComponent: 0, animated: false)
+        descriptionLabel.text = amountSettings?.descriptionOfSetting
+    }
+    
 }
 
 extension BreaksAmountSettingViewController: UIPickerViewDelegate, UIPickerViewDataSource {
@@ -41,7 +77,7 @@ extension BreaksAmountSettingViewController: UIPickerViewDelegate, UIPickerViewD
     }
     
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-        return 10
+        return breaksAmount.count
     }
     
     func pickerView(_ pickerView: UIPickerView, viewForRow row: Int, forComponent component: Int, reusing view: UIView?) -> UIView {

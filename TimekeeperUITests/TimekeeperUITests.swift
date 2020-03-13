@@ -28,70 +28,47 @@ class TimekeeperUITests: XCTestCase {
         super.tearDown()
     }
     
-    func testExample() {
-        // Use recording to get started writing UI tests.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
-    }
-    
     func testToDoListworking() {
-        
-        
         
         let app = XCUIApplication()
         app.buttons["To-Do List"].tap()
         
-        let toDoList11012020NavigationBar = app.navigationBars["To-do list 11.01.2020"]
+        let toDoList11012020NavigationBar = app.navigationBars["Your To-do List"]
         let addButton = toDoList11012020NavigationBar.buttons["Add"]
         addButton.tap()
         
         let hKey = app/*@START_MENU_TOKEN@*/.keys["h"]/*[[".keyboards.keys[\"h\"]",".keys[\"h\"]"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/
         hKey.tap()
-        hKey.tap()
         
         let eKey = app/*@START_MENU_TOKEN@*/.keys["e"]/*[[".keyboards.keys[\"e\"]",".keys[\"e\"]"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/
-        eKey.tap()
         eKey.tap()
         
         let lKey = app/*@START_MENU_TOKEN@*/.keys["l"]/*[[".keyboards.keys[\"l\"]",".keys[\"l\"]"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/
         lKey.tap()
-        lKey.tap()
         
         let pKey = app/*@START_MENU_TOKEN@*/.keys["p"]/*[[".keyboards.keys[\"p\"]",".keys[\"p\"]"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/
-        pKey.tap()
         pKey.tap()
         
         let spacjaKey = app/*@START_MENU_TOKEN@*/.keys["spacja"]/*[[".keyboards.keys[\"spacja\"]",".keys[\"spacja\"]"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/
         spacjaKey.tap()
-        spacjaKey.tap()
         
         let mKey = app/*@START_MENU_TOKEN@*/.keys["m"]/*[[".keyboards.keys[\"m\"]",".keys[\"m\"]"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/
-        mKey.tap()
         mKey.tap()
         
         let iKey = app/*@START_MENU_TOKEN@*/.keys["i"]/*[[".keyboards.keys[\"i\"]",".keys[\"i\"]"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/
         iKey.tap()
-        iKey.tap()
         
         let cKey = app/*@START_MENU_TOKEN@*/.keys["c"]/*[[".keyboards.keys[\"c\"]",".keys[\"c\"]"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/
-        cKey.tap()
         cKey.tap()
         
         let kKey = app/*@START_MENU_TOKEN@*/.keys["k"]/*[[".keyboards.keys[\"k\"]",".keys[\"k\"]"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/
         kKey.tap()
-        kKey.tap()
-        iKey.tap()
-        iKey.tap()
         
         let addTaskAlert = app.alerts["Add task"]
         addTaskAlert.buttons["Add"].tap()
         addButton.tap()
         
         let yKey = app/*@START_MENU_TOKEN@*/.keys["y"]/*[[".keyboards.keys[\"y\"]",".keys[\"y\"]"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/
-        yKey.tap()
-        yKey.tap()
-        yKey.tap()
-        yKey.tap()
-        yKey.tap()
         yKey.tap()
         addTaskAlert.buttons["Cancel"].tap()
         
@@ -101,8 +78,6 @@ class TimekeeperUITests: XCTestCase {
         emptyListTable.tap()
         toDoList11012020NavigationBar.buttons["Back"].tap()
         app.buttons["Finish"].tap()
-        
-        
         
     }
     

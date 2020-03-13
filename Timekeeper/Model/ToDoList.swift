@@ -24,6 +24,7 @@ struct ToDoList {
         task.identifier = Int64(UUID().hashValue)
         task.descriptionOfTask = description
         task.isDone = false
+        task.order = (tasks.sorted(by: { $0.order > $1.order }).first?.order ?? 0) + 1
         tasks.append(task)
         saveToDoList()
     }
@@ -65,7 +66,8 @@ struct ToDoList {
     mutating func loadToDoList() {
         let request : NSFetchRequest<Task> = Task.fetchRequest()
         do {
-            tasks = try context.fetch(request)
+            let loadedTasks = try context.fetch(request)
+            tasks = loadedTasks.sorted(by: { $0.order < $1.order })
         } catch {
             print("Error fetching data \(error)")
         }

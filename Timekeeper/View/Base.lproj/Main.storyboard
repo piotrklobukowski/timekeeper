@@ -241,7 +241,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="724"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="t9a-YP-daR">
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="justified" translatesAutoresizingMaskIntoConstraints="NO" id="t9a-YP-daR">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="690"/>
                                 <color key="backgroundColor" red="0.10457057505846024" green="0.14846614003181458" blue="0.17084217071533203" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
@@ -267,10 +267,10 @@
             </objects>
             <point key="canvasLocation" x="2161" y="1302"/>
         </scene>
-        <!--Duration Settings-->
+        <!--Duration Settings View Controller-->
         <scene sceneID="FJK-NG-wTh">
             <objects>
-                <viewController title="Duration Settings" id="FK6-fa-FYI" customClass="DurationSettingsViewController" customModule="Timekeeper" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="DurationSettingsViewControllerID" id="FK6-fa-FYI" customClass="DurationSettingsViewController" customModule="Timekeeper" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Duz-S7-spV">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="724"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -290,6 +290,12 @@
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="a0O-ej-RdX">
                                         <rect key="frame" x="0.0" y="158" width="375" height="200"/>
                                         <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text=":" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1dk-fX-qLC">
+                                                <rect key="frame" x="185.33333333333334" y="0.0" width="4.6666666666666572" height="200"/>
+                                                <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
+                                                <color key="textColor" red="0.19607843137254902" green="0.50980392156862742" blue="0.72156862745098038" alpha="1" colorSpace="calibratedRGB"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
                                             <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vKn-Ba-vJv">
                                                 <rect key="frame" x="0.0" y="-8" width="375" height="216"/>
                                             </pickerView>
@@ -300,6 +306,9 @@
                                             <constraint firstItem="vKn-Ba-vJv" firstAttribute="centerX" secondItem="a0O-ej-RdX" secondAttribute="centerX" id="AN2-Yu-AHY"/>
                                             <constraint firstItem="vKn-Ba-vJv" firstAttribute="leading" secondItem="a0O-ej-RdX" secondAttribute="leading" id="GKm-ia-mi3"/>
                                             <constraint firstItem="vKn-Ba-vJv" firstAttribute="centerY" secondItem="a0O-ej-RdX" secondAttribute="centerY" id="UuA-aH-i8a"/>
+                                            <constraint firstItem="1dk-fX-qLC" firstAttribute="top" secondItem="a0O-ej-RdX" secondAttribute="top" id="ml4-XZ-EBi"/>
+                                            <constraint firstAttribute="bottom" secondItem="1dk-fX-qLC" secondAttribute="bottom" id="raP-GE-lZK"/>
+                                            <constraint firstItem="1dk-fX-qLC" firstAttribute="centerX" secondItem="a0O-ej-RdX" secondAttribute="centerX" id="uhT-U9-ugx"/>
                                             <constraint firstAttribute="height" constant="200" id="xwG-JQ-zLY"/>
                                         </constraints>
                                     </view>
@@ -335,6 +344,7 @@
                         <viewLayoutGuide key="safeArea" id="7YP-pj-aFb"/>
                     </view>
                     <connections>
+                        <outlet property="colon" destination="1dk-fX-qLC" id="riu-lf-aVj"/>
                         <outlet property="descriptionLabel" destination="BRN-Ug-Uvf" id="qGz-oi-E3A"/>
                         <outlet property="saveButton" destination="80b-Vm-3dJ" id="lxm-sp-TuE"/>
                         <outlet property="settingPickerView" destination="vKn-Ba-vJv" id="x3S-5c-gc0"/>
@@ -411,10 +421,10 @@
             </objects>
             <point key="canvasLocation" x="37.600000000000001" y="36.945812807881772"/>
         </scene>
-        <!--Breaks Amount Settings-->
+        <!--Breaks Amount Setting View Controller-->
         <scene sceneID="vQa-WT-yja">
             <objects>
-                <viewController title="Breaks Amount Settings" id="Zsw-bY-vdM" customClass="BreaksAmountSettingViewController" customModule="Timekeeper" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="BreaksAmountSettingsViewControllerID" id="Zsw-bY-vdM" customClass="BreaksAmountSettingViewController" customModule="Timekeeper" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="tAW-Kd-u0O">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="724"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -489,10 +499,10 @@
             </objects>
             <point key="canvasLocation" x="3374" y="463"/>
         </scene>
-        <!--Sound Settings-->
+        <!--Sound Setting View Controller-->
         <scene sceneID="6i0-n6-wD0">
             <objects>
-                <viewController title="Sound Settings" id="O01-qB-rx1" customClass="SoundSettingViewController" customModule="Timekeeper" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="SoundSettingsViewControllerID" id="O01-qB-rx1" customClass="SoundSettingViewController" customModule="Timekeeper" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Iir-hC-yhJ">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="724"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

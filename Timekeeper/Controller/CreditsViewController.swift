@@ -8,31 +8,34 @@
 
 import UIKit
 
-class CreditsViewController: UIViewController {
+class CreditsViewController: UIViewController, SettingsDetailsInterface {
+    
+    var detailsType: SettingsDetailsType?
+    var credits: ClockworkSettings?
+    var settings: Settings?
+    var delegate: SettingsUpdateDelegate?
     
     @IBOutlet var creditsTextView: UITextView!
     
-
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
-    }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+        
+        do {
+            credits = try loadSoundSettings()
+            fillWithLoadedSettings()
+        } catch {
+            print("Error loading credits")
+        }
+        
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+    private func loadSoundSettings() throws -> ClockworkSettings? {
+        guard let detailsType = detailsType else { return nil }
+        return try settings?.loadSpecificSetting(for: detailsType).first
     }
-    */
+    
+    private func fillWithLoadedSettings() {
+        creditsTextView.text = credits?.settingString
+    }
 
 }

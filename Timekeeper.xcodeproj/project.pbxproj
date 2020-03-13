@@ -15,6 +15,8 @@
 		2106ABE423C775AE00D91724 /* TimekeeperUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2106ABE323C775AE00D91724 /* TimekeeperUITests.swift */; };
 		210F38F723D07920008D5C91 /* ToDoList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 210F38F623D07920008D5C91 /* ToDoList.swift */; };
 		210F390023D0D1E5008D5C91 /* MainViewContentUpdateDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 210F38FF23D0D1E5008D5C91 /* MainViewContentUpdateDelegate.swift */; };
+		211036B0241A7A5B00D09D94 /* BreaksAmountViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 211036AF241A7A5B00D09D94 /* BreaksAmountViewControllerTests.swift */; };
+		211036B2241A832F00D09D94 /* SoundSettingsViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 211036B1241A832F00D09D94 /* SoundSettingsViewControllerTests.swift */; };
 		2113A10524046514008ECBB6 /* String+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2113A10424046514008ECBB6 /* String+Extension.swift */; };
 		2114961B2407239800E4BD3C /* PomodoroClockworkTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2114961A2407239800E4BD3C /* PomodoroClockworkTest.swift */; };
 		211759312405B04D0012FF00 /* ClockSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 211759302405B04D0012FF00 /* ClockSettings.swift */; };
@@ -28,8 +30,13 @@
 		215FE9AC23EADD5D00C638F3 /* DurationSettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 215FE9AB23EADD5D00C638F3 /* DurationSettingsViewController.swift */; };
 		216C78D923E8885C006E0A99 /* PomodoroClockwork.swift in Sources */ = {isa = PBXBuildFile; fileRef = 216C78D823E8885C006E0A99 /* PomodoroClockwork.swift */; };
 		217482A623E06FC100C6F9BD /* Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 217482A523E06FC100C6F9BD /* Settings.swift */; };
+		217582F02417CB0000899C98 /* Bell_Sound_Ring.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 217582EC2417CAFF00899C98 /* Bell_Sound_Ring.mp3 */; };
+		217582F12417CB0000899C98 /* Japanese_Temple_Bell_Small.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 217582ED2417CAFF00899C98 /* Japanese_Temple_Bell_Small.mp3 */; };
+		217582F22417CB0000899C98 /* Ship_Bell.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 217582EE2417CAFF00899C98 /* Ship_Bell.mp3 */; };
+		217582F32417CB0000899C98 /* Front_Desk_Bells.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 217582EF2417CB0000899C98 /* Front_Desk_Bells.mp3 */; };
 		2179628B23CA24F700D5D955 /* ToDoListTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2179628A23CA24F700D5D955 /* ToDoListTableViewController.swift */; };
 		2179628D23CA250F00D5D955 /* SettingsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2179628C23CA250F00D5D955 /* SettingsTableViewController.swift */; };
+		219A707B2414122C00B919AF /* DateComponentsFormatter+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 219A707A2414122C00B919AF /* DateComponentsFormatter+Extension.swift */; };
 		21BE2B2823F6FFB900ABFD25 /* TestCoreData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21BE2B2723F6FFB900ABFD25 /* TestCoreData.swift */; };
 		21BE2B2A23F720D500ABFD25 /* SettingsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21BE2B2923F720D500ABFD25 /* SettingsTests.swift */; };
 		21CA3847240FD10800FC8E87 /* BreaksAmountSettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21CA3846240FD10800FC8E87 /* BreaksAmountSettingViewController.swift */; };
@@ -37,6 +44,9 @@
 		21CA384B240FD37100FC8E87 /* CreditsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21CA384A240FD37100FC8E87 /* CreditsViewController.swift */; };
 		21D531BB240EA361000B5683 /* UIColor+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21D531BA240EA361000B5683 /* UIColor+Extension.swift */; };
 		21DB859423FAA58D00C71512 /* ToDoListTableViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21DB859323FAA58D00C71512 /* ToDoListTableViewControllerTests.swift */; };
+		21E3502224165D0F006A1868 /* DurationSettingsViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21E3502124165D0F006A1868 /* DurationSettingsViewControllerTests.swift */; };
+		21E350242416D325006A1868 /* SettingsDetailsType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21E350232416D325006A1868 /* SettingsDetailsType.swift */; };
+		21E350272416D57D006A1868 /* SettingsDetailsInterface.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21E350262416D57D006A1868 /* SettingsDetailsInterface.swift */; };
 		261D671D45C672F8B10A5BAA /* Pods_Timekeeper_TimekeeperUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C245926D63455C27342B593B /* Pods_Timekeeper_TimekeeperUITests.framework */; };
 		553AAE5EE8905F9DB163DABD /* Pods_TimekeeperTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D82FCCEF6DAD27D2B1FC84F5 /* Pods_TimekeeperTests.framework */; };
 		AB8BF17CC237724B36F3C253 /* Pods_Timekeeper.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5E5367981DB4420CF1B3913F /* Pods_Timekeeper.framework */; };
@@ -74,6 +84,8 @@
 		2106ABE523C775AE00D91724 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		210F38F623D07920008D5C91 /* ToDoList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToDoList.swift; sourceTree = "<group>"; };
 		210F38FF23D0D1E5008D5C91 /* MainViewContentUpdateDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewContentUpdateDelegate.swift; sourceTree = "<group>"; };
+		211036AF241A7A5B00D09D94 /* BreaksAmountViewControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BreaksAmountViewControllerTests.swift; sourceTree = "<group>"; };
+		211036B1241A832F00D09D94 /* SoundSettingsViewControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SoundSettingsViewControllerTests.swift; sourceTree = "<group>"; };
 		2113A10424046514008ECBB6 /* String+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Extension.swift"; sourceTree = "<group>"; };
 		2114961A2407239800E4BD3C /* PomodoroClockworkTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PomodoroClockworkTest.swift; sourceTree = "<group>"; };
 		211759302405B04D0012FF00 /* ClockSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClockSettings.swift; sourceTree = "<group>"; };
@@ -87,8 +99,13 @@
 		215FE9AB23EADD5D00C638F3 /* DurationSettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DurationSettingsViewController.swift; sourceTree = "<group>"; };
 		216C78D823E8885C006E0A99 /* PomodoroClockwork.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = PomodoroClockwork.swift; path = Timekeeper/Model/PomodoroClockwork.swift; sourceTree = SOURCE_ROOT; };
 		217482A523E06FC100C6F9BD /* Settings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Settings.swift; sourceTree = "<group>"; };
+		217582EC2417CAFF00899C98 /* Bell_Sound_Ring.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = Bell_Sound_Ring.mp3; sourceTree = "<group>"; };
+		217582ED2417CAFF00899C98 /* Japanese_Temple_Bell_Small.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = Japanese_Temple_Bell_Small.mp3; sourceTree = "<group>"; };
+		217582EE2417CAFF00899C98 /* Ship_Bell.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = Ship_Bell.mp3; sourceTree = "<group>"; };
+		217582EF2417CB0000899C98 /* Front_Desk_Bells.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = Front_Desk_Bells.mp3; sourceTree = "<group>"; };
 		2179628A23CA24F700D5D955 /* ToDoListTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToDoListTableViewController.swift; sourceTree = "<group>"; };
 		2179628C23CA250F00D5D955 /* SettingsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsTableViewController.swift; sourceTree = "<group>"; };
+		219A707A2414122C00B919AF /* DateComponentsFormatter+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DateComponentsFormatter+Extension.swift"; sourceTree = "<group>"; };
 		21BE2B2723F6FFB900ABFD25 /* TestCoreData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestCoreData.swift; sourceTree = "<group>"; };
 		21BE2B2923F720D500ABFD25 /* SettingsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsTests.swift; sourceTree = "<group>"; };
 		21CA3846240FD10800FC8E87 /* BreaksAmountSettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BreaksAmountSettingViewController.swift; sourceTree = "<group>"; };
@@ -96,6 +113,9 @@
 		21CA384A240FD37100FC8E87 /* CreditsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreditsViewController.swift; sourceTree = "<group>"; };
 		21D531BA240EA361000B5683 /* UIColor+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Extension.swift"; sourceTree = "<group>"; };
 		21DB859323FAA58D00C71512 /* ToDoListTableViewControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToDoListTableViewControllerTests.swift; sourceTree = "<group>"; };
+		21E3502124165D0F006A1868 /* DurationSettingsViewControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DurationSettingsViewControllerTests.swift; sourceTree = "<group>"; };
+		21E350232416D325006A1868 /* SettingsDetailsType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsDetailsType.swift; sourceTree = "<group>"; };
+		21E350262416D57D006A1868 /* SettingsDetailsInterface.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsDetailsInterface.swift; sourceTree = "<group>"; };
 		2C670E1C7C3244BD1450E577 /* Pods-TimekeeperTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TimekeeperTests.release.xcconfig"; path = "Target Support Files/Pods-TimekeeperTests/Pods-TimekeeperTests.release.xcconfig"; sourceTree = "<group>"; };
 		31F926EF46ADBC5938F3C318 /* Pods-Timekeeper-TimekeeperUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Timekeeper-TimekeeperUITests.debug.xcconfig"; path = "Target Support Files/Pods-Timekeeper-TimekeeperUITests/Pods-Timekeeper-TimekeeperUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		3CF3C71D39BD2D271DCBFF67 /* Pods-Timekeeper-TimekeeperUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Timekeeper-TimekeeperUITests.release.xcconfig"; path = "Target Support Files/Pods-Timekeeper-TimekeeperUITests/Pods-Timekeeper-TimekeeperUITests.release.xcconfig"; sourceTree = "<group>"; };
@@ -160,6 +180,7 @@
 		2106ABC223C775AB00D91724 /* Timekeeper */ = {
 			isa = PBXGroup;
 			children = (
+				217582EB2417CAD000899C98 /* Sounds */,
 				2106ABCF23C775AE00D91724 /* Info.plist */,
 				2106ABC323C775AB00D91724 /* AppDelegate.swift */,
 				2106ABCA23C775AE00D91724 /* Assets.xcassets */,
@@ -168,6 +189,7 @@
 				2113A103240464FA008ECBB6 /* Extensions */,
 				2106ABCC23C775AE00D91724 /* LaunchScreen.storyboard */,
 				210F38FB23D07959008D5C91 /* Model */,
+				21E350252416D54E006A1868 /* Protocols */,
 				210F38FC23D0796D008D5C91 /* View */,
 			);
 			path = Timekeeper;
@@ -182,6 +204,9 @@
 				21DB859323FAA58D00C71512 /* ToDoListTableViewControllerTests.swift */,
 				2147B63F23FC20A200A85B28 /* SettingsTableViewControllerTests.swift */,
 				21BE2B2723F6FFB900ABFD25 /* TestCoreData.swift */,
+				21E3502124165D0F006A1868 /* DurationSettingsViewControllerTests.swift */,
+				211036AF241A7A5B00D09D94 /* BreaksAmountViewControllerTests.swift */,
+				211036B1241A832F00D09D94 /* SoundSettingsViewControllerTests.swift */,
 				211759322405BA440012FF00 /* ClockTest.swift */,
 				2114961A2407239800E4BD3C /* PomodoroClockworkTest.swift */,
 			);
@@ -201,6 +226,11 @@
 			isa = PBXGroup;
 			children = (
 				211DAC5A23E19158006CA1D3 /* DataModel.xcdatamodeld */,
+				217482A523E06FC100C6F9BD /* Settings.swift */,
+				210F38F623D07920008D5C91 /* ToDoList.swift */,
+				216C78D823E8885C006E0A99 /* Clockwork.swift */,
+				211759302405B04D0012FF00 /* ClockSettings.swift */,
+				21E350232416D325006A1868 /* SettingsDetailsType.swift */,
 				213AF02423F59D3A00EFC750 /* CoreDataStack.swift */,
 				210F38F623D07920008D5C91 /* ToDoList.swift */,
 				217482A523E06FC100C6F9BD /* Settings.swift */,
@@ -247,8 +277,36 @@
 				2113A10424046514008ECBB6 /* String+Extension.swift */,
 				21D531BA240EA361000B5683 /* UIColor+Extension.swift */,
 				211D441F240F16C30092407A /* RoundedButton.swift */,
+				219A707A2414122C00B919AF /* DateComponentsFormatter+Extension.swift */,
 			);
 			path = Extensions;
+			sourceTree = "<group>";
+		};
+		213AF02323F59D1D00EFC750 /* Managers */ = {
+			isa = PBXGroup;
+			children = (
+				213AF02423F59D3A00EFC750 /* CoreDataStack.swift */,
+			);
+			path = Managers;
+			sourceTree = "<group>";
+		};
+		217582EB2417CAD000899C98 /* Sounds */ = {
+			isa = PBXGroup;
+			children = (
+				217582EC2417CAFF00899C98 /* Bell_Sound_Ring.mp3 */,
+				217582EF2417CB0000899C98 /* Front_Desk_Bells.mp3 */,
+				217582ED2417CAFF00899C98 /* Japanese_Temple_Bell_Small.mp3 */,
+				217582EE2417CAFF00899C98 /* Ship_Bell.mp3 */,
+			);
+			path = Sounds;
+			sourceTree = "<group>";
+		};
+		21E350252416D54E006A1868 /* Protocols */ = {
+			isa = PBXGroup;
+			children = (
+				21E350262416D57D006A1868 /* SettingsDetailsInterface.swift */,
+			);
+			path = Protocols;
 			sourceTree = "<group>";
 		};
 		8E4F221E1BA652B67AF0BD61 /* Frameworks */ = {
@@ -384,7 +442,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				2106ABCE23C775AE00D91724 /* LaunchScreen.storyboard in Resources */,
+				217582F32417CB0000899C98 /* Front_Desk_Bells.mp3 in Resources */,
+				217582F02417CB0000899C98 /* Bell_Sound_Ring.mp3 in Resources */,
 				2106ABCB23C775AE00D91724 /* Assets.xcassets in Resources */,
+				217582F12417CB0000899C98 /* Japanese_Temple_Bell_Small.mp3 in Resources */,
+				217582F22417CB0000899C98 /* Ship_Bell.mp3 in Resources */,
 				2106ABC923C775AB00D91724 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -491,13 +553,16 @@
 			files = (
 				211759312405B04D0012FF00 /* ClockSettings.swift in Sources */,
 				210F390023D0D1E5008D5C91 /* MainViewContentUpdateDelegate.swift in Sources */,
+				21E350272416D57D006A1868 /* SettingsDetailsInterface.swift in Sources */,
 				21CA3849240FD12100FC8E87 /* SoundSettingViewController.swift in Sources */,
 				215FE9AC23EADD5D00C638F3 /* DurationSettingsViewController.swift in Sources */,
 				211DAC5C23E19158006CA1D3 /* DataModel.xcdatamodeld in Sources */,
+				21E350242416D325006A1868 /* SettingsDetailsType.swift in Sources */,
 				2179628D23CA250F00D5D955 /* SettingsTableViewController.swift in Sources */,
 				2113A10524046514008ECBB6 /* String+Extension.swift in Sources */,
 				217482A623E06FC100C6F9BD /* Settings.swift in Sources */,
 				21D531BB240EA361000B5683 /* UIColor+Extension.swift in Sources */,
+				219A707B2414122C00B919AF /* DateComponentsFormatter+Extension.swift in Sources */,
 				211D4420240F16C30092407A /* RoundedButton.swift in Sources */,
 				2106ABC623C775AB00D91724 /* MainViewController.swift in Sources */,
 				210F38F723D07920008D5C91 /* ToDoList.swift in Sources */,
@@ -516,9 +581,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				2147B64023FC20A200A85B28 /* SettingsTableViewControllerTests.swift in Sources */,
+				21E3502224165D0F006A1868 /* DurationSettingsViewControllerTests.swift in Sources */,
 				21BE2B2823F6FFB900ABFD25 /* TestCoreData.swift in Sources */,
+				211036B0241A7A5B00D09D94 /* BreaksAmountViewControllerTests.swift in Sources */,
 				2114961B2407239800E4BD3C /* PomodoroClockworkTest.swift in Sources */,
 				21BE2B2A23F720D500ABFD25 /* SettingsTests.swift in Sources */,
+				211036B2241A832F00D09D94 /* SoundSettingsViewControllerTests.swift in Sources */,
 				21DB859423FAA58D00C71512 /* ToDoListTableViewControllerTests.swift in Sources */,
 				211759332405BA440012FF00 /* ClockTest.swift in Sources */,
 				213AF02223F57EBC00EFC750 /* ToDoListTests.swift in Sources */,
