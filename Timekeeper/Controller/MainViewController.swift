@@ -174,10 +174,11 @@ extension MainViewController: PomodoroClockworkDelegate {
             return newValue
         }()
         
-        let countdown = endTime - currentTime
+        let roundedCurrentTime = currentTime.rounded()
+        let countdown = endTime - roundedCurrentTime
         
         var newProgress: Double {
-            var newProgress = (currentTime + 0.5)/endTime
+            var newProgress = roundedCurrentTime/endTime
             if newProgress > 1.0 {
                 newProgress = 1.0
             }
