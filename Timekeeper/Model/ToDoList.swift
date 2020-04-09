@@ -6,13 +6,12 @@
 //  Copyright © 2020 Piotr Kłobukowski. All rights reserved.
 //
 
-import Foundation
 import UIKit
 import CoreData
 
 struct ToDoList {
     
-    init(context: NSManagedObjectContext = (UIApplication.shared.delegate as! AppDelegate).coreDataStack.persistentContainer.viewContext) {
+    init(context: NSManagedObjectContext = (UIApplication.shared.delegate as! AppDelegate).coreDataStack.managedObjectContext) {
         self.context = context
     }
     

@@ -14,24 +14,15 @@ protocol SettingsUpdateDelegate: AnyObject {
 
 class SettingsTableViewController: UITableViewController {
     
+    weak var mainVCdelegate: MainViewContentUpdateDelegate?
     var settings: Settings?
+    var pomodoroAndClockSettingsChanged = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        setupSettings()
+        navigationController?.delegate = self
         settings?.loadAllSettings()
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(true)
-        navigationController?.isNavigationBarHidden = false
-    }
-    
-    private func setupSettings() {
-        if settings == nil {
-            settings = Settings()
-        }
     }
     
     private func clockworkConfiguration(at index: IndexPath) -> Double {
@@ -59,8 +50,7 @@ class SettingsTableViewController: UITableViewController {
             }
         case SettingsSections.numberOfBreaks.rawValue:
             switch index.row {
-            case 0: return SettingsDetailsType.longBreaksNumber
-            case 1: return SettingsDetailsType.shortBreaksNumber
+            case 0: return SettingsDetailsType.shortBreaksNumber
             default: return nil
             }
         default: return nil
@@ -108,7 +98,7 @@ class SettingsTableViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: String.StoryboardIdentifiers.settingCell.rawValue , for: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: String.StoryboardIdentifiers.settingCell.rawValue, for: indexPath)
         
         cell.textLabel?.text = settings?.clockworkConfigurations[indexPath.section]?[indexPath.row].descriptionOfSetting
         
@@ -145,31 +135,43 @@ class SettingsTableViewController: UITableViewController {
     // MARK: - Segue Preparation
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        guard let senderIndexPath = (sender as? SettingsTableViewController)?.tableView.indexPathForSelectedRow,
-            var settingsDetails = segue.destination as? SettingsDetailsInterface else { return }
-        
-        settingsDetails.settings = settings
-        settingsDetails.delegate = self
-        
-        switch segue.identifier {
-        case String.StoryboardIdentifiers.segueOpenDurationSettings.rawValue:
-            settingsDetails.detailsType = settingsType(for: senderIndexPath)
-        case String.StoryboardIdentifiers.segueOpenBreaksAmountSettings.rawValue:
-            settingsDetails.detailsType = settingsType(for: senderIndexPath)
-        case String.StoryboardIdentifiers.segueOpenSoundSettings.rawValue:
-            settingsDetails.detailsType = .alertSound
-        case String.StoryboardIdentifiers.segueOpenCredits.rawValue:
-            settingsDetails.detailsType = .credits
-        default:
-            return
+        if let senderIndexPath = (sender as? SettingsTableViewController)?.tableView.indexPathForSelectedRow,
+            var settingsDetails = segue.destination as? SettingsDetailsInterface {
+            
+            settingsDetails.settings = settings
+            settingsDetails.delegate = self
+            
+            switch segue.identifier {
+            case String.StoryboardIdentifiers.segueOpenDurationSettings.rawValue:
+                settingsDetails.detailsType = settingsType(for: senderIndexPath)
+            case String.StoryboardIdentifiers.segueOpenBreaksAmountSettings.rawValue:
+                settingsDetails.detailsType = settingsType(for: senderIndexPath)
+            case String.StoryboardIdentifiers.segueOpenSoundSettings.rawValue:
+                settingsDetails.detailsType = .alertSound
+            case String.StoryboardIdentifiers.segueOpenCredits.rawValue:
+                settingsDetails.detailsType = .credits
+            default:
+                return
+            }
         }
     }
-
 }
 
 extension SettingsTableViewController: SettingsUpdateDelegate {
     
     func settingsDidUpdate() {
         tableView.reloadData()
+        pomodoroAndClockSettingsChanged = true
+    }
+}
+
+extension SettingsTableViewController: UINavigationControllerDelegate {
+    func navigationController(_ navigationController: UINavigationController, willShow viewController: UIViewController, animated: Bool) {
+        guard let mainVC = viewController as? MainViewController else { return }
+        if pomodoroAndClockSettingsChanged {
+            mainVC.updateMainVCwithSettings()
+        } else {
+            mainVC.settings = settings
+        }
     }
 }

@@ -30,7 +30,7 @@ class ClockTest: XCTestCase {
             exp.fulfill()
         })
         wait(for: [exp], timeout: 3)
-        XCTAssertEqual(sut.currentTimeText, "0:02")
+        XCTAssertEqual(sut.currentTimeText, "00:02")
     }
     
     func testClockChangesAfterOneSecond() {

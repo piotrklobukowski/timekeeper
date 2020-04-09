@@ -38,7 +38,7 @@ class SettingsTests: XCTestCase {
     func testAddDefaultSettings() {
         settings.loadAllSettings()
         
-        XCTAssertEqual(settings.breaksNumberSettings.count, 2)
+        XCTAssertEqual(settings.breaksNumberSettings.count, 1)
         XCTAssertEqual(settings.durationSettings.count, 3)
         XCTAssertEqual(settings.soundSettings.count, 1)
         XCTAssertEqual(settings.anotherInformations.count, 1)
@@ -51,7 +51,7 @@ class SettingsTests: XCTestCase {
         XCTAssertNotEqual(settings.soundSettings.count, 2)
         XCTAssertNotEqual(settings.anotherInformations.count, 2)
         
-        XCTAssertEqual(settings.breaksNumberSettings.count, 2)
+        XCTAssertEqual(settings.breaksNumberSettings.count, 1)
         XCTAssertEqual(settings.durationSettings.count, 3)
         XCTAssertEqual(settings.soundSettings.count, 1)
         XCTAssertEqual(settings.anotherInformations.count, 1)
@@ -118,7 +118,7 @@ class SettingsTests: XCTestCase {
         settings.save(focusTimeChange, for: settings.durationSettings[0], of: .focusTime)
         settings.save(shortBreakDurationChange, for: settings.durationSettings[1], of: .shortBreak)
         settings.save(longBreakDurationChange, for: settings.durationSettings[2], of: .longBreak)
-        settings.save(shortBreaksAmount, for: settings.breaksNumberSettings[1], of: .shortBreaksNumber)
+        settings.save(shortBreaksAmount, for: settings.breaksNumberSettings[0], of: .shortBreaksNumber)
         settings.save(soundTitleChange, for: settings.soundSettings[0], of: .alertSound)
         
         settings = nil
@@ -128,7 +128,7 @@ class SettingsTests: XCTestCase {
         XCTAssertEqual(settings.durationSettings[0].amount, focusTimeChange)
         XCTAssertEqual(settings.durationSettings[1].amount, shortBreakDurationChange)
         XCTAssertEqual(settings.durationSettings[2].amount, longBreakDurationChange)
-        XCTAssertEqual(settings.breaksNumberSettings[1].amount, shortBreaksAmount)
+        XCTAssertEqual(settings.breaksNumberSettings[0].amount, shortBreaksAmount)
         XCTAssertEqual(settings.soundSettings[0].settingString, soundTitleChange)
     }
     

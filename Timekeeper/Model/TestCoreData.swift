@@ -8,7 +8,6 @@
 
 import Foundation
 import CoreData
-@testable import Timekeeper
 
 class TestCoreData: CoreDataStack {
     override init(coreDataModelName: String) {
@@ -24,7 +23,5 @@ class TestCoreData: CoreDataStack {
             
             return psCoordinator
         }()
-        
     }
-    
 }

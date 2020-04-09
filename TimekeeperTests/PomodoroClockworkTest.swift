@@ -40,6 +40,18 @@ class PomodoroClockworkTest: XCTestCase {
         XCTAssertEqual(sut.currentPhase, PomodoroPhases.work)
     }
     
+    func testTerminateMethodWorksProperrly() {
+        let exp = expectation(description: "It's 1 seconds later")
+        sut.start()
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1, execute: {
+            exp.fulfill()
+        })
+        wait(for: [exp], timeout: 2)
+        sut.terminate()
+        XCTAssertEqual(sut.currentPhase, PomodoroPhases.work)
+        XCTAssertEqual(sut.currentPhaseTime, "00:00")
+    }
+    
     func testResumeMethodWorksProperrly() {
         let exp = expectation(description: "It's 1 second later")
         sut.start()
@@ -60,7 +72,7 @@ class PomodoroClockworkTest: XCTestCase {
         })
         wait(for: [exp], timeout: 2)
         XCTAssertEqual(sut.currentPhase, PomodoroPhases.shortBreak)
-        XCTAssertEqual(sut.currentPhaseTime, "0:00")
+        XCTAssertEqual(sut.currentPhaseTime, "00:00")
     }
     
     func testSwitchToWorkTimeAfterShortBreak() {
@@ -71,7 +83,7 @@ class PomodoroClockworkTest: XCTestCase {
         })
         wait(for: [exp], timeout: 3)
         XCTAssertEqual(sut.currentPhase, PomodoroPhases.work)
-        XCTAssertEqual(sut.currentPhaseTime, "0:00")
+        XCTAssertEqual(sut.currentPhaseTime, "00:00")
     }
     
     func testSwitchToLongBreakAfterGivenNumberOfShortBreaks() {
@@ -82,7 +94,7 @@ class PomodoroClockworkTest: XCTestCase {
         })
         wait(for: [exp], timeout: 6)
         XCTAssertEqual(sut.currentPhase, PomodoroPhases.longBreak)
-        XCTAssertEqual(sut.currentPhaseTime, "0:00")
+        XCTAssertEqual(sut.currentPhaseTime, "00:00")
     }
     
     func testSwitchToWorkTimeAfterLongBreak() {
@@ -93,7 +105,7 @@ class PomodoroClockworkTest: XCTestCase {
         })
         wait(for: [exp], timeout: 8)
         XCTAssertEqual(sut.currentPhase, PomodoroPhases.work)
-        XCTAssertEqual(sut.currentPhaseTime, "0:00")
+        XCTAssertEqual(sut.currentPhaseTime, "00:00")
     }
     
     func testSwitchToShortBreakAfterOneLongBreakAndWorkTime() {
@@ -102,9 +114,9 @@ class PomodoroClockworkTest: XCTestCase {
         DispatchQueue.main.asyncAfter(deadline: .now() + 8, execute: {
             exp.fulfill()
         })
-        wait(for: [exp], timeout: 10)
+        wait(for: [exp], timeout: 9)
         XCTAssertEqual(sut.currentPhase, PomodoroPhases.shortBreak)
-        XCTAssertEqual(sut.currentPhaseTime, "0:00")
+        XCTAssertEqual(sut.currentPhaseTime, "00:00")
     }
     
     /*

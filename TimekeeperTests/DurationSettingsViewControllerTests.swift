@@ -34,6 +34,7 @@ class DurationSettingsViewControllerTests: XCTestCase {
     func testShortBreakInitialForPickerView() {
         
         durationViewController.detailsType = .shortBreak
+        durationViewController.loadSettingsAndView()
         
         XCTAssertEqual(durationViewController.descriptionLabel.text, "Duration of short break")
         XCTAssertEqual(durationViewController.settingPickerView.selectedRow(inComponent: 0), 0)
@@ -43,6 +44,7 @@ class DurationSettingsViewControllerTests: XCTestCase {
     func testFocusTimeInitialValueForPickerView() {
         
         durationViewController.detailsType = .focusTime
+        durationViewController.loadSettingsAndView()
         
         XCTAssertEqual(durationViewController.descriptionLabel.text, "Duration of focus time")
         XCTAssertEqual(durationViewController.settingPickerView.selectedRow(inComponent: 0), 0)
@@ -52,6 +54,7 @@ class DurationSettingsViewControllerTests: XCTestCase {
     func testLongBreakInitialValueForPickerView() {
         
         durationViewController.detailsType = .longBreak
+        durationViewController.loadSettingsAndView()
         
         XCTAssertEqual(durationViewController.descriptionLabel.text, "Duration of long break")
         XCTAssertEqual(durationViewController.settingPickerView.selectedRow(inComponent: 0), 0)
@@ -61,6 +64,7 @@ class DurationSettingsViewControllerTests: XCTestCase {
     func testSaveFocusTimeSettings() {
         
         durationViewController.detailsType = .focusTime
+        durationViewController.loadSettingsAndView()
         
         durationViewController.settingPickerView.selectRow(10, inComponent: 0, animated: false)
         durationViewController.settingPickerView.selectRow(0, inComponent: 2, animated: false)
@@ -71,6 +75,7 @@ class DurationSettingsViewControllerTests: XCTestCase {
     func testSaveShortBreakSettings() {
         
         durationViewController.detailsType = .shortBreak
+        durationViewController.loadSettingsAndView()
         
         durationViewController.settingPickerView.selectRow(8, inComponent: 0, animated: false)
         durationViewController.settingPickerView.selectRow(20, inComponent: 2, animated: false)
@@ -81,6 +86,7 @@ class DurationSettingsViewControllerTests: XCTestCase {
     func testSaveLongBreakSettings() {
         
         durationViewController.detailsType = .longBreak
+        durationViewController.loadSettingsAndView()
         
         durationViewController.settingPickerView.selectRow(1, inComponent: 0, animated: false)
         durationViewController.settingPickerView.selectRow(0, inComponent: 2, animated: false)
@@ -91,6 +97,7 @@ class DurationSettingsViewControllerTests: XCTestCase {
     func testSaveMaxFocusTimeSettings() {
         
         durationViewController.detailsType = .focusTime
+        durationViewController.loadSettingsAndView()
         
         durationViewController.settingPickerView.selectRow(0, inComponent: 0, animated: false)
         durationViewController.settingPickerView.selectRow(59, inComponent: 2, animated: false)

@@ -10,4 +10,5 @@ import Foundation
 
 protocol MainViewContentUpdateDelegate: AnyObject {
     func updateTaskLabel(with taskID: Int64)
+    func updateMainVCwithSettings()
 }

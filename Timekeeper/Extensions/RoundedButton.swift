@@ -10,9 +10,9 @@ import UIKit
 
 class RoundedButton: UIButton {
     
-    required init?(coder aDecoder: NSCoder) {
-        super.init(coder: aDecoder)
-        layer.cornerRadius = 30
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        layer.cornerRadius = bounds.height / 2
     }
     
     private func startAnimatingPressActions() {

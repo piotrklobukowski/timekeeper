@@ -8,10 +8,6 @@
 
 import UIKit
 
-protocol PomodoroClockworkDelegate: AnyObject {
-    func updateTimeInClockworkLabel(currentTime: CFTimeInterval, phase: PomodoroPhases)
-    func changeBreakInformationLabel(phase: PomodoroPhases, numberOfShortBreaks: Int?)
-}
 
 class PomodoroClockwork {
 
@@ -30,7 +26,7 @@ class PomodoroClockwork {
     }
     
     var currentPhaseTime: String {
-        return clock.currentTimeText!
+        return clock.currentTimeText ?? "00:00"
     }
     
     func start() {
@@ -39,6 +35,13 @@ class PomodoroClockwork {
     
     func pause() {
         clock.pauseTimer()
+    }
+    
+    func terminate() {
+        clock.terminateTimer()
+        currentPhase = .work
+        shortBreaksElapsed = 0
+        delegate?.resetDataForClockworkRepresentation(numberOfShortBreaks: shortBreaksElapsed)
     }
     
     private func resetClock() {
@@ -51,7 +54,8 @@ class PomodoroClockwork {
 extension PomodoroClockwork: ClockDelegate {
     
     func timeDidChange() {
-        guard let currentTime = clock.currentTime else { return }
+        guard let ct = clock.currentTime else { return }
+        let currentTime = ct.rounded(.down)
         delegate?.updateTimeInClockworkLabel(currentTime: currentTime, phase: currentPhase)
         switch currentPhase {
         case .work:

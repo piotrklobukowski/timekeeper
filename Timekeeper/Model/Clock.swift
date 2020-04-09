@@ -32,11 +32,8 @@ class Clock {
     }()
     
     func startTimer() {
-        startTime = CACurrentMediaTime()
-        if totalTimeElapsed == nil {
-            setCurrentTimeValues(with: 0)
-        }
         timer = createTimer()
+        startTime = CACurrentMediaTime()
         timer?.fire()
     }
     
@@ -69,7 +66,7 @@ class Clock {
     
     private func setCurrentTimeValues(with newValue: CFTimeInterval) {
         currentTime = newValue
-        currentTimeText = formatter.string(from: newValue)
+        currentTimeText = formatter.clockFormat(from: newValue)
     }
     
 }

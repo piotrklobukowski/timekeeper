@@ -10,30 +10,19 @@ import UIKit
 
 class DurationSettingsViewController: UIViewController, SettingsDetailsInterface {
     
-    private enum Components {
-        static var minutes = 0
-        static var seconds = 2
-        static var colon = 1
-        static var comoponentsCount = 3
-    }
-    
-    var settings: Settings?
-    var detailsType: SettingsDetailsType? {
-        didSet {
-            guard detailsType != nil else { return }
-            loadSettingsAndView()
-        }
-    }
-    weak var delegate: SettingsUpdateDelegate?
-    
     @IBOutlet var descriptionLabel: UILabel!
     @IBOutlet var viewForSettingPickerView: UIView!
     @IBOutlet var settingPickerView: UIPickerView!
     @IBOutlet var saveButton: UIButton!
     @IBOutlet var colon: UILabel!
     
+    weak var delegate: SettingsUpdateDelegate?
+
     let minutes = String.timeSixty
     let seconds = String.timeSixty
+    
+    var settings: Settings?
+    var detailsType: SettingsDetailsType?
     
     private var durationSettings: ClockworkSettings?
     
@@ -68,7 +57,7 @@ class DurationSettingsViewController: UIViewController, SettingsDetailsInterface
         print("Perform save for new value: \(selectedTime)")
     }
     
-    private func loadSettingsAndView() {
+    func loadSettingsAndView() {
         do {
             durationSettings = try loadDurationSettings()
         } catch {
@@ -88,7 +77,15 @@ class DurationSettingsViewController: UIViewController, SettingsDetailsInterface
             let seconds = numberFormatter.number(from: selectedSeconds)?.doubleValue
             else { return nil }
         
-        return minutes * 60 + seconds
+        let double: Double = {
+            var value = minutes * 60 + seconds
+            if value < 5.0 {
+                value = 5.0
+            }
+            return value
+        }()
+        
+        return double
     }
     
     private func provideValueForPickerView(value: Double) {
@@ -119,6 +116,13 @@ class DurationSettingsViewController: UIViewController, SettingsDetailsInterface
 }
 
 extension DurationSettingsViewController: UIPickerViewDelegate, UIPickerViewDataSource {
+    
+    private enum Components {
+        static var minutes = 0
+        static var seconds = 2
+        static var colon = 1
+        static var comoponentsCount = 3
+    }
     
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
         return Components.comoponentsCount
@@ -179,5 +183,27 @@ extension DurationSettingsViewController: UIPickerViewDelegate, UIPickerViewData
     
     func pickerView(_ pickerView: UIPickerView, rowHeightForComponent component: Int) -> CGFloat {
         return viewForSettingPickerView.frame.size.height
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+        guard pickerView.selectedRow(inComponent: Components.minutes) == minutes.index(of: "00") else { return }
+        guard let minValue = seconds.index(of: "05") else { return }
+        guard pickerView.selectedRow(inComponent: Components.seconds) < minValue else { return }
+        pickerView.selectRow(minValue, inComponent: Components.seconds, animated: true)
+    }
+    
+}
+
+extension DurationSettingsViewController: UIPickerViewAccessibilityDelegate {
+    
+    func pickerView(_ pickerView: UIPickerView, accessibilityLabelForComponent component: Int) -> String? {
+        switch component {
+        case Components.minutes:
+            return "minutes"
+        case Components.seconds:
+            return "seconds"
+        default:
+            return nil
+        }
     }
 }

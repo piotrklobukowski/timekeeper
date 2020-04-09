@@ -70,7 +70,6 @@ class SoundSettingViewController: UIViewController, SettingsDetailsInterface {
             let type = detailsType,
             let soundSettings = soundSettings else { return }
         settings?.save(newValue, for: soundSettings, of: type)
-        delegate?.settingsDidUpdate()
         navigationController?.popViewController(animated: true)
     }
     
@@ -116,7 +115,7 @@ extension SoundSettingViewController: UIPickerViewDelegate, UIPickerViewDataSour
         label.textColor = UIColor.trackColor
         
         label.font = UIFont.systemFont(ofSize: (viewForSettingPickerView.frame.size.height * 0.25))
-        
+        label.adjustsFontSizeToFitWidth = true
         label.textAlignment = .center
         label.numberOfLines = 2
         label.text = sounds[row]

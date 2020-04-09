@@ -66,7 +66,7 @@ class SettingsTableViewControllerTests: XCTestCase {
         }
         
         XCTAssertEqual(SectionsRowsCount[0], 3)
-        XCTAssertEqual(SectionsRowsCount[1], 2)
+        XCTAssertEqual(SectionsRowsCount[1], 1)
         XCTAssertEqual(SectionsRowsCount[2], 1)
         XCTAssertEqual(SectionsRowsCount[3], 1)
     }

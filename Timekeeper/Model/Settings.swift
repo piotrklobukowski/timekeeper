@@ -6,13 +6,12 @@
 //  Copyright © 2020 Piotr Kłobukowski. All rights reserved.
 //
 
-import Foundation
 import CoreData
 import UIKit
 
 class Settings {
     
-    init(context: NSManagedObjectContext = (UIApplication.shared.delegate as! AppDelegate).coreDataStack.persistentContainer.viewContext) {
+    init(context: NSManagedObjectContext = (UIApplication.shared.delegate as! AppDelegate).coreDataStack.managedObjectContext) {
         self.context = context
     }
     
@@ -27,19 +26,13 @@ class Settings {
         
         guard durationSettings.isEmpty && breaksNumberSettings.isEmpty && soundSettings.isEmpty && anotherInformations.isEmpty else { return }
         
-        let longBreaksLimit = provideDefaults(
-            withID: SettingsDetailsType.longBreaksNumber.rawValue,
-            of: "Number of long breaks",
-            withAmount: 1,
-            withString: nil)
-        
         let shortBreaksLimit = provideDefaults(
             withID: SettingsDetailsType.shortBreaksNumber.rawValue,
             of: "Number of short breaks",
             withAmount: 3,
             withString: nil)
         
-         breaksNumberSettings.append(contentsOf: [shortBreaksLimit, longBreaksLimit])
+         breaksNumberSettings.append(contentsOf: [shortBreaksLimit])
         
         let longBreakDuration = provideDefaults(
             withID: SettingsDetailsType.longBreak.rawValue,
@@ -65,7 +58,7 @@ class Settings {
             withID: SettingsDetailsType.alertSound.rawValue,
             of: "Sound for alert",
             withAmount: nil,
-            withString: "Bell Sound Ring")
+            withString: "Bell_Sound_Ring")
         
         soundSettings.append(soundForAlert)
         
@@ -126,7 +119,7 @@ class Settings {
     
     func save(_ newValue: Any, for setting: ClockworkSettings, of type: SettingsDetailsType) {
         switch type {
-        case .focusTime, .longBreak, .shortBreak, .longBreaksNumber, .shortBreaksNumber:
+        case .focusTime, .longBreak, .shortBreak, .shortBreaksNumber:
             guard let valueToSave = newValue as? Double else { return }
             setting.setValue(valueToSave, forKey: String.CoreData.amountKey.rawValue)
         case .alertSound:
@@ -148,7 +141,7 @@ class Settings {
     func loadAllSettings() {
         let settingsTypes: [SettingsDetailsType] = [.focusTime, .shortBreak, .longBreak]
         let requestDuration = makeFetchRequest(with: settingsTypes.map { $0.rawValue })
-        let requestNumberOfBreaks = makeFetchRequest(with: [SettingsDetailsType.shortBreaksNumber.rawValue, SettingsDetailsType.longBreaksNumber.rawValue])
+        let requestNumberOfBreaks = makeFetchRequest(with: [SettingsDetailsType.shortBreaksNumber.rawValue])
         let requestSound = makeFetchRequest(with: [SettingsDetailsType.alertSound.rawValue])
         let requestAnotherInformations = makeFetchRequest(with: [SettingsDetailsType.credits.rawValue])
         
@@ -162,7 +155,6 @@ class Settings {
         }
         
         buildClockworkConfiguration()
-        
         addDefaultSettings()
     }
     

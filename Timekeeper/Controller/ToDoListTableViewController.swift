@@ -20,6 +20,7 @@ class ToDoListTableViewController: UITableViewController {
         
         self.navigationItem.title = String.toDoListTitle
         self.navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(showAlertForTaskAdding))
+        navigationController?.delegate = self
         
         setupToDoList()
         toDoList?.loadToDoList()
@@ -29,11 +30,6 @@ class ToDoListTableViewController: UITableViewController {
         if toDoList == nil {
             toDoList = ToDoList()
         }
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(true)
-        navigationController?.isNavigationBarHidden = false
     }
     
     @objc func showAlertForTaskAdding() {
@@ -66,9 +62,11 @@ class ToDoListTableViewController: UITableViewController {
         
         let cell = tableView.dequeueReusableCell(withIdentifier: String.StoryboardIdentifiers.toDoListCell.rawValue, for: indexPath)
         guard let task = toDoList?.tasks[indexPath.row] else { return cell }
-
+        
+        cell.accessibilityIdentifier = "TaskCell_\(indexPath.row)"
         cell.textLabel?.text = task.descriptionOfTask
         cell.accessoryType = task.isDone ? .checkmark : .none
+        
 
         return cell
     }
@@ -88,5 +86,15 @@ class ToDoListTableViewController: UITableViewController {
             tableView.deleteRows(at: [indexPath], with: .fade)
         }
     }
-    
+}
+
+extension ToDoListTableViewController: UINavigationControllerDelegate {
+    func navigationController(_ navigationController: UINavigationController, willShow viewController: UIViewController, animated: Bool) {
+        guard let mainVC = viewController as? MainViewController else { return }
+        guard let id = toDoList?.tasks.first?.identifier else { return }
+        if toDoList?.searchForTask(idNumber: mainVC.taskIdentifier) == nil {
+            mainViewContentUpdateDelegate?.updateTaskLabel(with: id)
+        }
+        
+    }
 }

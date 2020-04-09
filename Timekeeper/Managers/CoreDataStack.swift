@@ -16,17 +16,7 @@ class CoreDataStack {
     init(coreDataModelName: String) {
         self.modelName = coreDataModelName
     }
-    
-    lazy var persistentContainer: NSPersistentContainer = {
-        let container = NSPersistentContainer(name: modelName)
-        container.loadPersistentStores(completionHandler: { (storeDescription, error) in
-            if let error = error as NSError? {
-                fatalError("Unresolved error \(error), \(error.userInfo)")
-            }
-        })
-        return container
-    }()
-    
+        
     private(set) lazy var managedObjectContext: NSManagedObjectContext = {
         let managedObjectContext = NSManagedObjectContext(concurrencyType: .mainQueueConcurrencyType)
         managedObjectContext.persistentStoreCoordinator = self.persistentStoreCoordinator
@@ -65,7 +55,7 @@ class CoreDataStack {
     }()
     
     func saveContext () {
-        let context = persistentContainer.viewContext
+        let context = self.managedObjectContext
         if context.hasChanges {
             do {
                 try context.save()

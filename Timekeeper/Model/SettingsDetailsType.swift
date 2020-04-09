@@ -12,7 +12,6 @@ enum SettingsDetailsType: Int {
     case focusTime
     case shortBreak
     case longBreak
-    case longBreaksNumber
     case shortBreaksNumber
     case alertSound
     case credits
