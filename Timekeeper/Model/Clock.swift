@@ -61,6 +61,7 @@ class Clock {
             self?.delegate?.timeDidChange()
         }
         RunLoop.current.add(timer, forMode: .commonModes)
+        timer.tolerance = 0.2
         return timer
     }
     
