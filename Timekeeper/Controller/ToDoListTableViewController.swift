@@ -77,7 +77,7 @@ class ToDoListTableViewController: UITableViewController {
             navigationController?.popViewController(animated: true)
     }
     
-    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
             let position = indexPath.row
             guard let id = toDoList?.tasks[position].identifier else { return }
@@ -91,10 +91,8 @@ class ToDoListTableViewController: UITableViewController {
 extension ToDoListTableViewController: UINavigationControllerDelegate {
     func navigationController(_ navigationController: UINavigationController, willShow viewController: UIViewController, animated: Bool) {
         guard let mainVC = viewController as? MainViewController else { return }
-        guard let id = toDoList?.tasks.first?.identifier else { return }
         if toDoList?.searchForTask(idNumber: mainVC.taskIdentifier) == nil {
-            mainViewContentUpdateDelegate?.updateTaskLabel(with: id)
+            mainViewContentUpdateDelegate?.updateTaskLabel(with: 0)
         }
-        
     }
 }

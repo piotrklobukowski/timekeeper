@@ -96,8 +96,8 @@ class DurationSettingsViewController: UIViewController, SettingsDetailsInterface
         let minutes = String(substrings[0])
         let seconds = String(substrings[1])
         
-        guard let minutesIndex = self.minutes.index(of: minutes) else { return }
-        guard let secondsIndex = self.seconds.index(of: seconds) else { return }
+        guard let minutesIndex = self.minutes.firstIndex(of: minutes) else { return }
+        guard let secondsIndex = self.seconds.firstIndex(of: seconds) else { return }
        
         settingPickerView.selectRow(minutesIndex, inComponent: Components.minutes, animated: false)
         settingPickerView.selectRow(secondsIndex, inComponent: Components.seconds, animated: false)
@@ -186,8 +186,8 @@ extension DurationSettingsViewController: UIPickerViewDelegate, UIPickerViewData
     }
     
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-        guard pickerView.selectedRow(inComponent: Components.minutes) == minutes.index(of: "00") else { return }
-        guard let minValue = seconds.index(of: "05") else { return }
+        guard pickerView.selectedRow(inComponent: Components.minutes) == minutes.firstIndex(of: "00") else { return }
+        guard let minValue = seconds.firstIndex(of: "05") else { return }
         guard pickerView.selectedRow(inComponent: Components.seconds) < minValue else { return }
         pickerView.selectRow(minValue, inComponent: Components.seconds, animated: true)
     }

@@ -51,7 +51,7 @@ class SoundSettingViewController: UIViewController, SettingsDetailsInterface {
     private func fillWithLoadedSettings() {
         guard let soundSettingsString = soundSettings?.settingString else { return }
         let transformedTitle = soundSettingsString.replacingOccurrences(of: "_", with: " ")
-        guard let soundIndex = sounds.index(of: transformedTitle) else { return }
+        guard let soundIndex = sounds.firstIndex(of: transformedTitle) else { return }
         settingPickerView.selectRow(soundIndex, inComponent: 0, animated: false)
         descriptionLabel.text = soundSettings?.descriptionOfSetting
     }

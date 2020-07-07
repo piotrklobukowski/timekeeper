@@ -17,7 +17,7 @@ class SoundSettingsViewControllerTests: XCTestCase {
     override func setUp() {
         super.setUp()
         let storyboard = UIStoryboard(name: String.StoryboardIdentifiers.main.rawValue, bundle: Bundle.main)
-        soundViewController = storyboard.instantiateViewController(withIdentifier: String.StoryboardIdentifiers.soundSettingsViewControllerID.rawValue) as! SoundSettingViewController
+        soundViewController = storyboard.instantiateViewController(withIdentifier: String.StoryboardIdentifiers.soundSettingsViewControllerID.rawValue) as? SoundSettingViewController
         
         coreData = TestCoreData(coreDataModelName: String.CoreData.dataModel.rawValue)
         soundViewController.settings = Settings(context: coreData.managedObjectContext)

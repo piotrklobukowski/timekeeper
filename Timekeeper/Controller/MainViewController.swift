@@ -18,7 +18,8 @@ class MainViewController: UIViewController {
     @IBOutlet var breaksLabel: UILabel!
     @IBOutlet var pauseButton: UIButton!
     @IBOutlet var finishButton: UIButton!
-    @IBOutlet var settingsButton: UIBarButtonItem!
+    @IBOutlet weak var settingsButton: UIBarButtonItem!
+    
     
     var toDoList = ToDoList()
     var settings: Settings?
@@ -181,7 +182,10 @@ extension MainViewController: MainViewContentUpdateDelegate {
     
     func updateTaskLabel(with taskID: Int64) {
         toDoList.loadToDoList()
-        guard let indexNumber = toDoList.searchForTask(idNumber: taskID) else { return }
+        guard let indexNumber = toDoList.searchForTask(idNumber: taskID) else {
+            self.navigationItem.title = String.welcomeText
+            return
+        }
         self.navigationItem.title = toDoList.tasks[indexNumber].descriptionOfTask
         taskIdentifier = taskID
     }

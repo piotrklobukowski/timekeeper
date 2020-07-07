@@ -56,6 +56,7 @@ extension String {
     static let start = "Start"
     static let pause = "Pause"
     static let finishText = "All your tasks are complete!"
+    static let welcomeText = "Choose task from To-do list"
     static let toDoListTitle = "Your To-do List"
     static let addTask = "Add task"
     static let add = "Add"

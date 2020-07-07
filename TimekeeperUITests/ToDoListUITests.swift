@@ -104,9 +104,9 @@ class ToDoListUITests: XCTestCase {
         XCTAssertEqual(toDoListElements.cells[1].staticTexts.firstMatch.label, toDoListElements.testTexts[1])
         XCTAssertFalse(toDoListElements.cellsAccessoryTypes[1].exists)
         XCTAssertEqual(toDoListElements.cells[2].staticTexts.firstMatch.label, toDoListElements.testTexts[2])
-        XCTAssertEqual(toDoListElements.cellsAccessoryTypes[2].label, "More Info")
+        XCTAssertEqual(toDoListElements.cellsAccessoryTypes[2].label, "checkmark")
         XCTAssertEqual(toDoListElements.cells[3].staticTexts.firstMatch.label, toDoListElements.testTexts[3])
-        XCTAssertEqual(toDoListElements.cellsAccessoryTypes[3].label, "More Info")
+        XCTAssertEqual(toDoListElements.cellsAccessoryTypes[3].label, "checkmark")
     }
     
     func testOrderOfMarkingTasksAsDone() {
@@ -130,8 +130,8 @@ class ToDoListUITests: XCTestCase {
         XCTAssertFalse(toDoListElements.cellsAccessoryTypes[4].exists)
         XCTAssertFalse(toDoListElements.cellsAccessoryTypes[5].exists)
         XCTAssertFalse(toDoListElements.cellsAccessoryTypes[6].exists)
-        XCTAssertEqual(toDoListElements.cellsAccessoryTypes[7].label, "More Info")
-        XCTAssertEqual(toDoListElements.cellsAccessoryTypes[8].label, "More Info")
+        XCTAssertEqual(toDoListElements.cellsAccessoryTypes[7].label, "checkmark")
+        XCTAssertEqual(toDoListElements.cellsAccessoryTypes[8].label, "checkmark")
         XCTAssertFalse(toDoListElements.cellsAccessoryTypes[9].exists)
         
         toDoListElements.cells[4].tap()
@@ -146,11 +146,11 @@ class ToDoListUITests: XCTestCase {
         XCTAssertFalse(toDoListElements.cellsAccessoryTypes[1].exists)
         XCTAssertFalse(toDoListElements.cellsAccessoryTypes[2].exists)
         XCTAssertFalse(toDoListElements.cellsAccessoryTypes[3].exists)
-        XCTAssertEqual(toDoListElements.cellsAccessoryTypes[4].label, "More Info")
-        XCTAssertEqual(toDoListElements.cellsAccessoryTypes[5].label, "More Info")
+        XCTAssertEqual(toDoListElements.cellsAccessoryTypes[4].label, "checkmark")
+        XCTAssertEqual(toDoListElements.cellsAccessoryTypes[5].label, "checkmark")
         XCTAssertFalse(toDoListElements.cellsAccessoryTypes[6].exists)
-        XCTAssertEqual(toDoListElements.cellsAccessoryTypes[7].label, "More Info")
-        XCTAssertEqual(toDoListElements.cellsAccessoryTypes[8].label, "More Info")
+        XCTAssertEqual(toDoListElements.cellsAccessoryTypes[7].label, "checkmark")
+        XCTAssertEqual(toDoListElements.cellsAccessoryTypes[8].label, "checkmark")
         XCTAssertFalse(toDoListElements.cellsAccessoryTypes[9].exists)
         
         toDoListElements.cells[2].tap()
@@ -168,16 +168,16 @@ class ToDoListUITests: XCTestCase {
         XCTAssertEqual(app.staticTexts.firstMatch.label, "All your tasks are complete!")
 
         app.buttons[Controls.Buttons.toDoList].tap()
-        XCTAssertEqual(toDoListElements.cellsAccessoryTypes[0].label, "More Info")
-        XCTAssertEqual(toDoListElements.cellsAccessoryTypes[1].label, "More Info")
-        XCTAssertEqual(toDoListElements.cellsAccessoryTypes[2].label, "More Info")
-        XCTAssertEqual(toDoListElements.cellsAccessoryTypes[3].label, "More Info")
-        XCTAssertEqual(toDoListElements.cellsAccessoryTypes[4].label, "More Info")
-        XCTAssertEqual(toDoListElements.cellsAccessoryTypes[5].label, "More Info")
-        XCTAssertEqual(toDoListElements.cellsAccessoryTypes[6].label, "More Info")
-        XCTAssertEqual(toDoListElements.cellsAccessoryTypes[7].label, "More Info")
-        XCTAssertEqual(toDoListElements.cellsAccessoryTypes[8].label, "More Info")
-        XCTAssertEqual(toDoListElements.cellsAccessoryTypes[9].label, "More Info")
+        XCTAssertEqual(toDoListElements.cellsAccessoryTypes[0].label, "checkmark")
+        XCTAssertEqual(toDoListElements.cellsAccessoryTypes[1].label, "checkmark")
+        XCTAssertEqual(toDoListElements.cellsAccessoryTypes[2].label, "checkmark")
+        XCTAssertEqual(toDoListElements.cellsAccessoryTypes[3].label, "checkmark")
+        XCTAssertEqual(toDoListElements.cellsAccessoryTypes[4].label, "checkmark")
+        XCTAssertEqual(toDoListElements.cellsAccessoryTypes[5].label, "checkmark")
+        XCTAssertEqual(toDoListElements.cellsAccessoryTypes[6].label, "checkmark")
+        XCTAssertEqual(toDoListElements.cellsAccessoryTypes[7].label, "checkmark")
+        XCTAssertEqual(toDoListElements.cellsAccessoryTypes[8].label, "checkmark")
+        XCTAssertEqual(toDoListElements.cellsAccessoryTypes[9].label, "checkmark")
     }
     
     func testOrderOfMakingTasksDoneWhenTasksInTheMiddleWereDeleted() {
@@ -204,7 +204,7 @@ class ToDoListUITests: XCTestCase {
         app.buttons[Controls.Buttons.toDoList].tap()
         toDoListElements.deleteTask(inCell: 1)
         app.buttons[Controls.Buttons.back].tap()
-        XCTAssertEqual(app.staticTexts.firstMatch.label, toDoListElements.testTexts[0])
+        XCTAssertEqual(app.staticTexts.firstMatch.label, "Choose task from To-do list")
     }
     
 }

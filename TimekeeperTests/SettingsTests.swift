@@ -100,7 +100,7 @@ class SettingsTests: XCTestCase {
         XCTAssertNotNil(alertSetting)
         XCTAssertEqual(alertSetting?.amount, 0.0)
         XCTAssertEqual(alertSetting?.descriptionOfSetting, "Sound for alert")
-        XCTAssertEqual(alertSetting?.settingString, "Bell Sound Ring")
+        XCTAssertEqual(alertSetting?.settingString, "Bell_Sound_Ring")
     }
     
     func testSave() {

@@ -24,10 +24,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         return coreDataStack
     }()
 
-    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
-        UINavigationBar.appearance().largeTitleTextAttributes =
-            [NSAttributedStringKey.foregroundColor: UIColor.fontColor,
-             NSAttributedStringKey.font: UIFont.systemFont(ofSize: 30)]
+    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         
         if CommandLine.arguments.contains("IS_RUNNING_UITEST") {
             let settings = Settings()

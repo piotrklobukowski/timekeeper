@@ -1,3 +1,4 @@
+.DS_Store
 *.xcbkptlist
 Timekeeper.xcodeproj/xcuserdata/
 Timekeeper.xcworkspace/xcshareddata/IDEWorkspaceChecks.plist

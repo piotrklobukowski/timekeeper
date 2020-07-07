@@ -17,7 +17,7 @@ class DurationSettingsViewControllerTests: XCTestCase {
     override func setUp() {
         super.setUp()
         let storyboard = UIStoryboard(name: String.StoryboardIdentifiers.main.rawValue, bundle: Bundle.main)
-        durationViewController = storyboard.instantiateViewController(withIdentifier: String.StoryboardIdentifiers.durationSettingsViewControllerID.rawValue) as! DurationSettingsViewController
+        durationViewController = storyboard.instantiateViewController(withIdentifier: String.StoryboardIdentifiers.durationSettingsViewControllerID.rawValue) as? DurationSettingsViewController
         
         coreData = TestCoreData(coreDataModelName: String.CoreData.dataModel.rawValue)
         durationViewController.settings = Settings(context: coreData.managedObjectContext)

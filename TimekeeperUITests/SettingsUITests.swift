@@ -37,7 +37,7 @@ class SettingsUITests: XCTestCase {
         XCTAssertEqual(app.staticTexts.firstMatch.label,
                        Controls.SettingsCells.FocusTimeDuration)
         XCTAssertEqual(minutesValue, "00")
-        XCTAssertEqual(secondsValue, "25")
+        XCTAssertEqual(secondsValue, "05")
         
         settingsElements.minutesComponent.adjust(toPickerWheelValue: "01")
         settingsElements.secondsComponent.adjust(toPickerWheelValue: "05")
@@ -50,7 +50,7 @@ class SettingsUITests: XCTestCase {
         
         XCTAssertEqual(app.staticTexts.firstMatch.label,
                        Controls.SettingsCells.shortBreaksAmount)
-        XCTAssertEqual(breaksValue, "3")
+        XCTAssertEqual(breaksValue, "2")
         
         settingsElements.component.adjust(toPickerWheelValue: "7")
         settingsElements.saveButton.tap()
@@ -164,7 +164,7 @@ class SettingsUITests: XCTestCase {
         DispatchQueue.main.asyncAfter(deadline: .now() + 6) {
             exp2shortBreak.fulfill()
         }
-        wait(for: [exp2shortBreak], timeout: 6)
+        wait(for: [exp2shortBreak], timeout: 7)
         
         XCTAssertEqual(mainViewElements.clockworkLabel.label, "00:10")
         XCTAssertEqual(mainViewElements.breaksLabel.label, "Short Breaks: 2/2")

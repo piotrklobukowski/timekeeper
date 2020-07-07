@@ -44,7 +44,7 @@ struct ToDoList {
     }
     
     func searchForTask(idNumber: Int64) -> Array<Task>.Index? {
-        let number = tasks.index() { task in
+        let number = tasks.firstIndex() { task in
             task.identifier == idNumber
         }
         guard let numberOfIndex = number else { return number }

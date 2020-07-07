@@ -23,7 +23,7 @@ class ToDoListTableViewControllerTests: XCTestCase {
         super.setUp()
         
         let storyboard = UIStoryboard(name: String.StoryboardIdentifiers.main.rawValue, bundle: Bundle.main)
-        tableViewController = storyboard.instantiateViewController(withIdentifier: String.StoryboardIdentifiers.toDoListTableViewControllerID.rawValue) as! ToDoListTableViewController
+        tableViewController = storyboard.instantiateViewController(withIdentifier: String.StoryboardIdentifiers.toDoListTableViewControllerID.rawValue) as? ToDoListTableViewController
         
         coreData = TestCoreData(coreDataModelName: String.CoreData.dataModel.rawValue)
         tableViewController.toDoList = ToDoList(context: coreData.managedObjectContext)

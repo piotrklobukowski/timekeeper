@@ -17,7 +17,7 @@ class BreaksAmountViewControllerTests: XCTestCase {
     override func setUp() {
         super.setUp()
         let storyboard = UIStoryboard(name: String.StoryboardIdentifiers.main.rawValue, bundle: Bundle.main)
-        amountViewController = storyboard.instantiateViewController(withIdentifier: String.StoryboardIdentifiers.breaksAmountSettingsViewControllerID.rawValue) as! BreaksAmountSettingViewController
+        amountViewController = storyboard.instantiateViewController(withIdentifier: String.StoryboardIdentifiers.breaksAmountSettingsViewControllerID.rawValue) as? BreaksAmountSettingViewController
         
         coreData = TestCoreData(coreDataModelName: String.CoreData.dataModel.rawValue)
         amountViewController.settings = Settings(context: coreData.managedObjectContext)

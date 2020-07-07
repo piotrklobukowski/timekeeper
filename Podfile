@@ -1,5 +1,5 @@
 # Uncomment the next line to define a global platform for your project
-platform :ios, '9.0'
+platform :ios, '13.0'
 
 target 'Timekeeper' do
   # Comment the next line if you don't want to use dynamic frameworks
@@ -7,7 +7,7 @@ target 'Timekeeper' do
 
   # Pods for Timekeeper
 
-pod 'CircleProgressView', '~> 1.1.3'
+pod 'CircleProgressView', '~> 1.0'
 
   target 'TimekeeperTests' do
     inherit! :search_paths

@@ -18,7 +18,7 @@ class SettingsTableViewControllerTests: XCTestCase {
         super.setUp()
         
         let storyboard = UIStoryboard(name: String.StoryboardIdentifiers.main.rawValue, bundle: Bundle.main)
-        settingsTableViewController = storyboard.instantiateViewController(withIdentifier: String.StoryboardIdentifiers.settingsTableViewControllerID.rawValue) as! SettingsTableViewController
+        settingsTableViewController = storyboard.instantiateViewController(withIdentifier: String.StoryboardIdentifiers.settingsTableViewControllerID.rawValue) as? SettingsTableViewController
         
         coreData = TestCoreData(coreDataModelName: String.CoreData.dataModel.rawValue)
         settingsTableViewController.settings = Settings(context: coreData.managedObjectContext)

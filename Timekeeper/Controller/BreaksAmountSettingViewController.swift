@@ -63,7 +63,7 @@ class BreaksAmountSettingViewController: UIViewController, SettingsDetailsInterf
     private func fillWithLoadedSettings() {
         guard let value = amountSettings?.amount else { return }
         let stringValue = String(format: "%i", Int(value))
-        guard let valueIndex = breaksAmount.index(of: stringValue) else { return }
+        guard let valueIndex = breaksAmount.firstIndex(of: stringValue) else { return }
         settingPickerView.selectRow(valueIndex, inComponent: 0, animated: false)
         descriptionLabel.text = amountSettings?.descriptionOfSetting
     }
