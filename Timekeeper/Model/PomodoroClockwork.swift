@@ -8,7 +8,6 @@
 
 import UIKit
 
-
 class PomodoroClockwork {
 
     private let clock = Clock()

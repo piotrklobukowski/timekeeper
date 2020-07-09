@@ -9,10 +9,8 @@
 import Foundation
 
 struct ClockSettings {
-    
     let workTimeDuration: Double
     let shortBreakDuration: Double
     let longBreakDuration: Double
     let shortBreaksCount: Int
-    
 }
