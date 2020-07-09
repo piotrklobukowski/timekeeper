@@ -22,3 +22,10 @@ CircleProgressView by Cardinal Solutions (link to repo: https://github.com/Cardi
 ## Other Informations
 
 Repository includes short video presentation of app
+
+### Sounds used in project
+
+Bell Sound Ring - Mike Koenig
+Front Desk Bells - Daniel Simon
+Japanese Temple Small Bell - Mike Koenig
+Ship Bell - Mike Koenig
