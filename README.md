@@ -25,7 +25,7 @@ Repository includes short video presentation of app
 
 ### Sounds used in project
 
-Bell Sound Ring - Mike Koenig
-Front Desk Bells - Daniel Simon
-Japanese Temple Small Bell - Mike Koenig
-Ship Bell - Mike Koenig
+* Bell Sound Ring - Mike Koenig
+* Front Desk Bells - Daniel Simon
+* Japanese Temple Small Bell - Mike Koenig
+* Ship Bell - Mike Koenig
