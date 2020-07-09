@@ -37,19 +37,19 @@ class Settings {
         let longBreakDuration = provideDefaults(
             withID: SettingsDetailsType.longBreak.rawValue,
             of: "Duration of long break",
-            withAmount: 20,
+            withAmount: 1200,
             withString: nil)
         
         let shortBreakDuration = provideDefaults(
             withID: SettingsDetailsType.shortBreak.rawValue,
             of: "Duration of short break",
-            withAmount: 5,
+            withAmount: 300,
             withString: nil)
         
         let workTimeDuration = provideDefaults(
             withID: SettingsDetailsType.focusTime.rawValue,
             of: "Duration of focus time",
-            withAmount: 25,
+            withAmount: 1500,
             withString: nil)
         
         durationSettings.append(contentsOf: [workTimeDuration, shortBreakDuration, longBreakDuration])
